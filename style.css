@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background: url(assets/bg.jpg);
 }
 
 nav ul li a{
