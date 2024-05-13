@@ -1,37 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>SDG</title>
-    <!--Instalação do bootstrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/b3770106cb.js" crossorigin="anonymous"></script>
+
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+    <title>SGD</title>
   </head>
 
-  <body>
-    <!--Instalação do bootstrap-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
-    <!--Começo do código-->
-
-    <div class="navigator">
-      <nav class="nav">
-        <a class="nav-link active" aria-current="page" href="#">Visão Geral</a>
-        <a class="nav-link" href="#">Chamados</a>
-        <a class="nav-link" href="#">Estoque</a>
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Financeiro</a>
+  <body class="bg-light">
+    <header><!-- Início do Cabeçalho -->
+      <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+          <div class="container">
+              <a href="index.html" class="navbar-brand">
+                  <img src="LOGO/LOGO.png" width="95">
+              </a>
+  
+              <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+  
+              <div class="collapse navbar-collapse d-flex justify-content-end" id="nav-principal">
+                  <ul class="navbar-nav">
+                    <!-- Icone de mensagem no cabeçalho -->
+                      <li class="nav-item" style="margin-right: 10px;">
+                        <a href="" class="nav-link">
+                          <i class="fa-regular fa-message fa-lg text-light"></i>
+                        </a>
+                      </li>
+                    <!-- Icone do sino no cabeçalho -->
+                      <li class="nav-item" style="margin-right: 10px;">
+                        <a href="" class="nav-link">
+                          <i class="fa-regular fa-bell fa-lg text-light"></i>
+                        </a>
+                      </li>
+                    <!-- Olá Usuário -->                      
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light btn-lift dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Olá, Usuário
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i> Perfil</a></li>
+                        <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-pen-to-square" style="margin-right: 10px;"></i> Minha assinatura</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" > <i class="fa-solid fa-right-to-bracket" style="margin-right: 10px;"></i> Sair</a></li>
+                      </ul>
+                    </div>
+                  </ul>
+              </div>
+          </div>
       </nav>
-    </div>
-    <div class="bg">
+
+      <!--Inicio Menu Cabeçalho-->
+      <div class="container-fluid d-flex justify-content-center bg-white">
+        <nav class="nav">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">Operacional</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">Estoque</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">Financeiro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">Cadastrar</a>
+            </li>
+          </ul>
+        </nav>
+      </div><!--Fim Menu Cabeçalho-->
+
+  </header><!-- Fim do Cabeçalho -->
+  <br><br><br>
+    <div class="bg container d-flex justify-content-center">
       <div class="main">
         <div class="menu">
           <div class="menu-left">
@@ -41,7 +97,7 @@
                 <div class="card-text">
                   <!--Futuramente transformar a lista de chamados em uma table-->
                   <br />
-                  <strong><p>chamado1</p></strong>
+                  <strong><p>chamado1  </p></strong>
                   <strong><p>chamado2</p></strong>
                   <strong><p>chamado3</p></strong>
                   <strong><p>chamado4</p></strong>
@@ -51,6 +107,21 @@
             </div>
           </div>
 
-          Testando essa paradinha por enquanto...
+          <div class="menu-right">
+            <div class="card" style="width: 25rem">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   </body>
 </html>
