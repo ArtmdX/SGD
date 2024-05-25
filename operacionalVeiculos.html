@@ -64,7 +64,7 @@
         <nav class="nav">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html"> <i class="fa-solid fa-house" style="margin-right: 5px;"></i> <strong>Home</strong> </a>
+              <a class="nav-link " aria-current="page" href="home.html"> <i class="fa-solid fa-house" style="margin-right: 5px;"></i> <strong>Home</strong> </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="home.html"> <i class="fas fa-cog" style="margin-right: 5px;"></i> <strong>Serviços</strong> </a>
@@ -74,7 +74,7 @@
             </li>
             <li class="nav-item ">
               <div class="dropdown">
-                <button class="btn btn-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-white dropdown-toggle btn-active" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa-solid fa-screwdriver-wrench text-primary" style="margin-right: 5px;"></i> <span class="text-primary"><strong>Operacional</strong></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -97,36 +97,55 @@
   <br><br><br>
     <div class="bg container d-flex justify-content-center">
       <div class="main">
-        <div class="menu">
-          <div class="menu-left">
-            <div class="card" style="width: 25rem">
-              <div class="card-body">
-                <h5 class="card-title">Chamados pendentes</h5>
-                <div class="card-text">
-                  <!--Futuramente transformar a lista de chamados em uma table-->
-                  <br />
-                  <strong><p>chamado1  </p></strong>
-                  <strong><p>chamado2</p></strong>
-                  <strong><p>chamado3</p></strong>
-                  <strong><p>chamado4</p></strong>
-                  <strong><p>chamado5</p></strong>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="menu-right">
-            <div class="card" style="width: 25rem">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Ford</td>
+                <td>Fiesta</td>
+                <td>2018</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Chevrolet</td>
+                <td>Onix</td>
+                <td>2019</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Toyota</td>
+                <td>Corolla</td>
+                <td>2020</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Volkswagen</td>
+                <td>Gol</td>
+                <td>2017</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Renault</td>
+                <td>Sandero</td>
+                <td>2021</td>
+              </tr>
+            </tbody>
+          </table>
+          
+        
+
+
+
       </div>
     </div>
 
