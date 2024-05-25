@@ -16,3 +16,13 @@
     word-wrap: normal;
     padding-right: 30px;    
 }
+
+.btn-active {
+    background-color: #fff; /* Azul padrão do Bootstrap para links ativos */
+    border-color: #fff; /* Cor da borda do botão ativo */
+    color: #6c757d !important; /* Cor do texto do botão ativo (importante para substituir a cor padrão do Bootstrap) */
+  }
+  /* Estilo para o texto dentro do botão */
+  .btn-active .text-primary {
+    color: #6c757d !important; /* Cor do texto do botão ativo (importante para substituir a cor padrão do Bootstrap) */
+  }
