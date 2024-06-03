@@ -26,3 +26,21 @@
   .btn-active .text-primary {
     color: #6c757d !important; /* Cor do texto do botão ativo (importante para substituir a cor padrão do Bootstrap) */
   }
+.tabelaFuncionarios{
+    flex-direction: column;
+}
+
+
+
+#tableFuncioanario i{
+margin-right: 8px;
+color: #0d6efd;
+}
+
+#tableFuncioanario .iconeTrash:hover{
+    color: red;
+}
+
+#tableFuncioanario .iconeEdit:hover{
+    color: black;
+}
