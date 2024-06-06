@@ -92,7 +92,7 @@
     padding-bottom: 5px;
   }
   
-  i {
+ .icone i {
     font-size: 25px;
   }
   
@@ -129,4 +129,18 @@
   .columnType {
     width: 80px;
     text-align: center;
+  }
+
+  footer {
+    background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
+    width: 68%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center; /* Centraliza o conteúdo horizontalmente */
+    margin-left: 16%;
+  }
+
+  .alinhamentoFooter{
+    display: inline;
   }
