@@ -26,3 +26,41 @@
   .btn-active .text-primary {
     color: #6c757d !important; /* Cor do texto do botão ativo (importante para substituir a cor padrão do Bootstrap) */
   }
+
+#tableFuncioanario i{   /* Cor dos icones de ações na tabela de funcionarios, e uma pequena margem entre eles */
+margin: 0px 8px;
+color: #0d6efd;
+transition: 0.25s ease-in-out;  /* Efeito no momento que o hover é desativado */
+}
+
+#tableFuncioanario .iconeTrash:hover{  /*Mudança de cor do botão de excluir na tabela funcinario ao passar o mouse por cima*/
+    color: red;
+    transition:  0.25s ease-in-out;  /* Efeito no momento que o hover é ativado no icone de excluir */
+}
+
+#tableFuncioanario .iconeEdit:hover{  /* Mudança de cor do botão de editar na tabela funcinario ao passar o mouse por cima */
+    color: black;
+    transition:  0.25s ease-in-out;  /* Efeito no momento que o hover é ativado no icone de editar */
+}
+
+.containerp{
+    width: 68%;
+    margin: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #fff;
+}
+
+footer {
+    background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
+    width: 68%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center; /* Centraliza o conteúdo horizontalmente */
+    margin-left: 16%;
+  }
+
+  .alinhamentoFooter{
+    display: inline;
+  }
