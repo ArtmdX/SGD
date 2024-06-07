@@ -97,24 +97,36 @@
 
   
   <!--Inicio body -->
-  <div class="containerp mt-4 p-4 rounded">
+  <div class="containerp mt-4 p-4 rounded mb-4">
     <h2> <i class="fa-solid fa-users-gear"></i> Funcionários</h2>
     <p>Chegou a hora de listar os funcionários da empresa!</p>
   </div>
-
-  <br>
 
     <div class="bg container d-flex justify-content-center" style="flex-direction: column;">
       <div class="main">
           <div class="card">
             <table class="table mb-0 table-striped" id="tableFuncioanario">
+
+              <div class="container mt-3 mb-3">
+                <div class="alinhamentoFooter" style="float: inline-start;">
+                  <button class="btn btn-success">+ Cadastrar</button>
+                </div>
+                
+                <div class="alinhamentoFooter" style="float: inline-end; text-align: center;">
+                  <form id="formPesquisa">
+                    <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                    <input style="height: 37px;" type="text" id="inputPesquisa" placeholder="Pesquisar...">
+                  </form>
+                </div>
+              </div>
+              
               <thead>
                 <tr>
                   <th scope="col">Id</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Sobrenome</th>
                   <th scope="col">Handle</th>
-                  <th scope="col"></th>
+                  <th scope="col">Ações</th>
                 </tr>
               </thead>
               <tbody>
