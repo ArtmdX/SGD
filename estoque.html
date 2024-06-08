@@ -51,7 +51,7 @@
                         <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i> Perfil</a></li>
                         <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-pen-to-square" style="margin-right: 10px;"></i> Minha assinatura</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#" > <i class="fa-solid fa-right-to-bracket" style="margin-right: 10px;"></i> Sair</a></li>
+                        <li><a class="dropdown-item" href="login.html" > <i class="fa-solid fa-right-to-bracket" style="margin-right: 10px;"></i> Sair</a></li>
                       </ul>
                     </div>
                   </ul>
@@ -70,7 +70,7 @@
               <a class="nav-link" aria-current="page" href="serviços.html"> <i class="fas fa-cog" style="margin-right: 5px;"></i> <strong>Chamados</strong> </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="Clientes.html"> <i class="fa-solid fa-users" style="margin-right: 5px;"></i> <strong>Clientes</strong> </a>
+              <a class="nav-link " aria-current="page" href="clientes.html"> <i class="fa-solid fa-users" style="margin-right: 5px;"></i> <strong>Clientes</strong> </a>
             </li>
             <li class="nav-item ">
               <div class="dropdown">
@@ -94,22 +94,82 @@
       </div><!--Fim Menu Cabeçalho-->
 
   </header><!-- Fim do Cabeçalho -->
-  <br><br><br>
 
-    <!--Inicio body -->
-    <div class="bg container d-flex justify-content-center">
+  <!--Inicio body -->
+  <div class="containerp mt-4 p-4 rounded mb-4">
+    <h2> <i class="fa-solid fa-boxes-packing"></i> Estoque </h2>
+    <p>Chegou a hora de visualizar o estoque da empresa!</p>
+  </div>
+
+    <div class="bg container d-flex justify-content-center" style="flex-direction: column;">
       <div class="main">
+          <div class="card tabela-estoque">
+            <table class="table mb-0 table-striped "  id="tableFuncioanario">
 
+              <div class="container mt-3 mb-3" style="align-items: center;">
+                <div class="alinhamentoFooter" style="float: inline-start;">
+                  <button class="btn btn-success">+ Produto</button>
+                </div>
+                
+                <div class="alinhamentoFooter" style="margin-left: 840px;">
+                  <button class="btn "> <i class="fa-solid fa-filter"></i> <strong>Filtrar</strong></button>
+                </div>
 
-
-          
-        
-
-
-
+                <div class="alinhamentoFooter" style="float: inline-end; text-align: center;">
+                  <form id="formPesquisa">
+                    <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                    <input style="height: 37px;" type="text" id="inputPesquisa" placeholder="Pesquisar...">
+                  </form>
+                </div>
+              </div>
+              <div class="cabecalho-estoque">
+                <thead>
+                  <tr>
+                    <th scope="col" class="alinhar" >Id</th>
+                    <th scope="col" class="alinhar">Produto</th>
+                    <th scope="col" class="alinhar">Nome</th>
+                    <th scope="col" class="alinhar">Quantidade disponível</th>
+                    <th scope="col" class="alinhar">Data de entrada</th>
+                    <th scope="col" class="alinhar">Data de validade</th>
+                    <th scope="col" class="alinhar">Ações</th>
+                  </tr>
+                </thead>
+              </div>
+                <tbody>
+                  <tr class="imagemBody">
+                    <th scope="row" class="alinhar pt-5 pb-5 ">1</th>
+                    <th scope="row" class="alinhar pt-4 pb-0 "><img src="https://15732.cdn.simplo7.net/static/15732/sku/inseticidas-5bd0c6ed53812-mustang-350-inseticida-1-litro-p-1704305505105.png" alt=""></th>
+                    <th scope="row" class="alinhar pt-5 pb-5 ">Inseticida</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">16</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">11/04/2024</th>  
+                    <th scope="row" class="alinhar pt-5 pb-4 ">28/06/2026</th>         
+                    <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></t>
+                  </tr>
+                  <tr class="imagemBody">
+                    <th scope="row" class="alinhar pt-5 pb-5 ">2</th>
+                    <th scope="row" class="alinhar pt-4 pb-0 "><img src="https://images.tcdn.com.br/img/img_prod/808976/90_atack_cupinicida_200_ce_1_litro_3930_1_866ee004f32c31e423f6092f547a52b7.png" alt=""></th>
+                    <th scope="row" class="alinhar pt-5 pb-5 ">Araujo</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">14</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">12/03/2024</th>  
+                    <th scope="row" class="alinhar pt-5 pb-4 ">29/06/2025</th>         
+                    <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></t>
+                  </tr>
+                  <tr class="imagemBody">
+                    <th scope="row" class="alinhar pt-5 pb-5 ">3</th>
+                    <th scope="row" class="alinhar pt-4 pb-0 "><img src="https://images.tcdn.com.br/img/img_prod/808976/90_displace_ddvp_1_litro_3910_1_35c7a24f1fefd97b9fd63cdc2ec2bdac.png" alt=""></th>
+                    <th scope="row" class="alinhar pt-5 pb-5 ">Displace</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">13</th>
+                    <th scope="row" class="alinhar pt-5 pb-4 ">125/07/2024</th>  
+                    <th scope="row" class="alinhar pt-5 pb-4 ">15/06/2027</th>         
+                    <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></t>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
       </div>
     </div>
-    <!--Fim body -->
+  <!--Fim body -->
+
 
 <!--inicio footer-->
 <div class="container " >

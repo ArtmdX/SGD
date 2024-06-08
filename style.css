@@ -64,3 +64,24 @@ footer {
   .alinhamentoFooter{
     display: inline;
   }
+
+
+  .imagemBody img{
+    width: 55px;
+    height: 75px;
+  }
+
+.content-estoque {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+
+.alinhar{
+    text-align: center;
+}
+
+thead{
+    font-size: 20px;
+}

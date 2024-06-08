@@ -22,7 +22,7 @@
     ></script>
     <!-- Estilo customizado -->
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>SGD - Clientes</title>
+    <title>SGD - clientes</title>
   </head>
   <body class="bg-light">
     <header>
@@ -89,7 +89,7 @@
                     <hr class="dropdown-divider" />
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="login.html">
                       <i
                         class="fa-solid fa-right-to-bracket"
                         style="margin-right: 10px"
@@ -114,13 +114,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="serviços.html"> <i class="fas fa-cog" style="margin-right: 5px;"></i> <strong>Chamados</strong> </a>
+              <a class="nav-link" aria-current="page" href="chamados.html"> <i class="fas fa-cog" style="margin-right: 5px;"></i> <strong>Chamados</strong> </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="Clientes.html"
+                href="clientes.html"
               >
                 <i class="fa-solid fa-users" style="margin-right: 5px"></i>
                 <strong>Clientes</strong>
@@ -150,126 +150,136 @@
       <!--Fim Menu Cabeçalho-->
     </header>
     <!-- Fim do Cabeçalho -->
-    <br /><br /><br />
     
   <!--Inicio body -->
-    <div class="bg container">
+  <div class="containerp mt-4 p-4 rounded mb-4">
+    <h2> <i class="fa-solid fa-user-group"></i> Clientes</h2>
+    <p>Chegou a hora de listar os clientes da empresa!</p>
+  </div>
+
+    <div class="bg container d-flex justify-content-center" style="flex-direction: column;">
       <div class="main">
-        <div class="menu">
-          <div class="menu-left">
-            <div class="card mt-0 cardCadastroCliente">
-              <!--Tabela de Cadastro de Clientes-->
-              <div class="card-header mb-1 bg-primary text-white">
-                <h5>Cadastro de Clientes</h5>
-              </div>
+          <div class="card">
+            <table class="table mb-0 table-striped" id="tableFuncioanario">
 
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="">Nome</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="txtNome"
-                    id="txtNome"
-                  />
+              <div class="container mt-3 mb-3">
+                <div class="alinhamentoFooter" style="float: inline-start;">
+                  <button class="btn btn-success">+ Cadastrar</button>
                 </div>
-                <div class="form-group">
-                  <label for="">Data de nascimento</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    name="txtDataNascimento"
-                    id="txtDataNascimento"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="txtEmail"
-                    id="txtEmail"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="">Telefone</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    name="txtTelefone"
-                    id="txtTelefone"
-                  />
+                
+                <div class="alinhamentoFooter" style="float: inline-end; text-align: center;">
+                  <form id="formPesquisa">
+                    <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                    <input style="height: 37px;" type="text" id="inputPesquisa" placeholder="Pesquisar...">
+                  </form>
                 </div>
               </div>
-
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col">
-                    <button
-                      type="button"
-                      class="btn btn-primary form-control buttonAdicionar"
-                    >
-                      Adicionar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+              
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>João</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>                  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Maria</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Carlos</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Ana</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Rodrigo</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Paula</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Fernando</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td> <a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Luisa</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Eduardo</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>Sandra</td>
+                  <td>555.555.555-55</td>
+                  <td>(61)99822-4959</td>
+                  <td>Rua Zeca Mendes</td>
+                  <td>example1722@gmail.com</td>  
+                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <div class="menu-right">
-            <div class="card cardClientesCadastrados">
-              <!--Tabela de Clientes Cadastrados-->
-              <div class="card-header mb-2 bg-primary text-white">
-                <h5>Clientes Cadastrados</h5>
-              </div>
-
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data de Nascimento</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefone</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>José das Couves</td>
-                    <td>13/11/1975</td>
-                    <td>Jose.dc@gmail.com</td>
-                    <td>61 99844-1478</td>
-                  </tr>
-                  <tr>
-                    <td>Martin Barros</td>
-                    <td>29/02/2005</td>
-                    <td>Martin.1234@gmail.com</td>
-                    <td>61 92412-4568</td>
-                  </tr>
-                  <tr>
-                    <td>Jeferson Pereira</td>
-                    <td>30/01/1984</td>
-                    <td>Jef_per@outlook.com</td>
-                    <td>61 99231-1723</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <button type="button"class="btn btn-primary form-control buttonPesquisar">Pesquisar</button>
-                  </div>
-                  <div class="col-4">
-                    <button type="button"class="btn btn-primary form-control buttonEditar">Editar</button>
-                  </div>
-                  <div class="col-4">
-                    <button type="button"class="btn btn-primary form-control buttonExcluir">Excluir</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   <!--Fim body -->

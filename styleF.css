@@ -1,150 +1,164 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-    outline: none;
-  }
-  
-  body {
-    height: 100vh;
-    justify-content: center;
-  }
-  
-  main {
-    max-width: 10000px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .resume {
-    display: flex;
-    padding: 10px 0;
-    gap: 40px;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .resume>div {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 0px 5px #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    width: 150px;
-    color: rgb(255, 255, 255);
-    background-color: #1367d4;
-  }
-  
-  .newItem {
-    display: flex;
-    gap: 10px;
-    align-items: end;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .divDesc,
-  .divType,
-  .divAmount {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .newItem>button {
-    background-color: #1367d4;
-    color: white;
-    border: none;
-    padding: 0 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 34px;
-  }
-  
-  button:hover {
-    color: rgb(0, 0, 0);
-  }
-  
-  input,
-  select {
-    padding: 5px;
-  }
-  
-  .divTable {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  table {
-    width: 98%;
-    padding: 20px 0;
-    border-radius: 5px;
-  }
-  
-  th {
-    text-align: start;
-    border-bottom: inset;
-    padding-bottom: 5px;
-  }
-  
- .icone i {
-    font-size: 25px;
-  }
-  
-  .bxs-chevron-up-circle {
-    color: #00c94d;
-  }
-  
-  .bxs-chevron-down-circle {
-    color: #ff1500;
-  }
-  
-  .bx-trash {
-    color: #000000;
-  }
-  
-  .bx-trash:hover {
-    color: rgb(255, 0, 0);
-  }
-  
-  .columnAction {
-    width: 40px;
-    text-align: center;
-  }
-  
-  .columnAction>button {
-    background: transparent;
-    border: none;
-  }
-  
-  .columnAmount {
-    width: 30%;
-  }
-  
-  .columnType {
-    width: 80px;
-    text-align: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+  outline: none;
+}
 
-  footer {
-    background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
-    width: 68%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    text-align: center; /* Centraliza o conteúdo horizontalmente */
-    margin-left: 16%;
-  }
+body {
+  height: 100vh;
+  justify-content: center;
+}
 
-  .alinhamentoFooter{
-    display: inline;
-  }
+main {
+  max-width: 10000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .bx-trash{
-    transition: ease-in-out 0.20s;
-  }
+.resume {
+  display: flex;
+  padding: 10px 0;
+  gap: 40px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.resume > div {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 150px;
+  color: rgb(255, 255, 255);
+  background-color: #1367d4;
+}
+
+.newItem {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.divDesc,
+.divType,
+.divAmount {
+  display: flex;
+  flex-direction: column;
+}
+
+.newItem > button {
+  background-color: #1367d4;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 34px;
+}
+
+button:hover {
+  color: rgb(0, 0, 0);
+}
+
+input,
+select {
+  padding: 5px;
+}
+
+.divTable {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+table {
+  width: 98%;
+  padding: 20px 0;
+  border-radius: 5px;
+}
+
+th {
+  text-align: start;
+  border-bottom: inset;
+  padding-bottom: 8px;
+}
+
+.icone i {
+  font-size: 25px;
+}
+
+.bxs-chevron-up-circle {
+  color: #00c94d;
+}
+
+.bxs-chevron-down-circle {
+  color: #ff1500;
+}
+
+.bx-trash {
+  color: #000000;
+}
+
+.bx-trash:hover {
+  color: rgb(255, 0, 0);
+}
+
+.columnAction {
+  width: 40px;
+  width: 50%;
+  text-align: right;
+}
+
+.columnAction:hover{
+  box-shadow: #00c94d;
+}
+
+.columnAction > button {
+  background: transparent;
+  border: none;
+}
+
+.columnAmount > td{
+  width: 10%;
+}
+
+.columnType > td{
+  width: 80px;
+  text-align: center;
+}
+
+.columnType2 > td{
+  text-align: center;
+}
+
+.desc-descricao{
+  width: 20%;
+}
+
+footer {
+  background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
+  width: 68%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center; /* Centraliza o conteúdo horizontalmente */
+  margin-left: 16%;
+}
+
+.alinhamentoFooter {
+  display: inline;
+}
+
+.bx-trash {
+  transition: ease-in-out 0.5s;
+}
+
