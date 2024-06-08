@@ -57,8 +57,8 @@ function insertItem(item, index) {
         <td>${item.type}</td>
         <td>${item.status}</td>
         <td class="columnAction">
-            <button onclick="confirmItem(${index})">Confirmar</button>
-            <button onclick="cancelItem(${index})">Cancelar</button>
+            <button class="confirmar" onclick="confirmItem(${index})">Confirmar</button>
+            <button class="cancelar" onclick="cancelItem(${index})">Cancelar</button>
         </td>
     `;
 

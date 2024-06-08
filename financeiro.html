@@ -12,16 +12,15 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/b3770106cb.js" crossorigin="anonymous"></script>
 
-  
 
   <title>SGD - Financeiro</title>
 
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- Estilo customizado -->
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="styleF.css">
-
-
+  <link rel="icon" type="image/png" sizes="16x16" href="LOGO/LOGO.png">
 </head>
 
 <body class="bg-light">
@@ -115,58 +114,63 @@
     </div><!--Fim Menu Cabeçalho-->
 
   </header><!-- Fim do Cabeçalho -->
-  <br><br><br>
 
   <!--Inicio body -->
-  <main class="icone">
-    <div class="resume">
-      <div>
-        Entradas: R$
-        <span class="incomes">0.00</span>
-      </div>
-      <div>
-        Saídas: R$
-        <span class="expenses">0.00</span>
-      </div>
-      <div>
-        Total: R$
-        <span class="total">0.00</span>
-      </div>
-    </div>
-    <div class="newItem">
-      <div class="divDesc">
-        <label for="desc">Descrição</label>
-        <input type="text" id="desc" />
-      </div>
-      <div class="divAmount">
-        <label for="amount">Valor</label>
-        <input type="number" id="amount" />
-      </div>
-      <div class="divType">
-        <label for="type">Tipo</label>
-        <select id="type">
-          <option>Entrada</option>
-          <option>Saída</option>
-        </select>
-      </div>
-      <button id="btnNew">Incluir</button>
-      <button onclick="clearDB()">Limpar Banco de Dados</button>
-    </div>
-    
-    <div class="divTable">
-      <table>
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th class="columnAmount">Valor</th>
-            <th class="columnType">Tipo</th>
-            <th class="columnAction"></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-  </main>  
+
+  <div class="containerp mt-4 p-4 rounded mb-4">
+    <h2> <i class="fa-solid fa-wallet"></i> Financeiro</h2>
+    <p>Chegou a hora de gerenciar a empresa!</p>
+  </div>
+
+      <main class="icone">
+        <div class="resume">
+          <div>
+            Entradas: R$
+            <span class="incomes">0.00</span>
+          </div>
+          <div>
+            Saídas: R$
+            <span class="expenses">0.00</span>
+          </div>
+          <div>
+            Total: R$
+            <span class="total">0.00</span>
+          </div>
+        </div>
+        <div class="newItem">
+          <div class="divDesc">
+            <label for="desc">Descrição</label>
+            <input type="text" id="desc" />
+          </div>
+          <div class="divAmount">
+            <label for="amount">Valor</label>
+            <input type="number" id="amount" />
+          </div>
+          <div class="divType">
+            <label for="type">Tipo</label>
+            <select id="type">
+              <option>Entrada</option>
+              <option>Saída</option>
+            </select>
+          </div>
+          <button id="btnNew">Incluir</button>
+          <button onclick="clearDB()">Limpar Banco de Dados</button>
+        </div>
+        
+        <div class="divTable">
+          <table>
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th class="columnAmount">Valor</th>
+                <th class="columnType">Tipo</th>
+                <th class="columnAction"></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+      </main>  
   <!--Fim body -->
 
   <!--inicio footer-->

@@ -2,6 +2,7 @@
     padding: 8px 25px; /* Aumenta o espaçamento interno dos botões */
 }
 
+
 .menu{
     justify-content: space-evenly;
     display: flex;
@@ -54,7 +55,7 @@ transition: 0.25s ease-in-out;  /* Efeito no momento que o hover é desativado *
 footer {
     background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
     width: 68%;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     text-align: center; /* Centraliza o conteúdo horizontalmente */
