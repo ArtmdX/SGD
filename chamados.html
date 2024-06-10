@@ -209,10 +209,7 @@
         </div>
       </div>
       <div class="newItem">
-        <div class="divDesc">
-          <label for="desc">Descrição</label>
-          <input type="text" id="desc" />
-        </div>
+        
         <div class="divAmount">
           <label for="amount">Cliente</label>
           <input type="text" id="name" />
@@ -229,6 +226,10 @@
             <option>Controle de Pragas</option>
           </select>
         </div>
+        <div class="divDesc">
+          <label for="desc">Observação</label>
+          <input type="text" id="desc" />
+        </div>
         <button id="btnNew">Cadastrar</button>
         <button onclick="clearDB()">Limpar Banco de Chamados</button>
       </div>
@@ -236,9 +237,9 @@
         <table>
           <thead>
             <tr>
-              <th class="desc-descricao">Descrição</th>
               <th class="columnAmount">Cliente</th>
               <th class="columnType">Tipo</th>
+              <th class="desc-descricao">Observação</th>
               <th class="columnType2">Situação</th>
               <th class="columnAction">Ações</th>
             </tr>

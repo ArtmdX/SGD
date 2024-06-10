@@ -52,9 +52,9 @@ function insertItem(item, index) {
     let tr = document.createElement("tr");
 
     tr.innerHTML = `
-        <td>${item.desc}</td>
         <td>${item.name}</td>
         <td>${item.type}</td>
+        <td>${item.desc}</td>
         <td>${item.status}</td>
         <td class="columnAction">
             <button class="confirmar" onclick="confirmItem(${index})">Confirmar</button>
