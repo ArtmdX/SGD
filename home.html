@@ -43,8 +43,6 @@
     <link rel="home" href="https://mazipan.github.io/bootstrap4-admin-dashboard-template/">
     <link rel="icon" type="image/png" sizes="16x16" href="LOGO/LOGO.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -154,74 +152,81 @@
 
   <!--Inicio body -->
   <div class="conteudo-home" style="width: 100%; height: 100%;">
-    <div class="row">
-      <div class="col mt-5" style="margin-right: 1vw; margin-left: 2vw;">
-        <div class="bg-white">
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-              role="tab" aria-controls="list-home">Tarefas 08/06/2024</li>
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-              Pagar conta de luz
-            </li>
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-              Checar estoque
-            </li>
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-              Serviço banco do brasil
-            </li>
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-              Serviço Fazenda Recanto Belo
-            </li>
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-              Pagar Salários
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col">
-        <div class="col-lg-6 col-md-6 col-sm-12 pr-0 mb-3">
-          <div class="card-collapsible card">
-            <div class="card-header">
-              Doughnut Chart <i class="fa fa-caret-down caret"></i>
-            </div>
-            <div class="card-body d-flex justify-content-around">
-                <canvas class="chart w-100" id="pieChart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-5">
-  </div>  
-
-  <div class="container-fluid">
-    <div class="row">
-      <main class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4">
-        
-
-          <div class="col-lg-6 col-md-6 col-sm-12 pr-0 mb-3">
-            <div class="card-collapsible card">
-              <div class="card-header">
-                Bar Chart <i class="fa fa-caret-down caret"></i>
-              </div>
-              <div class="card-body d-flex justify-content-around">
+    <div class="container-fluid">
+      <div class="row">
+        <main class="col">
+            <div class="col-lg-5 col-sm-12 pr-0 mb-3">
+              <div class="card-collapsible card card-gasto">
+                <div class="card-header">
+                  Gastos <i class="fa fa-caret-down caret"></i>
+                </div>
+                <div class="card-body grafico-gasto d-flex justify-content-around">
                   <canvas class="chart w-100" id="barChart"></canvas>
               </div>
+              </div>
+            </div>
+          
+        </main>
+        <div class="col">
+          <div class="col-lg-6 col-md-6 col-sm-12 pr-0 mb-3">
+            <div class="card-collapsible card card-serv">
+              <div class="card-header">
+                Status de Serviço<i class="fa fa-caret-down caret"></i>
+              </div>
+              <div class="card-body grafico-serv d-flex justify-content-around">
+                  <canvas class="chart w-100" id="pieChart"></canvas>
+              </div>
             </div>
           </div>
-        
-      </main>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+
+
+
+
+
+
+
+    
+
+ 
 
   </div>
   <!--Fim body -->
-
+  <div class="row">
+    <div class="col mt-1" style="margin-right: 1vw; margin-left: 2vw;">
+      <div class="bg-white" style="width: 100%; ">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action active d-flex justify-content-center" id="list-home-list" data-bs-toggle="list"
+            role="tab" aria-controls="list-home">Tarefas 08/06/2024</li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Pagar conta de luz
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Checar estoque
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Serviço banco do brasil
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Serviço Fazenda Recanto Belo
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Pagar Salários
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
   <!--inicio footer-->
   <div class="container ">
     <footer class="py-3 text-center ">

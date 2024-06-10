@@ -36,8 +36,8 @@ function initPieChart() {
       datasets: [{
         data: [700, 500, 400, 600, 300, 100],
         backgroundColor: [
-          '#f56954',
           '#00a65a',
+          '#f56954',
           '#f39c12',
           '#00c0ef',
           '#3c8dbc',
@@ -45,12 +45,12 @@ function initPieChart() {
         ],
       }],
       labels: [
-        'Entrada',
-        'IE',
-        'Hellan',
-        'Safari',
-        'Opera',
-        'Navigator'
+        'Concluidos',
+        'Pendentes',
+        'Em execução',
+        'Adiados',
+        'Aguardando confirmação',
+        'Cancelados'
       ]
     },
     options: pieOptions
@@ -62,7 +62,7 @@ function initBarChart () {
   //- BAR CHART -
   //-------------
   var areaChartData = {
-    labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels  : ['Janeiro', 'Março', 'Maio', 'Julho', 'Setembro', 'Novembro'],
     datasets: [
       {
         label               : 'Contas',
@@ -70,7 +70,7 @@ function initBarChart () {
         data                : [65, 59, 80, 81, 56, 55, 40]
       },
       {
-        label               : 'Ganhos',
+        label               : 'Salários',
         backgroundColor     : '#00a65a',
         data                : [28, 48, 40, 19, 86, 27, 90]
       },
