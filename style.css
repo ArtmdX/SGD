@@ -86,3 +86,23 @@ footer {
 thead{
     font-size: 20px;
 }
+
+.grafico-gasto{
+    padding-left: 4vw;
+    width: 40vw;
+}
+
+.card-gasto{
+        width: 40vw;
+        margin-left: 4vw;
+}
+
+.grafico-serv{
+        padding-left: 4vw;
+        width: 40vw;
+}
+
+.card-serv{
+    width: 40vw;
+    margin-left: 5vw;
+}
