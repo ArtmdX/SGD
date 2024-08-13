@@ -109,7 +109,7 @@
 
               <div class="container mt-3 mb-3" style="align-items: center;">
                 <div class="alinhamentoFooter" style="float: inline-start;">
-                  <button class="btn btn-success">+ Produto</button>
+                  <button id="botaoAdd" class="btn btn-success">+ Produto</button>
                 </div>
                 
                 <div class="alinhamentoFooter" style="margin-left: 800px;">
@@ -203,7 +203,15 @@
           </div>
       </div>
     </div>
+    <div id="myModal" class="modal">
 
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <p>À fazer</p>
+      </div>
+    
+    </div>
     
 
   <!--Fim body -->
@@ -227,5 +235,32 @@
   <!--Fim footer-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>
+      // Capturando o modal
+var modal = document.getElementById("myModal");
+
+// Capturando o botão de abrir o modal
+var btn = document.getElementById("botaoAdd");
+
+// Capturando o X que fecha o modal
+var span = document.getElementsByClassName("close-modal")[0];
+
+// Configurando o botão cadastrar para abrir o modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Configurando o <span> X para fechar o modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Configurando para que o modal feche caso o usuario clique em algum lugar da tela
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
   </body>
 </html>
