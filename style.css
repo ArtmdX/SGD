@@ -90,6 +90,7 @@ thead{
 .grafico-gasto{
     padding-left: 4vw;
     width: 40vw;
+    height: 50vh;
 }
 
 .card-gasto{
@@ -100,6 +101,7 @@ thead{
 .grafico-serv{
         padding-left: 4vw;
         width: 40vw;
+        height: 50vh;
 }
 
 .card-serv{
