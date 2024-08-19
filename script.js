@@ -6,15 +6,26 @@ const btnNew = document.querySelector("#btnNew");
 const incomes = document.querySelector(".incomes");
 const expenses = document.querySelector(".expenses");
 const total = document.querySelector(".total");
+const btnClear = document.querySelector("#btnClear");
 
-let items;
+let items = [];
 
 function clearDB() {
-    localStorage.clear();
-    loadItens(); // Recarrega a tabela com itens vazios
+  const password = prompt('Digite a senha para limpar o banco de dados:');
+  if (password === 'SGD1234') {
+    if (confirm('Você tem certeza que deseja limpar o banco de dados?')) {
+      localStorage.clear();
+      loadItens(); // Recarrega a tabela com itens vazios
+    } else {
+      // Se o usuário cancelar, não faça nada
+      return;
+    }
+  } else {
+    alert('Senha incorreta!');
+  }
 }
 
-btnNew.onclick = () => {
+btnNew.addEventListener('click', () => {
   if (descItem.value === "" || amount.value === "" || type.value === "") {
     return alert("Preencha todos os campos!");
   }
@@ -31,7 +42,7 @@ btnNew.onclick = () => {
 
   descItem.value = "";
   amount.value = "";
-};
+});
 
 function deleteItem(index) {
   items.splice(index, 1);
@@ -96,4 +107,7 @@ const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
 const setItensBD = () =>
   localStorage.setItem("db_items", JSON.stringify(items));
 
-loadItens();
+// Adicionando evento de carregamento de página
+window.addEventListener("load", loadItens);
+
+btnClear.addEventListener('click', clearDB);
