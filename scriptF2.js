@@ -62,7 +62,7 @@ function insertItem(item, index) {
   let tr = document.createElement("tr");
 
   tr.innerHTML = `
-    <td>${item.name}</td>
+    <td style="padding-left: 1vw;">${item.name}</td>
     <td>${item.type}</td>
     <td>${item.desc}</td>
     <td>${item.status}</td>
