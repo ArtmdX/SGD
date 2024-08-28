@@ -11,12 +11,6 @@ body {
   justify-content: center;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .resume {
   display: flex;
   padding: 10px 0;
@@ -78,18 +72,18 @@ select {
 }
 
 .divTable {
-  width: 100%;
+  width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .tb_item{
-  margin-left: 1vwz;
+  margin-left: 1vw;
 }
 
 table {
-  width: 98%;
-  padding: 20px 0;
+  width: 100%;
+
   border-radius: 5px;
 }
 
