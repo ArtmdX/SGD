@@ -157,66 +157,79 @@
     <!-- Fim do Cabeçalho -->
 
     <!--Inicio body -->
-    <div class="containerp mt-4 p-4 rounded mb-4">
+  <div class="container mt-4 p-4 rounded mb-4">
       <h2><i class="fa-solid fa-screwdriver-wrench"></i> Chamados</h2>
       <p>Chegou a hora de visualizar os serviços da empresa!</p>
-    </div>
-    <main class="icone">
+  </div>
+  <div class="containerp1">
       <div class="resume">
-        <div>
-          Registrado
-          <span class="incomes">0</span>
-        </div>
-        <div>
-          Confirmados
-          <span class="expenses">0</span>
-        </div>
-        <div>
-          Cancelados
-          <span class="total">0</span>
-        </div>
+          <div>
+              Registrado
+              <span class="incomes">0</span>
+          </div>
+          <div>
+              Confirmados
+              <span class="expenses">0</span>
+          </div>
+          <div>
+              Cancelados
+              <span class="total">0</span>
+          </div>
       </div>
+
       <div class="newItem">
-        
-        <div class="divAmount">
-          <label for="amount">Cliente</label>
-          <input type="text" id="name" />
-        </div>
-        <div class="divType">
-          <label for="type">Tipo</label>
-          <select id="type">
-            <option>Selecione</option>
-            <option>Dedetização</option>
-            <option>Desinsetização</option>
-            <option>Desratização</option>
-            <option>Descupinização</option>
-            <option>Sanitização</option>
-            <option>Controle de Pragas</option>
-          </select>
-        </div>
-        <div class="divDesc">
-          <label for="desc">Observação</label>
-          <input type="text" id="desc" />
-        </div>
-        <button id="btnNew">Cadastrar</button>
-        <button onclick="clearDB()">Limpar Dados</button>
+          <div class="divAmount">
+              <label for="amount">Cliente</label>
+              <input type="text" id="name" />
+          </div>
+          <div class="divType">
+              <label for="type">Tipo</label>
+              <select id="type">
+                  <option>Selecione</option>
+                  <option>Dedetização</option>
+                  <option>Desinsetização</option>
+                  <option>Desratização</option>
+                  <option>Descupinização</option>
+                  <option>Sanitização</option>
+                  <option>Controle de Pragas</option>
+              </select>
+          </div>
+
+          <div class="divDesc">
+              <label for="desc">Observação</label>
+              <input type="text" id="desc" />
+          </div>
+          <div class="divMetragem">
+            <label for="metragem">Metragem (m²)</label>
+            <input type="number" id="metragem" min="0" />
+          </div>
+          <div class="divValor">
+            <label for="valor">Valor (R$)</label>
+            <input type="number" id="valor" min="0" step="0.01" />
+          </div>
+          <button id="btnNew">Cadastrar</button>
+          <button onclick="clearDB()">Limpar Dados</button>
       </div>
+      <div id="editar-container"></div>
+
       <div class="divTable">
-        <table>
-          <thead>
-            <tr>
-              <th class="columnAmount" style="padding-left: 1vw;">Cliente</th>
-              <th class="columnType">Tipo</th>
-              <th class="desc-descricao">Observação</th>
-              <th class="columnType2">Situação</th>
-              <th class="columnAction">Ações</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+          <table>
+              <thead>
+                  <tr class="elementos">
+                    <th class="columnAmount">Cliente</th>
+                    <th class="columnType">Tipo</th>
+                    <th class="desc-descricao">Observação</th>
+                    <th class="columnMetragem">Metragem (m²)</th>
+                    <th class="columnValor">Valor (R$)</th>
+                    <th class="columnType2">Situação</th>
+                    <th class="columnAction">Ações</th>
+                  </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+          </table>
       </div>
-    </main>
-    <!--Fim body -->
+  </div>
 
     <!--inicio footer-->
     <div class="container">
