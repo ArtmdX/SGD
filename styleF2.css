@@ -45,6 +45,7 @@ body {
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 4vh 0;
 }
 
 .divDesc,
@@ -62,7 +63,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   height: 4vh;
-  margin-bottom: 2.5vh;
+  margin-top: 2.4vh;
 }
 
 .newItem > button:hover {
