@@ -5,25 +5,12 @@ const type = document.querySelector("#type");
 const btnNew = document.querySelector("#btnNew");
 const btnClearDB = document.querySelector("#btnClearDB");
 
-const incomes = document.querySelector(".incomes");
-const expenses = document.querySelector(".expenses");
-const total = document.querySelector(".total");
-
 let registros = [];
 
 function clearDB() {
-  const password = prompt('Digite a senha para limpar o banco de dados:');
-  if (password === 'SGD1234') {
-    if (confirm('Você tem certeza que deseja limpar o banco de dados?')) {
-      localStorage.clear();
-      loadItems(); // Recarrega a tabela com itens vazios
-    } else {
-      // Se o usuário cancelar, não faça nada
-      return;
-    }
-  } else {
-    alert('Senha incorreta!');
-  }
+  // Remove password prompt and confirmation dialog
+  registros = [];
+  loadItems(); // Recarrega a tabela com itens vazios
 }
 
 btnNew.addEventListener('click', () => {
@@ -31,117 +18,205 @@ btnNew.addEventListener('click', () => {
     return alert("Preencha todos os campos!");
   }
 
-  const metragemInput = document.querySelector("#metragem"); // Adicione um ID "metragem" ao seu campo de entrada de metragem
-  const valorInput = document.querySelector("#valor"); // Adicione um ID "valor" ao seu campo de entrada de valor
+  const metragemInput = document.querySelector("#metragem"); 
+  const valorInput = document.querySelector("#valor"); 
 
   const registro = {
     name: name.value,
     type: type.value,
     desc: descItem.value,
-    metragem: parseFloat(metragemInput.value), // Obtenha o valor da metragem do campo de entrada
-    valor: parseFloat(valorInput.value), // Obtenha o valor do campo de entrada
-    situacao: "pendente" // Inicialmente, o registro está pendente
+    metragem: parseFloat(metragemInput.value), 
+    valor: parseFloat(valorInput.value), 
+    situacao: "pendente" 
   };
 
   registros.push(registro);
-
-  setItemsDB();
 
   loadItems();
 
   descItem.value = "";
   name.value = "";
   type.value = "Selecione";
-  metragemInput.value = ""; // Limpe o campo de entrada de metragem
-  valorInput.value = ""; // Limpe o campo de entrada de valor
+  metragemInput.value = ""; 
+  valorInput.value = ""; 
 });
 
 function confirmarRegistro(index) {
   const registro = registros[index];
   registro.situacao = "confirmado";
-  setItemsDB();
   loadItems();
 }
 
 function cancelarRegistro(index) {
   const registro = registros[index];
   registro.situacao = "cancelado";
-  setItemsDB();
   loadItems();
 }
 
 function editarRegistro(index) {
   const registro = registros[index];
-  // Crie um formulário para editar o registro
-  const form = document.createElement("form");
-  form.innerHTML = `
-    <label>Cliente:</label>
-    <input type="text" value="${registro.name}" id="nome-editar">
+  const modal = document.getElementById("editar-modal");
+  const modalContent = document.getElementById("editar-modal-content");
+
+  // Create the modal content
+  modalContent.innerHTML = `
+    <div class="div11">
+      <label>Cliente:</label>
+      <input type="text" value="${registro.name}" id="nome-editar">
+    </div>
     <br>
-    <label>Tipo:</label>
-    <select id="type-editar">
-                  <option value="Selecione" ${registro.type === "Selecione" ? "selected" : ""}>Selecione</option>
-                  <option value="Dedetização" ${registro.type === "Dedetização" ? "selected" : ""}>Dedetização</option>
-                  <option value="Desinsetização" ${registro.type === "Desinsetização" ? "selected" : ""}>Desinsetização</option>
-                  <option value="Desratização" ${registro.type === "Desratização" ? "selected" : ""}>Desratização</option>
-                  <option value="Descupinização" ${registro.type === "Descupinização" ? "selected" : ""}>Descupinização</option>
-                  <option value="Sanitização" ${registro.type === "Sanitização" ? "selected" : ""}>Sanitização</option>
-                  <option value="Controle de Pragas" ${registro.type === "Controle de Pragas" ? "selected" : ""}>Controle de Pragas</option>
-    </select>
+    <div class="div11">
+      <label>Tipo:</label>
+      <select id="type-editar">
+                    <option value="Selecione" ${registro.type === "Selecione" ? "selected" : ""}>Selecione</option>
+                    <option value="Dedetização" ${registro.type === "Dedetização" ? "selected" : ""}>Dedetização</option>
+                    <option value="Desinsetização" ${registro.type === "Desinsetização" ? "selected" : ""}>Desinsetização</option>
+                    <option value="Desratização" ${registro.type === "Desratização" ? "selected" : ""}>Desratização</option>
+                    <option value="Descupinização" ${registro.type === "Descupinização" ? "selected" : ""}>Descupinização</option>
+                    <option value="Sanitização" ${registro.type === "Sanitização" ? "selected" : ""}>Sanitização</option>
+                    <option value="Controle de Pragas" ${registro.type === "Controle de Pragas" ? "selected" : ""}>Controle de Pragas</option>
+      </select>
+    </div>
     <br>
-    <label>Descrição:</label>
-    <textarea id="desc-editar">${registro.desc}</textarea>
+    <div class="div11">
+      <label class="label1">Descrição:</label>
+      <textarea class="textarea" id="desc-editar">${registro.desc}</textarea>
+    </div>
     <br>
-    <label>Metragem:</label>
-    <input type="number" value="${registro.metragem}" id="metragem-editar">
+    <div class="div11">
+      <label>Metragem:</label>
+      <input type="number" value="${registro.metragem}" id="metragem-editar">
+    </div>
     <br>
-    <label>Valor:</label>
-    <input type="number" value="${registro.valor}" id="valor-editar">
+    <div class="div11">
+      <label>Valor:</label>
+      <input type="number" value="${registro.valor}" id="valor-editar">
+    </div>
     <br>
-    <button onclick="salvarEdicao(${index})">Salvar</button>
+    <div class="div11">
+      <button onclick="salvarEdicao(${index})">Salvar</button>
+    </div>
   `;
 
-  // Adicione o formulário ao HTML
-  const editarContainer = document.getElementById("editar-container");
-  editarContainer.appendChild(form);
+  // Show the modal window
+  modal.style.display = "block";
+
+  // Add an event listener to close the modal when the user clicks outside
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Add an event listener to close the modal when the user clicks the close button
+  document.getElementsByClassName("close")[0].addEventListener("click", function() {
+    modal.style.display = "none";
+  });
 }
 
 function salvarEdicao(index) {
   const registro = registros[index];
-  const nome = document.getElementById("nome-editar").value;
-  const tipo = document.getElementById("type-editar").value;
-  const desc = document.getElementById("desc-editar").value;
-  const metragem = parseFloat(document.getElementById("metragem-editar").value); // Converte para número
-  const valor = parseFloat(document.getElementById("valor-editar").value); // Converte para número
+  const nomeEditar = document.getElementById("nome-editar").value;
+  const typeEditar = document.getElementById("type-editar").value;
+  const descEditar = document.getElementById("desc-editar").value;
+  const metragemEditar = parseFloat(document.getElementById("metragem-editar").value);
+  const valorEditar = parseFloat(document.getElementById("valor-editar").value);
 
-  // Atualize o registro na lista registros com os novos valores
-  registros[index] = {
-    name: nome,
-    type: tipo,
-    desc: desc,
-    metragem: metragem,
-    valor: valor,
-    situacao: registro.situacao // Manter a situação do registro
-  };
+  registro.name = nomeEditar;
+  registro.type = typeEditar;
+  registro.desc = descEditar;
+  registro.metragem = metragemEditar;
+  registro.valor = valorEditar;
 
-  // Salve as alterações no banco de dados
-  setItemsDB();
+  // Atualize o array registros com as novas informações
+  registros[index] = registro;
 
-  // Feche o formulário de edição
-  const editarContainer = document.getElementById("editar-container");
-  editarContainer.innerHTML = "";
-
-  // Recarregue a tabela para refletir as alterações
   loadItems();
+
+  // Close the modal window
+  document.getElementById("editar-modal").style.display = "none";
+}
+function excluirRegistro(index) {
+  const passwordInput = document.createElement("input");
+  passwordInput.type = "password";
+  passwordInput.placeholder = "Digite a senha para excluir o registro";
+
+  const passwordForm = document.createElement("form");
+  passwordForm.appendChild(passwordInput);
+
+  const passwordDialog = document.createElement("div");
+  passwordDialog.innerHTML = "Digite a senha para excluir o registro";
+  passwordDialog.appendChild(passwordForm);
+
+  passwordDialog.style.position = "absolute";
+  passwordDialog.style.top = "50%";
+  passwordDialog.style.left = "50%";
+  passwordDialog.style.transform = "translate(-50%, -50%)";
+  passwordDialog.style.background = "white";
+  passwordDialog.style.padding = "20px";
+  passwordDialog.style.border = "1px solid black";
+  passwordDialog.style.borderRadius = "10px";
+  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+  document.body.appendChild(passwordDialog);
+
+  passwordInput.focus();
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const password = passwordInput.value;
+    if (password === "SGD1234") {
+      const registro = registros[index];
+      if (confirm(`Você tem certeza que deseja excluir o registro ${registro.name}?`)) {
+        registros.splice(index, 1);
+        loadItems();
+      }
+    } else {
+      alert("Senha incorreta!");
+    }
+    document.body.removeChild(passwordDialog);
+  });
 }
 
-function excluirRegistro(index) {
-  const registro = registros[index];
-  if (confirm(`Você tem certeza que deseja excluir o registro ${registro.name}?`)) {
-    registros.splice(index, 1);
-    setItemsDB();
-    loadItems();
-  }
+function clearDB() {
+  const passwordInput = document.createElement("input");
+  passwordInput.type = "password";
+  passwordInput.placeholder = "Digite a senha para limpar o banco de dados";
+
+  const passwordForm = document.createElement("form");
+  passwordForm.appendChild(passwordInput);
+
+  const passwordDialog = document.createElement("div");
+  passwordDialog.innerHTML = "Digite a senha para limpar o banco de dados";
+  passwordDialog.appendChild(passwordForm);
+
+  passwordDialog.style.position = "absolute";
+  passwordDialog.style.top = "50%";
+  passwordDialog.style.left = "50%";
+  passwordDialog.style.transform = "translate(-50%, -50%)";
+  passwordDialog.style.background = "white";
+  passwordDialog.style.padding = "20px";
+  passwordDialog.style.border = "1px solid black";
+  passwordDialog.style.borderRadius = "10px";
+  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+  document.body.appendChild(passwordDialog);
+
+  passwordInput.focus();
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const password = passwordInput.value;
+    if (password === "SGD1234") {
+      if (confirm("Você tem certeza que deseja limpar o banco de dados? Esta ação é irreversível!")) {
+        registros = [];
+        loadItems(); // Recarrega a tabela com itens vazios
+      }
+      document.body.removeChild(passwordDialog);
+    } else {
+      alert("Senha incorreta!");
+    }
+  });
 }
 
 function insertItem(registro, index) {
@@ -152,7 +227,7 @@ function insertItem(registro, index) {
     <td>${registro.type}</td>
     <td>${registro.desc}</td>
     <td>${registro.metragem} m²</td>
-    <td>R$ ${registro.valor}</td>
+    <td>${registro.valor}</td>
     <td>${registro.situacao}</td>
     <td class="columnAction">
       <button class="btn-confirmar" onclick="confirmarRegistro(${index})">Confirmar</button>
@@ -166,30 +241,30 @@ function insertItem(registro, index) {
 }
 
 function loadItems() {
-  registros = getItemsDB();
   tbody.innerHTML = "";
   registros.forEach((registro, index) => {
     insertItem(registro, index);
   });
-
-  // Atualizar contagens na tela
-  updateCounts();
 }
 
-function updateCounts() {
-  const registrados = registros.filter((registro) => registro.situacao === "pendente").length;
-  const confirmados = registros.filter((registro) => registro.situacao === "confirmado").length;
-  const cancelados = registros.filter((registro) => registro.situacao === "cancelado").length;
+// Remove financial-related data
+// const incomes = document.querySelector(".incomes");
+// const expenses = document.querySelector(".expenses");
+// const total = document.querySelector(".total");
 
-  incomes.textContent = registrados;
-  expenses.textContent = confirmados;
-  total.textContent = cancelados;
-}
+// Remove updateCounts function
+// function updateCounts() {
+//   const registrados = registros.filter((registro) => registro.situacao === "pendente").length;
+//   const confirmados = registros.filter((registro) => registro.situacao === "confirmado").length;
+//   const cancelados = registros.filter((registro) => registro.situacao === "cancelado").length;
 
-const getItemsDB = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
-const setItemsDB = () => localStorage.setItem("db_items", JSON.stringify(registros));
+//   incomes.textContent = registrados;
+//   expenses.textContent = confirmados;
+//   total.textContent = cancelados;
+// }
 
-// Adicionando evento de carregamento de página
+// Add event listener to clear DB button
+btnClearDB.addEventListener("click", clearDB);
+
+// Add event listener to load items on page load
 window.addEventListener("load", loadItems);
-
-btnClearDB.addEventListener("click", clearDB); // Adicionando evento de limpar o banco de dados
