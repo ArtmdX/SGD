@@ -6,10 +6,6 @@
   outline: none;
 }
 
-body {
-  height: 100vh;
-  justify-content: center;
-}
 
 .main {
   display: flex;
@@ -253,15 +249,32 @@ th {
   padding-bottom: 10%;
 }
 
-footer {
-  background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
-  width: 68%;
-  position: bottom;
-  bottom: 0;
-  left: 0;
-  text-align: center; /* Centraliza o conteúdo horizontalmente */
-  margin-left: 17%;
+#page-container {
+  position: relative;
+  min-height: 100%;
 }
+
+#content-wrap {
+  padding-bottom: 0.5rem;    /* altura do rodapé */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+
+  /*fallback height */
+  min-height: 100vh;
+
+  /* new small viewport height for modern browsers */
+  min-height: 100svh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 68%;
+  height: 2,5rem;
+  padding-bottom: 1rem;
+}
+
 
 .alinhamentoFooter {
   display: inline;

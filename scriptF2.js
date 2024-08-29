@@ -8,9 +8,44 @@ const btnClearDB = document.querySelector("#btnClearDB");
 let registros = [];
 
 function clearDB() {
-  // Remove password prompt and confirmation dialog
-  registros = [];
-  loadItems(); // Recarrega a tabela com itens vazios
+  const passwordInput = document.createElement("input");
+  passwordInput.type = "password";
+  passwordInput.placeholder = "Digite a senha para limpar o banco de dados";
+
+  const passwordForm = document.createElement("form");
+  passwordForm.appendChild(passwordInput);
+
+  const passwordDialog = document.createElement("div");
+  passwordDialog.innerHTML = "Digite a senha para limpar o banco de dados";
+  passwordDialog.appendChild(passwordForm);
+
+  passwordDialog.style.position = "absolute";
+  passwordDialog.style.top = "50%";
+  passwordDialog.style.left = "50%";
+  passwordDialog.style.transform = "translate(-50%, -50%)";
+  passwordDialog.style.background = "white";
+  passwordDialog.style.padding = "20px";
+  passwordDialog.style.border = "1px solid black";
+  passwordDialog.style.borderRadius = "10px";
+  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+  document.body.appendChild(passwordDialog);
+
+  passwordInput.focus();
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const password = passwordInput.value;
+    if (password === "SGD1234") {
+      if (confirm("Você tem certeza que deseja limpar o banco de dados? Esta ação é irreversível!")) {
+        registros = [];
+        loadItems(); // Recarrega a tabela com itens vazios
+      }
+      document.body.removeChild(passwordDialog);
+    } else {
+      alert("Senha incorreta!");
+    }
+  });
 }
 
 btnNew.addEventListener('click', () => {
@@ -25,8 +60,8 @@ btnNew.addEventListener('click', () => {
     name: name.value,
     type: type.value,
     desc: descItem.value,
-    metragem: parseFloat(metragemInput.value), 
-    valor: parseFloat(valorInput.value), 
+    metragem: parseFloat(metragemInput.value) || null, 
+    valor: parseFloat(valorInput.value) || null, 
     situacao: "pendente" 
   };
 
@@ -119,8 +154,8 @@ function salvarEdicao(index) {
   const nomeEditar = document.getElementById("nome-editar").value;
   const typeEditar = document.getElementById("type-editar").value;
   const descEditar = document.getElementById("desc-editar").value;
-  const metragemEditar = parseFloat(document.getElementById("metragem-editar").value);
-  const valorEditar = parseFloat(document.getElementById("valor-editar").value);
+  const metragemEditar = parseFloat(document.getElementById("metragem-editar").value) || null;
+  const valorEditar = parseFloat(document.getElementById("valor-editar").value) || null;
 
   registro.name = nomeEditar;
   registro.type = typeEditar;
@@ -178,46 +213,6 @@ function excluirRegistro(index) {
   });
 }
 
-function clearDB() {
-  const passwordInput = document.createElement("input");
-  passwordInput.type = "password";
-  passwordInput.placeholder = "Digite a senha para limpar o banco de dados";
-
-  const passwordForm = document.createElement("form");
-  passwordForm.appendChild(passwordInput);
-
-  const passwordDialog = document.createElement("div");
-  passwordDialog.innerHTML = "Digite a senha para limpar o banco de dados";
-  passwordDialog.appendChild(passwordForm);
-
-  passwordDialog.style.position = "absolute";
-  passwordDialog.style.top = "50%";
-  passwordDialog.style.left = "50%";
-  passwordDialog.style.transform = "translate(-50%, -50%)";
-  passwordDialog.style.background = "white";
-  passwordDialog.style.padding = "20px";
-  passwordDialog.style.border = "1px solid black";
-  passwordDialog.style.borderRadius = "10px";
-  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
-
-  document.body.appendChild(passwordDialog);
-
-  passwordInput.focus();
-
-  passwordForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const password = passwordInput.value;
-    if (password === "SGD1234") {
-      if (confirm("Você tem certeza que deseja limpar o banco de dados? Esta ação é irreversível!")) {
-        registros = [];
-        loadItems(); // Recarrega a tabela com itens vazios
-      }
-      document.body.removeChild(passwordDialog);
-    } else {
-      alert("Senha incorreta!");
-    }
-  });
-}
 
 function insertItem(registro, index) {
   let tr = document.createElement("tr");
@@ -226,8 +221,8 @@ function insertItem(registro, index) {
     <td>${registro.name}</td>
     <td>${registro.type}</td>
     <td>${registro.desc}</td>
-    <td>${registro.metragem} m²</td>
-    <td>${registro.valor}</td>
+    <td>${registro.metragem !== null ? registro.metragem + " m²" : "Nulo"}</td>
+    <td>${registro.valor !== null ? registro.valor : "Nulo"}</td>
     <td>${registro.situacao}</td>
     <td class="columnAction">
       <button class="btn-confirmar" onclick="confirmarRegistro(${index})">Confirmar</button>
@@ -265,6 +260,16 @@ function loadItems() {
 
 // Add event listener to clear DB button
 btnClearDB.addEventListener("click", clearDB);
+
+window.addEventListener('load', function() {
+  var contentHeight = document.querySelector('.content').offsetHeight;
+  var windowHeight = window.innerHeight;
+  var footer = document.querySelector('footer');
+  if (contentHeight < windowHeight) {
+    footer.style.position = 'fixed';
+    footer.style.bottom = 0;
+  }
+});
 
 // Add event listener to load items on page load
 window.addEventListener("load", loadItems);
