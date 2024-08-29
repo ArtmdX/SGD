@@ -202,21 +202,21 @@ button {
 }
 
 .btn-cancelar:hover {
-  background-color: #800000; /* Cor verde */
+  background-color: #d27000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
   transition: 1s;
 }
 
 .btn-editar:hover {
-  background-color: #d6da05; /* Cor verde */
+  background-color: #a3a3a3; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
   transition: 1s;
 }
 
 .btn-excluir:hover {
-  background-color: #ff2828; /* Cor verde */
+  background-color: #c70000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
   transition: 1s;
