@@ -8,44 +8,9 @@ const btnClearDB = document.querySelector("#btnClearDB");
 let registros = [];
 
 function clearDB() {
-  const passwordInput = document.createElement("input");
-  passwordInput.type = "password";
-  passwordInput.placeholder = "Digite a senha para limpar o banco de dados";
-
-  const passwordForm = document.createElement("form");
-  passwordForm.appendChild(passwordInput);
-
-  const passwordDialog = document.createElement("div");
-  passwordDialog.innerHTML = "Digite a senha para limpar o banco de dados";
-  passwordDialog.appendChild(passwordForm);
-
-  passwordDialog.style.position = "absolute";
-  passwordDialog.style.top = "50%";
-  passwordDialog.style.left = "50%";
-  passwordDialog.style.transform = "translate(-50%, -50%)";
-  passwordDialog.style.background = "white";
-  passwordDialog.style.padding = "20px";
-  passwordDialog.style.border = "1px solid black";
-  passwordDialog.style.borderRadius = "10px";
-  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
-
-  document.body.appendChild(passwordDialog);
-
-  passwordInput.focus();
-
-  passwordForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const password = passwordInput.value;
-    if (password === "SGD1234") {
-      if (confirm("Você tem certeza que deseja limpar o banco de dados? Esta ação é irreversível!")) {
-        registros = [];
-        loadItems(); // Recarrega a tabela com itens vazios
-      }
-      document.body.removeChild(passwordDialog);
-    } else {
-      alert("Senha incorreta!");
-    }
-  });
+  // Remove password prompt and confirmation dialog
+  registros = [];
+  loadItems(); // Recarrega a tabela com itens vazios
 }
 
 btnNew.addEventListener('click', () => {
@@ -60,8 +25,8 @@ btnNew.addEventListener('click', () => {
     name: name.value,
     type: type.value,
     desc: descItem.value,
-    metragem: parseFloat(metragemInput.value) || null, 
-    valor: parseFloat(valorInput.value) || null, 
+    metragem: parseFloat(metragemInput.value), 
+    valor: parseFloat(valorInput.value), 
     situacao: "pendente" 
   };
 
@@ -149,13 +114,14 @@ function editarRegistro(index) {
   });
 }
 
+
 function salvarEdicao(index) {
   const registro = registros[index];
   const nomeEditar = document.getElementById("nome-editar").value;
   const typeEditar = document.getElementById("type-editar").value;
   const descEditar = document.getElementById("desc-editar").value;
-  const metragemEditar = parseFloat(document.getElementById("metragem-editar").value) || null;
-  const valorEditar = parseFloat(document.getElementById("valor-editar").value) || null;
+  const metragemEditar = parseFloat(document.getElementById("metragem-editar").value);
+  const valorEditar = parseFloat(document.getElementById("valor-editar").value);
 
   registro.name = nomeEditar;
   registro.type = typeEditar;
@@ -171,6 +137,7 @@ function salvarEdicao(index) {
   // Close the modal window
   document.getElementById("editar-modal").style.display = "none";
 }
+
 function excluirRegistro(index) {
   const passwordInput = document.createElement("input");
   passwordInput.type = "password";
@@ -181,6 +148,75 @@ function excluirRegistro(index) {
 
   const passwordDialog = document.createElement("div");
   passwordDialog.innerHTML = "Digite a senha para excluir o registro";
+  passwordDialog.appendChild(passwordForm);
+
+  passwordDialog.style.position = "absolute";
+  passwordDialog.style.top = "50%";
+  passwordDialog.style.left = "50%";
+  passwordDialog.style.transform = "translate(-50%, -50%)";
+  passwordDialog.style.background = "white";
+  passwordDialog.style.padding = "20px";
+  passwordDialog.style.border = "1px solid black";
+  passwordDialog.style.borderRadius = "20px";
+  passwordDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+  document.body.appendChild(passwordDialog);
+
+  passwordInput.focus();
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const password = passwordInput.value;
+    if (password === "SGD1234") {
+      // Open confirmation modal
+      const confirmDialog = document.createElement("div");
+      confirmDialog.innerHTML = `Você tem certeza que deseja realmente  excluir o registro ${registros[index].name}?`;
+      confirmDialog.style.position = "absolute";
+      confirmDialog.style.top = "50%";
+      confirmDialog.style.left = "50%";
+      confirmDialog.style.transform = "translate(-50%, -50%)";
+      confirmDialog.style.background = "white";
+      confirmDialog.style.padding = "20px";
+      confirmDialog.style.border = "1px solid black";
+      confirmDialog.style.borderRadius = "20px";
+      confirmDialog.style.boxShadow = "0 0 10px gray";
+
+      const confirmButton = document.createElement("button");
+      confirmButton.textContent = "Sim, excluir";
+      confirmButton.onclick = () => {
+        registros.splice(index, 1);
+        loadItems();
+        document.body.removeChild(passwordDialog);
+        document.body.removeChild(confirmDialog);
+      };
+
+      const cancelButton = document.createElement("button");
+      cancelButton.textContent = "Cancelar";
+      cancelButton.onclick = () => {
+        document.body.removeChild(passwordDialog);
+        document.body.removeChild(confirmDialog);
+      };
+
+      confirmDialog.appendChild(confirmButton);
+      confirmDialog.appendChild(cancelButton);
+
+      document.body.appendChild(confirmDialog);
+    } else {
+      alert("Senha incorreta!");
+    }
+  });
+}
+
+function clearDB() {
+  const passwordInput = document.createElement("input");
+  passwordInput.type = "password";
+  passwordInput.placeholder = "Digite a senha para limpar o banco de dados";
+
+  const passwordForm = document.createElement("form");
+  passwordForm.appendChild(passwordInput);
+
+  const passwordDialog = document.createElement("div");
+  passwordDialog.innerHTML = "Digite a senha para limpar o banco de dados";
   passwordDialog.appendChild(passwordForm);
 
   passwordDialog.style.position = "absolute";
@@ -201,18 +237,44 @@ function excluirRegistro(index) {
     e.preventDefault();
     const password = passwordInput.value;
     if (password === "SGD1234") {
-      const registro = registros[index];
-      if (confirm(`Você tem certeza que deseja excluir o registro ${registro.name}?`)) {
-        registros.splice(index, 1);
-        loadItems();
-      }
+      // Open confirmation modal
+      const confirmDialog = document.createElement("div");
+      confirmDialog.innerHTML = "Você tem certeza que deseja limpar o banco de dados? Esta ação é irreversível!";
+      confirmDialog.style.position = "absolute";
+      confirmDialog.style.top = "50%";
+      confirmDialog.style.left = "50%";
+      confirmDialog.style.transform = "translate(-50%, -50%)";
+      confirmDialog.style.background = "white";
+      confirmDialog.style.padding = "20px";
+      confirmDialog.style.border = "1px solid black";
+      confirmDialog.style.borderRadius = "10px";
+      confirmDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+      const confirmButton = document.createElement("button");
+      confirmButton.textContent = "Sim, limpar";
+      confirmButton.onclick = () => {
+        registros = [];
+        loadItems(); // Recarrega a tabela com itens vazios
+        document.body.removeChild(passwordDialog);
+        document.body.removeChild(confirmDialog);
+      };
+
+      const cancelButton = document.createElement("button");
+      cancelButton.textContent = "Cancelar";
+      cancelButton.onclick = () => {
+        document.body.removeChild(passwordDialog);
+        document.body.removeChild(confirmDialog);
+      };
+
+      confirmDialog.appendChild(confirmButton);
+      confirmDialog.appendChild(cancelButton);
+
+      document.body.appendChild(confirmDialog);
     } else {
       alert("Senha incorreta!");
     }
-    document.body.removeChild(passwordDialog);
   });
 }
-
 
 function insertItem(registro, index) {
   let tr = document.createElement("tr");
@@ -221,8 +283,8 @@ function insertItem(registro, index) {
     <td>${registro.name}</td>
     <td>${registro.type}</td>
     <td>${registro.desc}</td>
-    <td>${registro.metragem !== null ? registro.metragem + " m²" : "Nulo"}</td>
-    <td>${registro.valor !== null ? registro.valor : "Nulo"}</td>
+    <td>${registro.metragem ? registro.metragem + " m²" : "A Preencher"}</td>
+    <td>${registro.valor ? registro.valor : "A Preencher"}</td>
     <td>${registro.situacao}</td>
     <td class="columnAction">
       <button class="btn-confirmar" onclick="confirmarRegistro(${index})">Confirmar</button>
@@ -260,16 +322,6 @@ function loadItems() {
 
 // Add event listener to clear DB button
 btnClearDB.addEventListener("click", clearDB);
-
-window.addEventListener('load', function() {
-  var contentHeight = document.querySelector('.content').offsetHeight;
-  var windowHeight = window.innerHeight;
-  var footer = document.querySelector('footer');
-  if (contentHeight < windowHeight) {
-    footer.style.position = 'fixed';
-    footer.style.bottom = 0;
-  }
-});
 
 // Add event listener to load items on page load
 window.addEventListener("load", loadItems);
