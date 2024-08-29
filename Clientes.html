@@ -24,7 +24,11 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>SGD - clientes</title>
     <link rel="icon" type="image/png" sizes="16x16" href="LOGO/LOGO.png" />
+
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
   </head>
+
   <body class="bg-light">
     <header>
       <!-- Início do Cabeçalho -->
@@ -192,32 +196,15 @@
     >
       <div class="main">
         <div class="card">
-          <table class="table mb-0 table-striped" id="tableFuncioanario">
-            <div class="container mt-3 mb-3">
-              <div class="alinhamentoFooter" style="float: inline-start">
-                <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
-              </div>
 
-              <div
-                class="alinhamentoFooter"
-                style="float: inline-end; text-align: center"
-              >
-                <form id="formPesquisa">
-                  
-                  <input
-                    style="height: 35px"
-                    type="text"
-                    id="inputPesquisa"
-                    placeholder="Pesquisar..."
-                  />
-                  <button class="btn btn-primary">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </form>
-              </div>
+          <div class="container mt-3 mb-3">
+            <div class="alinhamentoFooter" style="float: left;">
+              <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
             </div>
+          </div>
 
-            <thead>
+          <table class="table table-bordered table-hover mb-0 table-striped" id="tableClientes">
+            <thead style="text-align: center; background-color: #f0f0f0;">
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nome</th>
@@ -439,5 +426,12 @@ window.onclick = function(event) {
   }
 }
     </script>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- dataTable -->
+  <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+  <!-- SCRIPT -->
+  <script src="scriptdata.js"></script>
   </body>
 </html>

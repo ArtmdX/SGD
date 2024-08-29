@@ -1,0 +1,87 @@
+//table Fucionários
+$(document).ready( function () {
+    $('#tableFuncioanarios').DataTable();
+} );
+
+var table = new DataTable('#tableFuncioanarios', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+    },
+    columnDefs: [
+        { targets: '_all', render: function(data, type, row) {
+            return '<div style="text-align: center;">' + data + '</div>';
+        } },
+        { targets: 5, orderable: false }, //retira paginação
+    ], //justifica texto do tr
+    headerCallback: function( thead, data, start, end, display ) {
+        $('th', thead).each(function() {
+            $(this).html('<div style="text-align: center;">' + $(this).html() + '</div>');
+        });
+    } //justifica texto do th
+});
+
+//veículo
+$(document).ready( function () {
+    $('#tableVeiculos').DataTable();
+} );
+
+var table = new DataTable('#tableVeiculos', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+    },
+    columnDefs: [
+        { targets: '_all', render: function(data, type, row) {
+            return '<div style="text-align: center;">' + data + '</div>';
+        } },
+        { targets: 4, orderable: false }, //retira paginação
+    ],
+    headerCallback: function( thead, data, start, end, display ) {
+        $('th', thead).each(function() {
+            $(this).html('<div style="text-align: center;">' + $(this).html() + '</div>');
+        });
+    }
+});
+
+//clientes
+$(document).ready( function () {
+    $('#tableClientes').DataTable();
+} );
+
+var table = new DataTable('#tableClientes', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+    },
+    columnDefs: [
+        { targets: '_all', render: function(data, type, row) {
+            return '<div style="text-align: center;">' + data + '</div>';
+        } },
+        { targets: 6, orderable: false }, //retira paginação
+    ],
+    headerCallback: function( thead, data, start, end, display ) {
+        $('th', thead).each(function() {
+            $(this).html('<div style="text-align: center;">' + $(this).html() + '</div>');
+        });
+    }
+});
+
+//estoque
+$(document).ready( function () {
+    $('#tableEstoque').DataTable();
+});
+
+var table = new DataTable('#tableEstoque', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+    },
+    columnDefs: [
+        { targets: '_all', render: function(data, type, row) {
+            return '<div style="text-align: center;">' + data + '</div>';
+        } },
+        { targets: [1, 6], orderable: false }, //retira paginação
+    ],
+    headerCallback: function( thead, data, start, end, display ) {
+        $('th', thead).each(function() {
+            $(this).html('<div style="text-align: center;">' + $(this).html() + '</div>');
+        });
+    }
+});
