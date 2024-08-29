@@ -5,11 +5,16 @@ const type = document.querySelector("#type");
 const btnNew = document.querySelector("#btnNew");
 const btnClearDB = document.querySelector("#btnClearDB");
 
+const registradosCount = document.getElementById("registrados");
+const confirmadosCount = document.getElementById("confirmados");
+const canceladosCount = document.getElementById("cancelados");
+
 let registros = [];
 
 function clearDB() {
   // Remove password prompt and confirmation dialog
   registros = [];
+  updateCounts(); // Update counts after clearing the database
   loadItems(); // Recarrega a tabela com itens vazios
 }
 
@@ -33,6 +38,7 @@ btnNew.addEventListener('click', () => {
   registros.push(registro);
 
   loadItems();
+  updateCounts(); // Update counts after adding a new record
 
   descItem.value = "";
   name.value = "";
@@ -45,12 +51,14 @@ function confirmarRegistro(index) {
   const registro = registros[index];
   registro.situacao = "confirmado";
   loadItems();
+  updateCounts(); // Update counts after confirming a record
 }
 
 function cancelarRegistro(index) {
   const registro = registros[index];
   registro.situacao = "cancelado";
   loadItems();
+  updateCounts(); // Update counts after canceling a record
 }
 
 function editarRegistro(index) {
@@ -133,6 +141,7 @@ function salvarEdicao(index) {
   registros[index] = registro;
 
   loadItems();
+  updateCounts(); // Update counts after saving edits
 
   // Close the modal window
   document.getElementById("editar-modal").style.display = "none";
@@ -186,6 +195,7 @@ function excluirRegistro(index) {
       confirmButton.onclick = () => {
         registros.splice(index, 1);
         loadItems();
+        updateCounts(); // Update counts after deleting a record
         document.body.removeChild(passwordDialog);
         document.body.removeChild(confirmDialog);
       };
@@ -255,6 +265,7 @@ function clearDB() {
       confirmButton.onclick = () => {
         registros = [];
         loadItems(); // Recarrega a tabela com itens vazios
+        updateCounts(); // Update counts after clearing the database
         document.body.removeChild(passwordDialog);
         document.body.removeChild(confirmDialog);
       };
@@ -304,24 +315,22 @@ function loadItems() {
   });
 }
 
-// Remove financial-related data
-// const incomes = document.querySelector(".incomes");
-// const expenses = document.querySelector(".expenses");
-// const total = document.querySelector(".total");
+// Update the counts of registered, confirmed, and canceled items
+function updateCounts() {
+  const registrados = registros.filter((registro) => registro.situacao === "pendente").length;
+  const confirmados = registros.filter((registro) => registro.situacao === "confirmado").length;
+  const cancelados = registros.filter((registro) => registro.situacao === "cancelado").length;
 
-// Remove updateCounts function
-// function updateCounts() {
-//   const registrados = registros.filter((registro) => registro.situacao === "pendente").length;
-//   const confirmados = registros.filter((registro) => registro.situacao === "confirmado").length;
-//   const cancelados = registros.filter((registro) => registro.situacao === "cancelado").length;
-
-//   incomes.textContent = registrados;
-//   expenses.textContent = confirmados;
-//   total.textContent = cancelados;
-// }
+  registradosCount.textContent = registrados;
+  confirmadosCount.textContent = confirmados;
+  canceladosCount.textContent = cancelados;
+}
 
 // Add event listener to clear DB button
 btnClearDB.addEventListener("click", clearDB);
 
 // Add event listener to load items on page load
 window.addEventListener("load", loadItems);
+
+// Call updateCounts to initialize the counts when the page loads
+updateCounts(); 
