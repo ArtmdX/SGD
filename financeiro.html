@@ -116,78 +116,76 @@
   </header><!-- Fim do Cabeçalho -->
 
   <!--Inicio body -->
-
   <div class="containerp mt-4 p-4 rounded mb-4">
     <h2> <i class="fa-solid fa-wallet"></i> Financeiro</h2>
     <p>Chegou a hora de gerenciar a empresa!</p>
   </div>
 
-      <main class="icone">
-        <div class="resume">
-          <div>
-            Entradas: R$
-            <span class="incomes">0.00</span>
-          </div>
-          <div>
-            Saídas: R$
-            <span class="expenses">0.00</span>
-          </div>
-          <div>
-            Total: R$
-            <span class="total">0.00</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="divDesc">
-            <label for="desc">Descrição</label>
-            <input type="text" id="desc" />
-          </div>
-          <div class="divAmount">
-            <label for="amount">Valor</label>
-            <input type="number" id="amount" />
-          </div>
-          <div class="divType">
-            <label for="type">Tipo</label>
-            <select id="type">
-              <option>Entrada</option>
-              <option>Saída</option>
-            </select>
-          </div>
-          <button id="btnNew">Incluir</button>
-          <button onclick="clearDB()">Limpar Dados</button>
-        </div>
-        
-        <div class="divTable">
-          <table>
-            <thead>
-              <tr>
-                <th>Descrição</th>
-                <th class="columnAmount">Valor</th>
-                <th class="columnType">Tipo</th>
-                <th class="columnAction"></th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-      </main>  
+  <main class="icone">
+    <div class="resume">
+      <div>
+        Entradas: R$
+        <span class="incomes">0.00</span>
+      </div>
+      <div>
+        Saídas: R$
+        <span class="expenses">0.00</span>
+      </div>
+      <div>
+        Total: R$
+        <span class="total">0.00</span>
+      </div>
+    </div>
+    <div class="newItem">
+      <div class="divDesc">
+        <label for="desc">Descrição</label>
+        <input type="text" id="desc" />
+      </div>
+      <div class="divAmount">
+        <label for="amount">Valor</label>
+        <input type="number" id="amount" />
+      </div>
+      <div class="divType">
+        <label for="type">Tipo</label>
+        <select id="type">
+          <option>Entrada</option>
+          <option>Saída</option>
+        </select>
+      </div>
+      <button id="btnNew">Incluir</button>
+      <button onclick="clearDB()">Limpar Dados</button>
+    </div>
+
+    <div class="divTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th class="columnAmount">Valor</th>
+            <th class="columnType">Tipo</th>
+            <th class="columnAction"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+  </main>
   <!--Fim body -->
 
   <!--inicio footer-->
-  <div class="container " >
-    <footer class="py-3 text-center ">
-      <ul class="nav justify-content-center border-bottom ">
-        <!-- Adicione aqui os links do rodapé -->
-      </ul>
-      <div style="float: inline-start;">
-        <p class="text-muted alinhamentoFooter"><i class="fa-solid fa-code"></i> Desenvolvido por <a href="#" style="text-decoration: none; color:gray;" >Darth Dev</a></p>
-      </div>
-      <div style="float: inline-end;">
+  <div class="container">
+    <footer>
+      <br>
+      <br>
+      <div>
+        <p class="text-muted alinhamentoFooter"><i class="fa-solid fa-code"></i> Desenvolvido por <a href="#"
+            style="text-decoration: none; color:gray;">Darth Dev</a></p>
         <p class="text-muted alinhamentoFooter">copyright &copy; 2024 | Todos os direitos reservados</p>
       </div>
     </footer>
   </div>
   <!--Fim footer-->
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"

@@ -256,7 +256,7 @@ th {
 footer {
   background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
   width: 68%;
-  position: fixed;
+  position: bottom;
   bottom: 0;
   left: 0;
   text-align: center; /* Centraliza o conteúdo horizontalmente */
