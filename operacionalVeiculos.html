@@ -126,79 +126,61 @@
     <div class="main">
       <div class="card">
         
-        <table class="table mb-0 table-striped" id="tableVeiculo">
-              <div class="container mt-3 mb-3">
-                <div class="alinhamentoFooter" style="float: inline-start;">
-                  <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
-                </div>
-
-                <div class="alinhamentoFooter" style="float: inline-end; text-align: center;">
-                  <form id="formPesquisa">
-                    <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input style="height: 37px;" type="text" id="inputPesquisa" placeholder="Pesquisar...">
-                  </form>
-                </div>
-              </div>
-
-              <thead style="text-align: center;">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Marca</th>
-                  <th scope="col">Modelo</th>
-                  <th scope="col">Ano</th>
-                  <th scope="col">ok</th>
-                  <th scope="col">Ações</th>
-                </tr>
-              </thead>
-
-              <tbody style="text-align: center;">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Ford</td>
-                  <td>Fiesta</td>
-                  <td>2018</td>
-                  <td>ok</td>
-                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                        class="fa-solid fa-trash iconeTrash"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Chevrolet</td>
-                  <td>Onix</td>
-                  <td>2019</td>
-                  <td>ok</td>
-                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                        class="fa-solid fa-trash iconeTrash"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Toyota</td>
-                  <td>Corolla</td>
-                  <td>2020</td>
-                  <td>ok</td>
-                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                        class="fa-solid fa-trash iconeTrash"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Volkswagen</td>
-                  <td>Gol</td>
-                  <td>2017</td>
-                  <td>ok</td>
-                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                        class="fa-solid fa-trash iconeTrash"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Renault</td>
-                  <td>Sandero</td>
-                  <td>2021</td>
-                  <td>ok</td>
-                  <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                        class="fa-solid fa-trash iconeTrash"></i></a></td>
-                </tr>
-              </tbody>
+        <div class="container mt-3 mb-3">
+          <div class="alinhamentoFooter" style="float: left;">
+            <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
+          </div>
+        </div>
+        
+        <table class="table table-bordered table-hover mb-0 table-striped" id="tableVeiculos">
+          <thead style="text-align: center; background-color: #f0f0f0;">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Ano</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            <tr>
+              <th scope="row">1</th>
+              <td>Ford</td>
+              <td>Fiesta</td>
+              <td>2018</td>
+              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Chevrolet</td>
+              <td>Onix</td>
+              <td>2019</td>
+              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Toyota</td>
+              <td>Corolla</td>
+              <td>2020</td>
+              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Volkswagen</td>
+              <td>Gol</td>
+              <td>2017</td>
+              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Renault</td>
+              <td>Sandero</td>
+              <td>2021</td>
+              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            </tr>
+          </tbody>
         </table>
+        
       </div>
     </div>
   </div>

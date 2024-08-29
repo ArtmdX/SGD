@@ -68,9 +68,10 @@ footer {
 
 
   .imagemBody img{
-    width: 55px;
-    height: 75px;
+    max-width: 55px;
+    max-height: 75px;
   }
+
 
 .content-estoque {
     display: flex;
@@ -144,3 +145,5 @@ thead{
     text-decoration: none;
     cursor: pointer;
   }
+
+
