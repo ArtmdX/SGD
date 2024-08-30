@@ -5,7 +5,7 @@ $(document).ready( function () {
 
 var table = new DataTable('#tableFuncioanarios', {
     language: {
-        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+        url: 'https://cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
     },
     columnDefs: [
         { targets: '_all', render: function(data, type, row) {
@@ -27,7 +27,7 @@ $(document).ready( function () {
 
 var table = new DataTable('#tableVeiculos', {
     language: {
-        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+        url: 'https://cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
     },
     columnDefs: [
         { targets: '_all', render: function(data, type, row) {
@@ -49,7 +49,7 @@ $(document).ready( function () {
 
 var table = new DataTable('#tableClientes', {
     language: {
-        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+        url: 'https://cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
     },
     columnDefs: [
         { targets: '_all', render: function(data, type, row) {
@@ -71,7 +71,7 @@ $(document).ready( function () {
 
 var table = new DataTable('#tableEstoque', {
     language: {
-        url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
+        url: 'https://cdn.datatables.net/plug-ins/2.0.5/i18n/pt-BR.json',
     },
     columnDefs: [
         { targets: '_all', render: function(data, type, row) {
