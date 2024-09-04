@@ -81,9 +81,10 @@ select {
 }
 
 table {
-  width: 98%;
+  width: 100%;
   padding: 20px 0;
   border-radius: 5px;
+  margin-top: 1.3rem;
 }
 
 th {
@@ -94,6 +95,10 @@ th {
 
 .icone i {
   font-size: 25px;
+}
+
+.icone {
+  padding-bottom: 3%;
 }
 
 .bxs-chevron-up-circle {
@@ -131,23 +136,45 @@ th {
   text-align: center;
 }
 
-.containerp{
-  width: 68%;
-  margin: auto;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  background-color: #fff;
+/* Estilos para as células da tabela */
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para a linha do cabeçalho da tabela */
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100%;
+}
+
+#content-wrap {
+  padding-bottom: 0.5rem;    /* altura do rodapé */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+
+  /*fallback height */
+  min-height: 100vh;
+
+  /* new small viewport height for modern browsers */
+  min-height: 100svh;
 }
 
 footer {
-  background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
-  width: 68%;
-  position: bottom;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  text-align: center; /* Centraliza o conteúdo horizontalmente */
-  margin-left: 16%;
+  width: 68%;
+  height: 2,5rem;
+  padding-bottom: 1rem;
 }
+
 
 .alinhamentoFooter {
   display: inline;

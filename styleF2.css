@@ -242,6 +242,10 @@ th {
   font-weight: bold;
 }
 
+.container.mt-4.p-4.rounded.mb-4 {
+  background-color: #ffffff;
+}
+
 .containerp1 {
   width: 100%;
   margin: auto;
