@@ -119,15 +119,16 @@ thead{
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Libera o scrool se precisar */
+    overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4);
   }
 
 
 .modal-content {
+    overflow-y: 0;
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 7.4% auto; 
     padding: 20px;
     border: 1px solid #888;
     width: 80%; 
@@ -146,4 +147,23 @@ thead{
     cursor: pointer;
   }
 
+
+.formModal{
+  padding-bottom: 10px;
+}
+
+.modal-content{
+  width: 1200px;
+}
+
+.imagemFormCadastro{
+  width: 250px;
+  height: 150px;
+  margin: 5px;
+}
+
+.cabecalhoForm{
+  align-items: center; 
+  text-align: center;
+}
 
