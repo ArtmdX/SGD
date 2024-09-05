@@ -250,15 +250,91 @@
     </div>
   </div>
 
+  <!-- Modal content -->
   <div id="myModal" class="modal">
-
-    <!-- Modal content -->
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <p>À fazer</p>
-    </div>
+      <div class=" cabecalhoForm">
+        <img src="LOGO/LOGO.png" alt="" class="imagemFormCadastro">
+        <h1 >Cadastrando Funcionário</h1>
+      </div>
+      <br>
+      <form action="" method="" class="formModal">
+        <div class="row">
+            <div class="col-5">
+              <label for="">Nome</label>
+              <input type="text" id="" class="form-control" placeholder="Nome" required>
+            </div>
+            <div class="col-5">
+              <label for="">Sobrenome</label>
+              <input type="text" class="form-control" id="" placeholder="Sobrenome" required>
+            </div>
+            <div class="col-2">
+              <label for="">Data de Nascimento</label>
+              <input type="date" class="form-control" id="" placeholder="Doe" required>
+            </div>
+        </div>
+      </form>
+      <form action="" method="" class="formModal">
+        <div class="row">
+          <div class="col-3">
+            <label for="">RG</label>
+            <input type="select" id="" class="form-control" placeholder="RG" required>
+          </div>
+            <div class="col-3">
+              <label for="">CPF</label>
+              <input type="text" id="" class="form-control" placeholder="CPF" required>
+            </div>
+            <div class="col-3">
+              <label for="">Telefone</label>
+              <input type="email" class="form-control" id="" placeholder="Telefone" required>
+            </div>
+            <div class="col-3">
+              <label for="">Cargo</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione o cargo</option>
+                <option value="1">Secretária</option>
+                <option value="2">Técnico</option>
+                <option value="3">Gerente</option>
+              </select>
+            </div>
+        </div>
+      </form>
+      <form action="" method="" class="formModal">
+        <div class="row">
+            <div class="col-5">
+              <label for="">Usuário</label>
+              <input type="text" id="" class="form-control" placeholder="Usuário" required>
+            </div>
+            <div class="col-7">
+              <label for="">E-mail (Login)</label>
+              <input type="email" class="form-control" id="" placeholder="E-mail" required>
+            </div>
+        </div>
+      </form>
+      <form action="" method="" class="formModal">
+        <div class="row">
+            <div class="col-5">
+              <label for="">Senha</label>
+              <input type="text" id="" class="form-control" placeholder="Digite sua senha" required>
+            </div>
+            <div class="col-5">
+              <label for="">Confirmação</label>
+              <input type="email" class="form-control" id="" placeholder="Confirme sua senha" required>
+            </div>
+        </div>
+      </form>
 
+      
+
+      <div class="row" style="margin: 0.5px;">
+        <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Enviar</button>
+        <button  type="button" class="btn btn-secondary col-2 closebtn"  style="margin: 5px;">Voltar</button>
+      </div>
+    </div>
   </div>
+  <!--Fim modal-->
+
   <!--Fim body-->
 
   <br><br>
@@ -292,9 +368,16 @@
     // Capturando o X que fecha o modal
     var span = document.getElementsByClassName("close-modal")[0];
 
+    //capturando botão de voltar
+    var closebtn = document.getElementsByClassName("closebtn")[0];
+
     // Configurando o botão cadastrar para abrir o modal
     btn.onclick = function () {
       modal.style.display = "block";
+    }
+
+    closebtn.onclick = function(){
+      modal.style.display = "none";
     }
 
     // Configurando o <span> X para fechar o modal
