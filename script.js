@@ -55,6 +55,14 @@ function clearDB() {
       confirmDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
 
       const confirmButton = document.createElement("button");
+      confirmButton.onclick = () => {
+        items = []; // Clear items array
+        localStorage.clear(); // Clear local storage
+        loadItens(); // Reload table with empty items
+        updateCounts(); // Update counts after clearing the database
+        document.body.removeChield(passwordDialog);
+        document.body.removeChield(confirmDialog);
+      };
       confirmButton.textContent = "Sim, limpar";
       confirmButton.style.background = "BLUE"; // Green background
       confirmButton.style.color = "#FFFFFF"; // White text
@@ -63,14 +71,7 @@ function clearDB() {
       confirmButton.style.borderRadius = "5px";
       confirmButton.style.cursor = "pointer";
       confirmButton.style.margin = "10px"; /* Add margin to the buttons */
-      confirmButton.onclick = () => {
-        items = []; // Clear items array
-        localStorage.clear(); // Clear local storage
-        loadItens(); // Reload table with empty items
-        updateCounts(); // Update counts after clearing the database
-        document.body.removeChild(passwordDialog);
-        document.body.removeChild(confirmDialog);
-      };
+      
 
       const cancelButton = document.createElement("button");
       cancelButton.textContent = "Cancelar/Sair";
@@ -118,10 +119,57 @@ btnNew.addEventListener('click', () => {
   amount.value = "";
 });
 
+
 function deleteItem(index) {
-  items.splice(index, 1);
-  setItensBD();
-  loadItens();
+  // Create a confirmation modal
+  const confirmDialog = document.createElement("div");
+  confirmDialog.innerHTML = "Você tem certeza que deseja excluir este item?";
+  confirmDialog.style.position = "absolute";
+  confirmDialog.style.top = "50%";
+  confirmDialog.style.left = "50%";
+  confirmDialog.style.transform = "translate(-50%, -50%)";
+  confirmDialog.style.background = "white";
+  confirmDialog.style.padding = "30px";
+  confirmDialog.style.border = "1px solid black";
+  confirmDialog.style.borderRadius = "15px";
+  confirmDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+
+  const confirmButton = document.createElement("button");
+  confirmButton.textContent = "Sim, excluir";
+  confirmButton.style.background = "BLUE"; // Green background
+  confirmButton.style.color = "#FFFFFF"; // White text
+  confirmButton.style.border = "none";
+  confirmButton.style.padding = "10px 20px";
+  confirmButton.style.borderRadius = "5px";
+  confirmButton.style.cursor = "pointer";
+  confirmButton.style.margin = "10px"; /* Add margin to the buttons */
+  confirmButton.onclick = () => {
+    items.splice(index, 1);
+    setItensBD();
+    loadItens();
+    document.body.removeChild(confirmDialog);
+  };
+
+  const cancelButton = document.createElement("button");
+  cancelButton.textContent = "Cancelar/Sair";
+  cancelButton.style.background = "BLUE"; // Orange background
+  cancelButton.style.color = "#FFFFFF"; // White text
+  cancelButton.style.border = "none";
+  cancelButton.style.padding = "10px 20px";
+  cancelButton.style.borderRadius = "5px";
+  cancelButton.style.cursor = "pointer";
+  cancelButton.onclick = () => {
+    document.body.removeChild(confirmDialog);
+  };
+
+  // Add margin to the buttons
+  confirmButton.style.marginRight = "10px"; // Add 10px margin to the right of the confirm button
+  cancelButton.style.marginLeft = "10px"; // Add 10px margin to the left of the cancel button
+
+  confirmDialog.appendChild(confirmButton);
+  confirmDialog.appendChild(cancelButton);
+
+  document.body.appendChild(confirmDialog);
 }
 
 function insertItem(item, index) {
