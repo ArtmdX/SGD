@@ -261,6 +261,7 @@ function clearDB() {
       confirmDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
 
       const confirmButton = document.createElement("button");
+      confirmButton.style.margin = "10px"; /* Add margin to the buttons */
       confirmButton.textContent = "Sim, limpar";
       confirmButton.onclick = () => {
         registros = [];
@@ -276,6 +277,10 @@ function clearDB() {
         document.body.removeChild(passwordDialog);
         document.body.removeChild(confirmDialog);
       };
+
+      // Add margin to the buttons
+      confirmButton.style.marginRight = "10px"; // Add 10px margin to the right of the confirm button
+      cancelButton.style.marginLeft = "10px"; // Add 10px margin to the left of the cancel button
 
       confirmDialog.appendChild(confirmButton);
       confirmDialog.appendChild(cancelButton);
