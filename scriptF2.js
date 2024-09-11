@@ -263,6 +263,7 @@ function clearDB() {
       const confirmButton = document.createElement("button");
       confirmButton.style.margin = "10px"; /* Add margin to the buttons */
       confirmButton.textContent = "Sim, limpar";
+      confirmButton.classList.add('btn-confirmar-senha')
       confirmButton.onclick = () => {
         registros = [];
         loadItems(); // Recarrega a tabela com itens vazios
@@ -273,6 +274,7 @@ function clearDB() {
 
       const cancelButton = document.createElement("button");
       cancelButton.textContent = "Cancelar";
+      cancelButton.classList.add('btn-cancelar-senha')
       cancelButton.onclick = () => {
         document.body.removeChild(passwordDialog);
         document.body.removeChild(confirmDialog);
