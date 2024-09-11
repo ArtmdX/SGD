@@ -1,6 +1,7 @@
 .nav-tabs .nav-link {
-    padding: 8px 25px; /* Aumenta o espaçamento interno dos botões */
+  padding: 8px 25px; /* Aumenta o espaçamento interno dos botões */
 }
+
 
 .menu{
     justify-content: space-evenly;
@@ -26,3 +27,143 @@
   .btn-active .text-primary {
     color: #6c757d !important; /* Cor do texto do botão ativo (importante para substituir a cor padrão do Bootstrap) */
   }
+
+#tableFuncioanario i{   /* Cor dos icones de ações na tabela de funcionarios, e uma pequena margem entre eles */
+margin: 0px 8px;
+color: #0d6efd;
+transition: 0.25s ease-in-out;  /* Efeito no momento que o hover é desativado */
+}
+
+#tableFuncioanario .iconeTrash:hover{  /*Mudança de cor do botão de excluir na tabela funcinario ao passar o mouse por cima*/
+    color: red;
+    transition:  0.25s ease-in-out;  /* Efeito no momento que o hover é ativado no icone de excluir */
+}
+
+#tableFuncioanario .iconeEdit:hover{  /* Mudança de cor do botão de editar na tabela funcinario ao passar o mouse por cima */
+    color: black;
+    transition:  0.25s ease-in-out;  /* Efeito no momento que o hover é ativado no icone de editar */
+}
+
+.containerp{
+    width: 68%;
+    margin: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #fff;
+}
+
+footer {
+    background-color: #f8f9fa; /* Adicione uma cor de fundo opcional para o rodapé */
+    width: 68%;
+    position: bottom;
+    bottom: 0;
+    left: 0;
+    text-align: center; /* Centraliza o conteúdo horizontalmente */
+    margin-left: 16%;
+  }
+
+  .alinhamentoFooter{
+    display: inline;
+  }
+
+
+  .imagemBody img{
+    max-width: 55px;
+    max-height: 75px;
+  }
+
+
+.content-estoque {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+
+.alinhar{
+    text-align: center;
+}
+
+thead{
+    font-size: 20px;
+}
+
+.grafico-gasto{
+    padding-left: 4vw;
+    width: 40vw;
+    height: 50vh;
+}
+
+.card-gasto{
+        width: 40vw;
+        margin-left: 4vw;
+}
+
+.grafico-serv{
+        padding-left: 4vw;
+        width: 40vw;
+        height: 50vh;
+}
+
+.card-serv{
+    width: 40vw;
+    margin-left: 5vw;
+}
+
+/* O modal (background) */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Se manter em um lugar só */
+    z-index: 1; /* Manter no topo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+  }
+
+
+.modal-content {
+    overflow-y: 0;
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  }
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+.close-modal:hover, .close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+.formModal{
+  padding-bottom: 10px;
+}
+
+.modal-content{
+  width: 1200px;
+}
+
+.imagemFormCadastro{
+  width: 250px;
+  height: 150px;
+  margin: 5px;
+}
+
+.cabecalhoForm{
+  align-items: center; 
+  text-align: center;
+}
+
