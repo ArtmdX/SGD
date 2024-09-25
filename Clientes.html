@@ -73,7 +73,7 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="usuarios.html">
+                    <a class="dropdown-item" href="#">
                       <i
                         class="fa-solid fa-user"
                         style="margin-right: 10px"
@@ -186,7 +186,7 @@
 
     <!--Inicio body -->
     <div class="containerp mt-4 p-4 rounded mb-4">
-      <h2><i class="fa-solid fa-user-group"></i> Clientes</h2>
+      <h2><i class="fa-solid fa-user-group"></i>Clientes</h2>
       <p>Chegou a hora de listar os clientes da empresa!</p>
     </div>
 
@@ -445,15 +445,112 @@
         </div>
       </div>
     </div>
-    <div id="myModal" class="modal">
+
 
       <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <p>À fazer</p>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <div class=" cabecalhoForm">
+            <img src="LOGO/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;">
+            <h1 ><i class="fa-solid fa-user-group"></i> Cadastrando Cliente</h1>
+          </div>
+          <br>
+          <form action="" method="" class="formModal">
+            <div class="row">
+                <div class="col-5">
+                  <label for="">Nome</label>
+                  <input type="text" id="" class="form-control" placeholder="Nome" required>
+                </div>
+                <div class="col-5">
+                  <label for="">Sobrenome</label>
+                  <input type="text" class="form-control" id="" placeholder="Sobrenome" required>
+                </div>
+                <div class="col-2">
+                  <label for="">Data de Nascimento</label>
+                  <input type="date" class="form-control" id="" placeholder="Doe" required>
+                </div>
+            </div>
+          </form>
+          <form action="" method="" class="formModal">
+            <div class="row">
+              <div class="col-3">
+                <label for="">RG</label>
+                <input type="select" id="" class="form-control" placeholder="RG" required>
+              </div>
+                <div class="col-3">
+                  <label for="">CPF</label>
+                  <input type="text" id="" class="form-control" placeholder="CPF" required>
+                </div>
+                <div class="col-3">
+                  <label for="">Telefone</label>
+                  <input type="email" class="form-control" id="" placeholder="Telefone" required>
+                </div>
+                <div class="col-3">
+                  <label for="">E-mail</label>
+                  <input type="email" class="form-control" id="" placeholder="E-mail" required>
+                </div>
+            </div>
+          </form>
+          <form action="" method="" class="formModal">
+            <div class="row">
+              <div class="col-3">
+                <label for="">Bairro</label>
+                <input type="select" id="" class="form-control" placeholder="Bairro" required>
+              </div>
+                <div class="col-3">
+                  <label for="">Cidade</label>
+                  <input type="text" id="" class="form-control" placeholder="Cidade" required>
+                </div>
+                <div class="col-1">
+                  <label for="">UF</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>UF</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                  </select>
+                </div>
+                <div class="col-5">
+                  <label for="">Endereço</label>
+                  <input type="email" class="form-control" id="" placeholder="Endereço" required>
+                </div>
+            </div>
+          </form>
+          
+
+          <div class="row" style="margin: 0.5px;">
+            <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Enviar</button>
+            <button  type="button" class="btn btn-secondary col-2 closebtn"  style="margin: 5px;">Voltar</button>
+          </div>
+        </div>
       </div>
-    
-    </div>
+      <!--Fim modal-->
+
     <!--Fim body -->
 
   <!--inicio footer-->
@@ -477,32 +574,39 @@
       crossorigin="anonymous"
     ></script>
 
-<script>
-// Capturando o modal
-var modal = document.getElementById("myModal");
-
-// Capturando o botão de abrir o modal
-var btn = document.getElementById("botaoAdd");
-
-// Capturando o X que fecha o modal
-var span = document.getElementsByClassName("close-modal")[0];
-
-// Configurando o botão cadastrar para abrir o modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// Configurando o <span> X para fechar o modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// Configurando para que o modal feche caso o usuario clique em algum lugar da tela
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+    <script>
+      // Capturando o modal
+      var modal = document.getElementById("myModal");
+  
+      // Capturando o botão de abrir o modal
+      var btn = document.getElementById("botaoAdd");
+  
+      // Capturando o X que fecha o modal
+      var span = document.getElementsByClassName("close-modal")[0];
+  
+      //capturando botão de voltar
+      var closebtn = document.getElementsByClassName("closebtn")[0];
+  
+      // Configurando o botão cadastrar para abrir o modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+  
+      closebtn.onclick = function(){
+        modal.style.display = "none";
+      }
+  
+      // Configurando o <span> X para fechar o modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+  
+      // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
     </script>
 
   <!-- jQuery -->
