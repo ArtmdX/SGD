@@ -55,7 +55,7 @@
                 Olá, Usuário
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="usuarios.html"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i>
+                <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i>
                     Perfil</a></li>
                 <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-pen-to-square"
                       style="margin-right: 10px;"></i> Minha assinatura</a></li>
@@ -110,7 +110,8 @@
           </li>
         </ul>
       </nav>
-    </div><!--Fim Menu Cabeçalho-->
+    </div>
+    <!--Fim Menu Cabeçalho-->
 
   </header><!-- Fim do Cabeçalho -->
 
@@ -136,6 +137,7 @@
               <th scope="col">Marca</th>
               <th scope="col">Modelo</th>
               <th scope="col">Ano</th>
+              <th scope="col">Placa</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -145,6 +147,7 @@
               <td>Ford</td>
               <td>Fiesta</td>
               <td>2018</td>
+              <td>JJJ-4D56</td>
               <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
                     class="fa-solid fa-trash iconeTrash"></i></a></td>
             </tr>
@@ -153,6 +156,7 @@
               <td>Chevrolet</td>
               <td>Onix</td>
               <td>2019</td>
+              <td>JJJ-4D56</td>
               <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
                     class="fa-solid fa-trash iconeTrash"></i></a></td>
             </tr>
@@ -161,6 +165,7 @@
               <td>Toyota</td>
               <td>Corolla</td>
               <td>2020</td>
+              <td>JJJ-4D56</td>
               <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
                     class="fa-solid fa-trash iconeTrash"></i></a></td>
             </tr>
@@ -169,6 +174,7 @@
               <td>Volkswagen</td>
               <td>Gol</td>
               <td>2017</td>
+              <td>JJJ-4D56</td>
               <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
                     class="fa-solid fa-trash iconeTrash"></i></a></td>
             </tr>
@@ -177,6 +183,7 @@
               <td>Renault</td>
               <td>Sandero</td>
               <td>2021</td>
+              <td>JJJ-4D56</td>
               <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
                     class="fa-solid fa-trash iconeTrash"></i></a></td>
             </tr>
@@ -186,15 +193,45 @@
     </div>
   </div>
 
-
+  <!-- Modal content -->
   <div id="myModal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <p>À fazer</p>
-    </div>
+      <div class=" cabecalhoForm">
+        <img src="LOGO/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;">
+        <h1><i class="fa-solid fa-car"></i> Cadastrando Veículo</h1>
+      </div>
+      <br>
+      <form action="" method="" class="formModal">
+        <div class="row">
+          <div class="col-4">
+            <label for="">Marca</label>
+            <input type="text" id="" class="form-control" placeholder="Marca" required>
+          </div>
+          <div class="col-4">
+            <label for="">Modelo</label>
+            <input type="text" class="form-control" id="" placeholder="Modelo" required>
+          </div>
 
+          <div class="col-2">
+            <label for="">Ano</label>
+            <input type="number" class="form-control" id="" placeholder="Ano do veículo" required>
+          </div>
+          <div class="col-2">
+            <label for="">Placa</label>
+            <input type="number" class="form-control" id="" placeholder="Ano do veículo" required>
+          </div>
+
+        </div>
+
+        <!--Botões -->
+        <div class="row" style="margin: 0.5px;">
+          <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Enviar</button>
+          <button type="button" class="btn btn-secondary col-2 closebtn" style="margin: 5px;">Voltar</button>
+        </div>
+    </div>
   </div>
+  <!--Fim modal-->
   <!--Fim body -->
 
   <!--inicio footer-->
@@ -224,6 +261,9 @@
     // Capturando o X que fecha o modal
     var span = document.getElementsByClassName("close-modal")[0];
 
+    //capturando botão de voltar
+    var closebtn = document.getElementsByClassName("closebtn")[0];
+
     // Configurando o botão cadastrar para abrir o modal
     btn.onclick = function () {
       modal.style.display = "block";
@@ -231,6 +271,10 @@
 
     // Configurando o <span> X para fechar o modal
     span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    closebtn.onclick = function () {
       modal.style.display = "none";
     }
 
