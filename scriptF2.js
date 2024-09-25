@@ -305,10 +305,10 @@ function insertItem(registro, index) {
     <td>${registro.valor ? registro.valor : "A Preencher"}</td>
     <td>${registro.situacao}</td>
     <td class="columnAction">
-      <button class="btn-confirmar" onclick="confirmarRegistro(${index})">Confirmar</button>
-      <button class="btn-cancelar" onclick="cancelarRegistro(${index})">Cancelar</button>
-      <button class="btn-editar" onclick="editarRegistro(${index})">Editar</button>
-      <button class="btn-excluir" onclick="excluirRegistro(${index})">Excluir</button>
+      <button class="btn-confirmar btn btn-primary" onclick="confirmarRegistro(${index})">Confirmar</button>
+      <button class="btn-cancelar btn btn-primary" onclick="cancelarRegistro(${index})">Cancelar</button>
+      <button class="btn-editar btn btn-primary" onclick="editarRegistro(${index})">Editar</button>
+      <button class="btn-excluir btn btn-primary" onclick="excluirRegistro(${index})">Excluir</button>
     </td>
   `;
 

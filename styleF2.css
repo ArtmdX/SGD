@@ -194,28 +194,24 @@ th {
   background-color: #008000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
-  transition: 1s;
 }
 
 .btn-cancelar:hover {
   background-color: #d27000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
-  transition: 1s;
 }
 
 .btn-editar:hover {
   background-color: #a3a3a3; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
-  transition: 1s;
 }
 
 .btn-excluir:hover {
   background-color: #c70000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
-  transition: 1s;
 }
 
 .btn-acoes {
