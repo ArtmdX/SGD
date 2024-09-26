@@ -108,7 +108,7 @@ textarea{
   border-radius: 9px;
   cursor: pointer;
   height: 5vh;
-  margin-bottom: 2.5vh;
+  margin-top: 1.7vh;
 }
 
 .newItem > button:hover {
@@ -180,7 +180,7 @@ th {
   text-align: center;
 }
 
-.btn-cancelar-senha, .btn-confirmar-senha {
+button {
   background-color: #1367d4;
   color: rgb(255, 255, 255);
   border: none;
@@ -194,24 +194,28 @@ th {
   background-color: #008000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
+  transition: 1s;
 }
 
 .btn-cancelar:hover {
   background-color: #d27000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
+  transition: 1s;
 }
 
 .btn-editar:hover {
   background-color: #a3a3a3; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
+  transition: 1s;
 }
 
 .btn-excluir:hover {
   background-color: #c70000; /* Cor verde */
   color: #000000; /* Cor branca para o texto */
   cursor: pointer; /* Muda o cursor para uma mãozinha */
+  transition: 1s;
 }
 
 .btn-acoes {

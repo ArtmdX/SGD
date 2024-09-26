@@ -179,7 +179,7 @@ function excluirRegistro(index) {
     if (password === "SGD1234") {
       // Open confirmation modal
       const confirmDialog = document.createElement("div");
-      confirmDialog.innerHTML = `Você tem certeza que deseja realmente  excluir o registro ${registros[index].name}?`;
+      confirmDialog.innerHTML = `Você tem certeza que deseja realmente  excluir o registro ${registros[index].name}?    `;
       confirmDialog.style.position = "absolute";
       confirmDialog.style.top = "50%";
       confirmDialog.style.left = "50%";
@@ -206,6 +206,10 @@ function excluirRegistro(index) {
         document.body.removeChild(passwordDialog);
         document.body.removeChild(confirmDialog);
       };
+
+      confirmButton.style.marginRight = "10px"; // Add 10px margin to the right of the confirm button
+      cancelButton.style.marginLeft = "10px"; // Add 10px margin to the left of the cancel button
+
 
       confirmDialog.appendChild(confirmButton);
       confirmDialog.appendChild(cancelButton);
@@ -305,10 +309,10 @@ function insertItem(registro, index) {
     <td>${registro.valor ? registro.valor : "A Preencher"}</td>
     <td>${registro.situacao}</td>
     <td class="columnAction">
-      <button class="btn-confirmar btn btn-primary" onclick="confirmarRegistro(${index})">Confirmar</button>
-      <button class="btn-cancelar btn btn-primary" onclick="cancelarRegistro(${index})">Cancelar</button>
-      <button class="btn-editar btn btn-primary" onclick="editarRegistro(${index})">Editar</button>
-      <button class="btn-excluir btn btn-primary" onclick="excluirRegistro(${index})">Excluir</button>
+      <button class="btn-confirmar" onclick="confirmarRegistro(${index})">Confirmar</button>
+      <button class="btn-cancelar" onclick="cancelarRegistro(${index})">Cancelar</button>
+      <button class="btn-editar" onclick="editarRegistro(${index})">Editar</button>
+      <button class="btn-excluir" onclick="excluirRegistro(${index})">Excluir</button>
     </td>
   `;
 
