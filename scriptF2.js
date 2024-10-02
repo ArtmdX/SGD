@@ -179,7 +179,7 @@ function excluirRegistro(index) {
     if (password === "SGD1234") {
       // Open confirmation modal
       const confirmDialog = document.createElement("div");
-      confirmDialog.innerHTML = `Você tem certeza que deseja realmente  excluir o registro ${registros[index].name}?    `;
+      confirmDialog.innerHTML = `Você tem certeza que deseja realmente  excluir o registro ${registros[index].name}?      `;
       confirmDialog.style.position = "absolute";
       confirmDialog.style.top = "50%";
       confirmDialog.style.left = "50%";
@@ -207,7 +207,7 @@ function excluirRegistro(index) {
         document.body.removeChild(confirmDialog);
       };
 
-      confirmButton.style.marginRight = "10px"; // Add 10px margin to the right of the confirm button
+      confirmButton.style.marginRight = "8px"; // Add 10px margin to the right of the confirm button
       cancelButton.style.marginLeft = "10px"; // Add 10px margin to the left of the cancel button
 
 
