@@ -24,8 +24,6 @@ class Produto {
         });
     }
 }
-const mataRato =  new Produto(3, `Mato Rato`, `4L`, 50)
-console.log(mataRato)
 
 class Fornecedor {
     constructor(id_fornecedor, cnpj, fornecedor, telefone, email) {
@@ -34,7 +32,6 @@ class Fornecedor {
         this.fornecedor = fornecedor;
         this.telefone = telefone;
         this.email = email;
-        
         // Definindo uma propriedade chamada 'fornecedores' com getter e setter
         Object.defineProperty(this, 'fornecedores', {
             get: () => {
@@ -56,8 +53,6 @@ class Fornecedor {
         });
     }
 }
-const juliano =  new Fornecedor(3, `123546`, `juliano`, `389988115385`, `velosoale456@gmail.com`)
-console.log(juliano)
 
 class Cliente {
     constructor (id_cliente, cpf_cnpj, nome, telefone, endereco, email){
@@ -91,8 +86,6 @@ class Cliente {
         });
     }
 }
-const alessandro =  new Cliente(3, `123546`, `alessandro`, `389988115385`, `rua zeca mendees`, `veloalexandre456@gmail.com`)
-console.log(alessandro)
 
 class Compra {
     constructor(nr_compra, dt_entrada, valor_total, id_fornecedor) {
@@ -120,8 +113,6 @@ class Compra {
         });
     }
 }
-const primeira =  new Compra(50, `10/04/2021`, `502.25`, 3)
-console.log(primeira)
 
 class Tb_nota_fiscal {
     constructor(nr_nota_fiscal, dt_venda, valor, id_cliente) {
@@ -149,8 +140,6 @@ class Tb_nota_fiscal {
         });
     }
 }
-const nota02 =  new Tb_nota_fiscal(50, `10/04/2021`, `502.25`, 3)
-console.log(nota02)
 
 class Servico {
     constructor (id_servico, nr_nota_fiscal, id_categoria, dt_servico,
@@ -186,8 +175,6 @@ class Servico {
         });
    }
 }
-const servico03 =  new Servico(50, 45, 65, `12/10/2002`, `hellanzinho lins do 06`, `45.56`)
-console.log(servico03)
 
 class Funcionario {
     constructor (id_funcionario, cpf, nome, telefone, endereco, email) {
@@ -221,8 +208,6 @@ class Funcionario {
         });
     }
 }
-const hellanzinho =  new Funcionario(50, `999.999.999-99`, `hellanzinho`, `61985638595`, `taguantinda sul`, `emailhellan45@gmail.com`)
-console.log(hellanzinho)
 
 class Tb_veiculo {
     constructor (placa, marca, modelo, ano){
@@ -250,5 +235,3 @@ class Tb_veiculo {
         });
     }
 }
-const veiculo =  new Tb_veiculo(`JJJ-3606`, `fiat`, `uno`, `1990`)
-console.log(veiculo)
