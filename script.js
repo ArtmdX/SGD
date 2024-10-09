@@ -57,11 +57,10 @@ function clearDB() {
       const confirmButton = document.createElement("button");
       confirmButton.onclick = () => {
         items = []; // Clear items array
-        localStorage.clear(); // Clear local storage
         loadItens(); // Reload table with empty items
-        updateCounts(); // Update counts after clearing the database
-        document.body.removeChield(passwordDialog);
-        document.body.removeChield(confirmDialog);
+        getTotals(); // Update counts after clearing the database
+        document.body.removeChild(passwordDialog);
+        document.body.removeChild(confirmDialog);
       };
       confirmButton.textContent = "Sim, limpar";
       confirmButton.style.background = "BLUE"; // Green background
@@ -111,14 +110,11 @@ btnNew.addEventListener('click', () => {
     type: type.value,
   });
 
-  setItensBD();
-
   loadItens();
 
   descItem.value = "";
   amount.value = "";
 });
-
 
 function deleteItem(index) {
   // Create a confirmation modal
@@ -135,6 +131,12 @@ function deleteItem(index) {
   confirmDialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
 
   const confirmButton = document.createElement("button");
+  confirmButton.onclick = () => {
+    items.splice(index, 1); // Remove item from array
+    loadItens(); // Reload table with updated items
+    getTotals(); // Update counts after deleting the item
+    document.body.removeChild(confirmDialog);
+  };
   confirmButton.textContent = "Sim, excluir";
   confirmButton.style.background = "BLUE"; // Green background
   confirmButton.style.color = "#FFFFFF"; // White text
@@ -143,12 +145,7 @@ function deleteItem(index) {
   confirmButton.style.borderRadius = "5px";
   confirmButton.style.cursor = "pointer";
   confirmButton.style.margin = "10px"; /* Add margin to the buttons */
-  confirmButton.onclick = () => {
-    items.splice(index, 1);
-    setItensBD();
-    loadItens();
-    document.body.removeChild(confirmDialog);
-  };
+  
 
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancelar/Sair";
@@ -172,64 +169,47 @@ function deleteItem(index) {
   document.body.appendChild(confirmDialog);
 }
 
-function insertItem(item, index) {
-  let tr = document.createElement("tr");
-
-  tr.innerHTML = `
-    <td>${item.desc}</td>
-    <td>R$ ${item.amount}</td>
-    <td class="columnType">${
-      item.type === "Entrada"
-        ? '<i class="bx bxs-chevron-up-circle"></i>'
-        : '<i class="bx bxs-chevron-down-circle"></i>'
-    }</td>
-    <td class="columnAction">
-      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
-    </td>
-  `;
-
-  tbody.appendChild(tr);
-}
-
 function loadItens() {
-  items = getItensBD();
   tbody.innerHTML = "";
   items.forEach((item, index) => {
-    insertItem(item, index);
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.desc}</td>
+      <td>R$ ${item.amount}</td>
+      <td class="columnType">${
+        item.type === "Entrada"
+          ? '<i class="bx bxs-chevron-up-circle"></i>'
+          : '<i class="bx bxs-chevron-down-circle"></i>'
+      }</td>
+      <td class="columnAction">
+        <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
+      </td>
+    `;
+    tbody.appendChild(row);
   });
-
   getTotals();
 }
 
 function getTotals() {
-  const amountIncomes = items
-    .filter((item) => item.type === "Entrada")
-    .map((transaction) => Number(transaction.amount));
+  const totalIncomes = items.reduce((acc, item) => {
+    if (item.type === "Entrada") {
+      return acc + parseFloat(item.amount);
+    }
+    return acc;
+  }, 0);
 
-  const amountExpenses = items
-    .filter((item) => item.type === "Saída")
-    .map((transaction) => Number(transaction.amount));
+  const totalExpenses = items.reduce((acc, item) => {
+    if (item.type === "Saída") {
+      return acc + parseFloat(item.amount);
+    }
+    return acc;
+  }, 0);
 
-  const totalIncomes = amountIncomes
-    .reduce((acc, cur) => acc + cur, 0)
-    .toFixed(2);
+  const totalBalance = totalIncomes - totalExpenses;
 
-  const totalExpenses = Math.abs(
-    amountExpenses.reduce((acc, cur) => acc + cur, 0)
-  ).toFixed(2);
-
-  const totalItems = (totalIncomes - totalExpenses).toFixed(2);
-
-  incomes.innerHTML = totalIncomes;
-  expenses.innerHTML = totalExpenses;
-  total.innerHTML = totalItems;
+  incomes.textContent = `R$ ${totalIncomes.toFixed(2)}`;
+  expenses.textContent = `R$ ${totalExpenses.toFixed(2)}`;
+  total.textContent = `R$ ${totalBalance.toFixed(2)}`;
 }
-
-const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
-const setItensBD = () =>
-  localStorage.setItem("db_items", JSON.stringify(items));
-
-// Adicionando evento de carregamento de página
-window.addEventListener("load", loadItens);
 
 btnClear.addEventListener('click', clearDB);
