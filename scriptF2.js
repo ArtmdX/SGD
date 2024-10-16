@@ -300,7 +300,6 @@ function clearDB() {
 
 function insertItem(registro, index) {
   let tr = document.createElement("tr");
-
   tr.innerHTML = `
     <td>${registro.name}</td>
     <td>${registro.type}</td>
