@@ -135,115 +135,16 @@
           <thead style="text-align: center; background-color: #f0f0f0;">
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Sobrenome</th>
               <th scope="col">CPF</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Endereço</th>
               <th scope="col">Telefone</th>
+              <th scope="col">Email</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><strong>1</strong></td>
-              <td>João</td>
-              <td>Silva</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <td><strong>2</strong></td>
-              <td>Maria</td>
-              <td>Santos</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <td><strong>3</strong></td>
-              <td>Carlos</td>
-              <td>Oliveira</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Ana</td>
-              <td>Costa</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Rodrigo</td>
-              <td>Almeida</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>Paula</td>
-              <td>Martins</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">7</th>
-              <td>Fernando</td>
-              <td>Rocha</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td> <a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">8</th>
-              <td>Luisa</td>
-              <td>Ramos</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">9</th>
-              <td>Eduardo</td>
-              <td>Carvalho</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">10</th>
-              <td>Sandra</td>
-              <td>Freitas</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#">
-                <i class="fa-solid fa-trash iconeTrash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">11</th>
-              <td>JOAO</td>
-              <td>Freitas</td>
-              <td>555.555.555-55</td>
-              <td>(61)99822-4959</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#">
-                <i class="fa-solid fa-trash iconeTrash"></i></a>
-              </td>
-            </tr>
+          <tbody id="tabela-funcionarios">
+            
           </tbody>
         </table>
       </div>
@@ -399,6 +300,33 @@
   <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
   <!-- SCRIPT -->
   <script src="assets/js/scriptdata.js"></script>
+  <script>
+    // Função para carregar funcionários
+    async function carregarFuncionarios() {
+        const response = await fetch('/sqlfuncionarios'); // Ajuste a URL conforme necessário
+        const funcionarios = await response.json();
+
+        const tabela = document.getElementById('tabela-funcionarios');
+        tabela.innerHTML = ''; 
+
+        funcionarios.forEach(funcionario => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>${funcionario.id_funcionario}</strong></td>
+                <td>${funcionario.cpf}</td>
+                <td>${funcionario.nome}</td>
+                <td>${funcionario.telefone}</td>
+                <td>${funcionario.endereco}</td>
+                <td>${funcionario.email}</td>
+                <td><a href="#"><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></td>
+            `;
+            tabela.appendChild(tr);
+        });
+    }
+
+    // Chama a função ao carregar a página
+    window.onload = carregarFuncionarios;
+</script>
 </body>
 
 </html>
