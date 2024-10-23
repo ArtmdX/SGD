@@ -45,6 +45,7 @@ app.delete("/sqlfuncionarios/:id", async (request, response) =>{
     response.sendStatus(204);
 })
 
+
 //Paginas
 app.get("/home", (request, response, next) => {
     const page = path.join(path.resolve(),'public', 'home.html')

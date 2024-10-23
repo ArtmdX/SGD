@@ -1,3 +1,5 @@
+const models = require('../../../Models/models')
+
 // Função para carregar funcionários
 async function carregarFuncionarios() {
     const response = await fetch('/sqlfuncionarios'); // Ajuste a URL conforme necessário
@@ -20,3 +22,26 @@ async function carregarFuncionarios() {
         tabela.appendChild(tr);
     });
 }
+
+async function cadastrarFuncionarios(event) {
+
+    const id = document.getElementById('id').value;
+    const cpf = document.getElementById('cpf').value;
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const endereco = document.getElementById('endereco').value;
+    const email = document.getElementById('email').value;
+
+    const funcionario = new models.Funcionario(id, cpf, nome, telefone, endereco, email);
+
+
+    document.getElementById('formFuncionario').submit(); 
+
+    return true; 
+}
+
+
+
+
+
+
