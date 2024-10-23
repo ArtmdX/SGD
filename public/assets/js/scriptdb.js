@@ -19,5 +19,4 @@ async function carregarFuncionarios() {
         `;
         tabela.appendChild(tr);
     });
-    
 }
