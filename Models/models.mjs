@@ -1,4 +1,6 @@
-class Produto {
+import { client } from "../db.mjs";
+
+export class Produto {
     constructor(id_produto, nome_Produto, un_medida, qtd_estoque) {
         this.id_produto = id_produto;
         this.nome_Produto = nome_Produto;
@@ -25,7 +27,7 @@ class Produto {
     }
 }
 
-class Fornecedor {
+export class Fornecedor {
     constructor(id_fornecedor, cnpj, fornecedor, telefone, email) {
         this.id_fornecedor = id_fornecedor;
         this.cnpj = cnpj;
@@ -54,7 +56,7 @@ class Fornecedor {
     }
 }
 
-class Cliente {
+export class Cliente {
     constructor (id_cliente, cpf_cnpj, nome, telefone, endereco, email){
         this.id_cliente = id_cliente;
         this.cpf_cnpj = cpf_cnpj;
@@ -87,7 +89,7 @@ class Cliente {
     }
 }
 
-class Compra {
+export class Compra {
     constructor(nr_compra, dt_entrada, valor_total, id_fornecedor) {
         this.nr_compra = nr_compra;
         this.dt_entrada = dt_entrada;
@@ -114,7 +116,7 @@ class Compra {
     }
 }
 
-class Tb_nota_fiscal {
+export class NotaFiscal {
     constructor(nr_nota_fiscal, dt_venda, valor, id_cliente) {
         this.nr_nota_fiscal = nr_nota_fiscal;
         this.dt_venda = dt_venda;
@@ -141,7 +143,7 @@ class Tb_nota_fiscal {
     }
 }
 
-class Servico {
+export class Servico {
     constructor (id_servico, nr_nota_fiscal, id_categoria, dt_servico,
     descricao, valor) 
     {
@@ -176,9 +178,25 @@ class Servico {
    }
 }
 
-class Funcionario {
-    constructor (id_funcionario, cpf, nome, telefone, endereco, email) {
-        this.id_funcionario = id_funcionario;
+async function idJaExiste(id) {
+    const result = await client.query("SELECT COUNT(*) FROM tb_funcionario WHERE id_funcionario = ?", [id]);
+    const count = (result[0][0]['COUNT(*)'])
+    return count > 0;
+}
+
+async function gerarIdUnico() {
+    let id;
+    let existe;
+    do {
+        id = Math.floor(Math.random() * 100) + 1; // Gera um número aleatório entre 1 e 100
+        existe = await idJaExiste(id); // Verifica no banco de dados se já existe
+    } while (existe); // Se o ID já existe, gera outro
+    return id;
+}
+
+export class Funcionario {
+    constructor (id_funcionario,cpf, nome, telefone, endereco, email) {
+        this.id_funcionario = id_funcionario
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -207,9 +225,15 @@ class Funcionario {
             }
         });
     }
+   
+    // Método estático para criar um funcionário de forma assíncrona
+    static async criar(cpf, nome, telefone, endereco, email) {
+        const id_funcionario = await gerarIdUnico(); // Gera o ID único
+        return new Funcionario(id_funcionario, cpf, nome, telefone, endereco, email); // Retorna o objeto criado
+    }
 }
 
-class Tb_veiculo {
+export class Veiculo {
     constructor (placa, marca, modelo, ano){
         this.placa = placa;
         this.marca = marca;

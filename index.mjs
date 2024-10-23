@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import * as db from './db.mjs';
+import * as models from './Models/models.mjs'
 
 dotenv.config();
 
@@ -9,12 +10,14 @@ const app = express()
 app.use(express.json())
 
 app.use(express.static(path.join(path.resolve(), 'public')));
+app.use(express.urlencoded({ extended: true }));
 
 // Rota POST para inserir um funcionário
 app.post("/sqlfuncionarios", async (request, response) =>{
-    const funcionario = request.body;
-    await db.insertFuncionario(funcionario)
-    response.sendStatus(201);
+    const {nome, endereco, cpf, telefone, email} = request.body;
+    const novoFuncionario = await models.Funcionario.criar(cpf, nome, telefone, endereco, email)
+    await db.insertFuncionario(novoFuncionario.funcionario)
+    response.redirect("/funcionarios");
 })
 
 // Rota PATCH para atualizar um funcionário pelo ID

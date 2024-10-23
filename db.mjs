@@ -2,7 +2,7 @@ import mysql from "mysql2/promise"
 import dotenv from 'dotenv'
 dotenv.config()
 
-const client = mysql.createPool(process.env.CONNECTION_STRING)
+export const client = mysql.createPool(process.env.CONNECTION_STRING)
 
 export async function selectFuncionarios(){
     const results = await client.query("SELECT * FROM tb_funcionario;");
