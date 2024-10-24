@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/b3770106cb.js" crossorigin="anonymous"></script>
+
+  <!-- Estilo customizado -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <title>SDG - Estoque</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/LOGO.png">
+
+  <!--DataTable-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+</head>
+
+<body class="bg-light">
+  <header><!-- Início do Cabeçalho -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+      <div class="container">
+        <a href="home" class="navbar-brand">
+          <img src="assets/img/LOGO.png" width="95">
+        </a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="nav-principal">
+          <ul class="navbar-nav">
+            <!-- Icone de mensagem no cabeçalho -->
+            <li class="nav-item" style="margin-right: 10px;">
+              <a href="" class="nav-link">
+                <i class="fa-regular fa-message fa-lg text-light"></i>
+              </a>
+            </li>
+            <!-- Icone do sino no cabeçalho -->
+            <li class="nav-item" style="margin-right: 10px;">
+              <a href="" class="nav-link">
+                <i class="fa-regular fa-bell fa-lg text-light"></i>
+              </a>
+            </li>
+            <!-- Olá Usuário -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-light btn-lift dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Olá, Usuario!
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="usuarios"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i>
+                    Perfil</a></li>
+                <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-pen-to-square"
+                      style="margin-right: 10px;"></i> Minha assinatura</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="login"> <i class="fa-solid fa-right-to-bracket"
+                      style="margin-right: 10px;"></i> Sair</a></li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--Inicio Menu Cabeçalho-->
+    <div class="container-fluid d-flex justify-content-start bg-white">
+      <nav class="nav">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="home"> <i class="fa-solid fa-house"
+                style="margin-right: 5px;"></i> <strong>Home</strong> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="chamados"> <i class="fas fa-cog"
+                style="margin-right: 5px;"></i> <strong>Chamados</strong> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="clientes"> <i class="fa-solid fa-users"
+                style="margin-right: 5px;"></i> <strong>Clientes</strong> </a>
+          </li>
+          <li class="nav-item ">
+            <div class="dropdown">
+              <button class="btn btn-white dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa-solid fa-screwdriver-wrench text-primary" style="margin-right: 5px;"></i> <span
+                  class="text-primary"><strong>Operacional</strong></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="funcionarios">Funcionarios</a></li>
+                <li><a class="dropdown-item" href="veiculos">Veículos</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="estoque"> <i class="fa-solid fa-warehouse"
+                style="margin-right: 5px;"></i> <strong>Estoque</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="financeiro"> <i class="fa-solid fa-dollar-sign"
+                style="margin-right: 5px;"></i> <strong>Financeiro</strong></a>
+          </li>
+        </ul>
+      </nav>
+    </div><!--Fim Menu Cabeçalho-->
+
+  </header><!-- Fim do Cabeçalho -->
+
+  <!--Inicio body -->
+  <div class="containerp mt-4 p-4 rounded mb-4">
+    <h2> <i class="fa-solid fa-boxes-packing"></i> Estoque </h2>
+    <p>Chegou a hora de visualizar o estoque da empresa!</p>
+  </div>
+
+  <div class="bg container d-flex justify-content-center" style="flex-direction: column;">
+    <div class="main">
+      <div class="col-md card tabela-estoque">
+
+        <div class="container mt-3 mb-3">
+          <div class="alinhamentoFooter" style="float: left;">
+            <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-hover mb-0 table-striped" id="tableEstoque">
+          <thead style="text-align: center; background-color: #f0f0f0;">
+            <tr>
+              <th scope="col" class="col-1 alinhar">Id</th>
+              <th scope="col" class="col-2 alinhar">Produto</th>
+              <th scope="col" class="col-2 alinhar">Nome</th>
+              <th scope="col" class="col-2 alinhar">Quantidade disponível</th>
+              <th scope="col" class="col-2 alinhar">Data de entrada</th>
+              <th scope="col" class="col-2 alinhar">Data de validade</th>
+              <th scope="col" class="col-1 alinhar">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 col-1">1</th>
+              <th scope="row" class="alinhar pt-4 pb-0 "><img
+                  src="https://15732.cdn.simplo7.net/static/15732/sku/inseticidas-5bd0c6ed53812-mustang-350-inseticida-1-litro-p-1704305505105.png"
+                  alt=""></th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Inseticida</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">16</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">11/04/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">28/06/2026</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 ">2</th>
+              <th scope="row" class="alinhar pt-4 pb-0 "><img
+                  src="https://images.tcdn.com.br/img/img_prod/808976/90_atack_cupinicida_200_ce_1_litro_3930_1_866ee004f32c31e423f6092f547a52b7.png"
+                  alt=""></th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Atack 200</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">14</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">12/03/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">29/06/2025</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 ">3</th>
+              <th scope="row" class="alinhar pt-4 pb-0 ">
+                <img
+                  src="https://images.tcdn.com.br/img/img_prod/808976/90_displace_ddvp_1_litro_3910_1_35c7a24f1fefd97b9fd63cdc2ec2bdac.png"
+                  alt="">
+              </th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Displace</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">14</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">125/07/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">15/06/2027</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 ">4</th>
+              <th scope="row" class="alinhar pt-4 pb-0 "><img
+                  src="https://images.tcdn.com.br/img/img_prod/959689/180_lamthrine_10_pm_25_g_9978_1_c8e4802490dab2150a4103657114625a.png"
+                  alt=""></th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Lamthrine</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">18</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">11/04/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">28/06/2026</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 ">5</th>
+              <th scope="row" class="alinhar pt-4 pb-0 "><img
+                  src="https://images.tcdn.com.br/img/img_prod/808976/90_formimax_detetizacao_plus_1_litro_3922_1_1e8e4a4f43938348d4983262b0549e3f.png"
+                  alt=""></th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Formimax</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">22</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">12/03/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">29/06/2025</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+            <tr class="imagemBody">
+              <th scope="row" class="alinhar pt-5 pb-5 ">6</th>
+              <th scope="row" class="alinhar pt-4 pb-0 "><img
+                  src="https://cdn.awsli.com.br/600x450/896/896538/produto/242207540/fipromix-1l-w0t1ea3n9f.png" alt="">
+              </th>
+              <th scope="row" class="alinhar pt-5 pb-5 ">Fipronil</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">12</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">125/07/2024</th>
+              <th scope="row" class="alinhar pt-5 pb-4 ">15/06/2027</th>
+              <th class="alinhar pt-5 pb-4 "><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a
+                  href="#"><i class="fa-solid fa-trash iconeTrash"></i></a></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+      <!-- Modal content -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <div class=" cabecalhoForm">
+            <img src="LOGO/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;">
+            <h1 ><i class="fa-solid fa-boxes-packing"></i> Cadastrando Produto</h1>
+          </div>
+          <br>
+          <form action="" method="" class="formModal">
+            <div class="row">
+                <div class="col-6">
+                  <label for="">Nome</label>
+                  <input type="text" id="" class="form-control" placeholder="Nome" required>
+                </div>
+                <div class="col-3">
+                  <label for="">Imagem do Produto</label>
+                  <input type="image" id="" class="form-control" placeholder="Imagem do produto" required>
+                </div>
+                <div class="col-3">
+                  <label for="">Quantidade</label>
+                  <input type="number" class="form-control" id="" placeholder="Quantidade" required>
+                </div>
+            </div>
+          </form>
+
+          <form action="" method="" class="formModal">
+            <div class="row">
+              <div class="col-3">
+                <label for="">Data de Entrada</label>
+                <input type="date" class="form-control" id="" placeholder="Doe" required>
+              </div>
+              <div class="col-3">
+                <label for="">Data de Validade</label>
+                <input type="date" class="form-control" id="" placeholder="Doe" required>
+              </div>
+              <div class="col-6">
+                <label for="">Observações</label>
+                <input type="text" class="form-control" id="" placeholder="Digite as observações" required>
+              </div>
+            </div>
+
+          </form>
+
+          <div class="row" style="margin: 0.5px;">
+            <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Enviar</button>
+            <button  type="button" class="btn btn-secondary col-2 closebtn"  style="margin: 5px;">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <!--Fim modal-->
+
+
+  <!--Fim body -->
+
+
+
+  <!--inicio footer-->
+  <div class="container">
+    <footer>
+      <br>
+      <br>
+      <div>
+        <p class="text-muted alinhamentoFooter"><i class="fa-solid fa-code"></i> Desenvolvido por <a href="#"
+            style="text-decoration: none; color:gray;">Darth Dev</a></p>
+        <p class="text-muted alinhamentoFooter">copyright &copy; 2024 | Todos os direitos reservados</p>
+      </div>
+    </footer>
+  </div>
+  <!--Fim footer-->
+
+  <script>
+    // Capturando o modal
+    var modal = document.getElementById("myModal");
+
+    // Capturando o botão de abrir o modal
+    var btn = document.getElementById("botaoAdd");
+
+    // Capturando o X que fecha o modal
+    var span = document.getElementsByClassName("close-modal")[0];
+
+    //capturando botão de voltar
+    var closebtn = document.getElementsByClassName("closebtn")[0];
+
+    // Configurando o botão cadastrar para abrir o modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    closebtn.onclick = function(){
+      modal.style.display = "none";
+    }
+
+    // Configurando o <span> X para fechar o modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- dataTable -->
+  <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- SCRIPT -->
+  <script src="assets/js/scriptdata.js"></script>
+</body>
+
+</html>
