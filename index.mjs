@@ -54,6 +54,10 @@ app.get("/home", (request, response, next) => {
     const page = path.join(path.resolve(),'public', 'home.html')
     response.sendFile(page)
 });
+app.get("/", (request, response, next) => {
+    const page = path.join(path.resolve(),'public', 'home.html')
+    response.sendFile(page)
+});
 app.get("/chamados", (request, response, next) => {
     const page = path.join(path.resolve(),'public', 'chamados.html')
     response.sendFile(page)
