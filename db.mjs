@@ -33,7 +33,7 @@ export async function deleteFuncionario(id){
 //CLIENTES
 //Seleciona todos os clientes
 export async function selectClientes(){
-    const results = await client.query('SELECT * FROM tb_clientes;')
+    const results = await client.query('SELECT * FROM tb_cliente;')
     return results[0]
 }
 
@@ -45,14 +45,15 @@ export async function selectCliente(id){
 
 //insere um novo cliente
 export async function insertCliente(Cliente){
-    const values = [Cliente.id_cliente, Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email]
-    await client.query('INSERT INTO tb_cliente(id_cliente, cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?, ?)', values)
+    console.log(Cliente)
+    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email]
+    await client.query('INSERT INTO tb_cliente(cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?)', values)
 }
 
 //atualiza um cliente
 export async function updateCliente(id, Cliente){
-    const values = [Cliente.id_cliente, Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email, id]
-    await cliente.query('UPDATE tb_cliente SET id_cliente=?, cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
+    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email, id]
+    await client.query('UPDATE tb_cliente SET cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
 }
 
 //deletar um cliente

@@ -51,7 +51,7 @@ app.delete("/sqlfuncionarios/:id", async (request, response) =>{
 
 /*-----------ROTAS CLIENTE------------------*/
 //Rota para listar todos os clientes
-app.get('/sqlclientes', async (request, response) => {
+app.get('/sqlcliente', async (request, response) => {
     const results = await db.selectClientes();
     response.json(results)
 })
@@ -59,15 +59,16 @@ app.get('/sqlclientes', async (request, response) => {
 //Rota para listar um cliente por id
 app.get('/sqlcliente/:id', async (request, response) => {
     const id = parseInt(request.params.id);
-    const results = await db.selectCliente();
+    const results = await db.selectCliente(id);
     response.json(results)
 })
 
 //Rota para inserir um cliente
 app.post('/sqlcliente', async(request, response) => {
-    const {nome, cpf_cnpj, telefone, endereco, email} = request.body;
-    const novocliente = await new models.Cliente(nome, cpf_cnpj, telefone, endereco, email)
-    await db.insertCliente(novocliente.Cliente)
+    const {nome, cpf_cnpj, telefone, email, endereco} = request.body;
+    const novocliente = new models.Cliente(nome, cpf_cnpj, telefone, endereco, email)
+    console.log(novocliente.cliente)
+    await db.insertCliente(novocliente.cliente)
     response.redirect('/clientes')
 })
 
@@ -89,23 +90,23 @@ app.delete('/sqlcliente/:id', async (request, response) => {
 // Rota POST para inserir um Veiculo
 app.post("/sqlVeiculo", async (request, response) =>{
     const {placa, marca, modelo, ano,} = request.body;
-    const novoVeiculo = await new models.Veiculo(placa,marca,modelo,ano)
+    const novoVeiculo = new models.Veiculo(placa,marca,modelo,ano)
     await db.insertVeiculo(novoVeiculo.veiculo)
     response.redirect("/veiculos");
 })
 
 //Rota PATCH para atualizar um Veiculo
-app.patch("/sqlVeiculo/:placa", async (request, response) =>{
-    const placa = parseInt(request.params.placa)
+app.patch("/sqlVeiculo/:id", async (request, response) =>{
+    const id = parseInt(request.params.id_veiculo)
     const veiculo = request.body
-    await db.uptadeVeiculo(placa, veiculo)
+    await db.uptadeVeiculo(id, veiculo)
     response.sendStatus(200)
 })
 
 // Rota GET para selecionar um Veiculo
-app.get("/sqlVeiculo/:placa", async (request, response) =>{
-    const placa = parseInt(request.params.placa);
-    const results = await db.selecionarVeiculo(placa);
+app.get("/sqlVeiculo/:id", async (request, response) =>{
+    const id = parseInt(request.params.id_veiculo);
+    const results = await db.selecionarVeiculo(id);
     response.json(results);
 })
 
@@ -117,8 +118,8 @@ app.get("/sqlVeiculo", async (request, response) =>{
 
 // Rota DELETE para excluir um Veiculo
 app.delete("/sqlVeiculo/:placa", async (request, response) =>{
-    const placa = parseInt(request.params.placa);
-    await db.deleteVeiculo(placa);
+    const id = parseInt(request.params.id_veiculo);
+    await db.deleteVeiculo(id);
     response.sendStatus(204);
 })
 //serviços**************************************************************************************************************************

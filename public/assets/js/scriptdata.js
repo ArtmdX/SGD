@@ -1,7 +1,4 @@
-//table Fucionários
-$(document).ready( function () {
-    $('#tableFuncioanarios').DataTable();
-} );
+
 
 var table = new DataTable('#tableFuncioanarios', {
     language: {
@@ -20,10 +17,7 @@ var table = new DataTable('#tableFuncioanarios', {
     } //justifica texto do th
 });
 
-//veículo
-$(document).ready( function () {
-    $('#tableVeiculos').DataTable();
-} );
+
 
 var table = new DataTable('#tableVeiculos', {
     language: {
@@ -42,10 +36,6 @@ var table = new DataTable('#tableVeiculos', {
     }
 });
 
-//clientes
-$(document).ready( function () {
-    $('#tableClientes').DataTable();
-} );
 
 var table = new DataTable('#tableClientes', {
     language: {
@@ -55,7 +45,7 @@ var table = new DataTable('#tableClientes', {
         { targets: '_all', render: function(data, type, row) {
             return '<div style="text-align: center;">' + data + '</div>';
         } },
-        { targets: 6, orderable: false }, //retira paginação
+        { targets: 5, orderable: false }, //retira paginação
     ],
     headerCallback: function( thead, data, start, end, display ) {
         $('th', thead).each(function() {
@@ -64,10 +54,6 @@ var table = new DataTable('#tableClientes', {
     }
 });
 
-//estoque
-$(document).ready( function () {
-    $('#tableEstoque').DataTable();
-});
 
 var table = new DataTable('#tableEstoque', {
     language: {

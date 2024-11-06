@@ -1,7 +1,3 @@
-import { client } from "../db.mjs";
-
-
-
 export class Produto {
     constructor(id_produto, nome_Produto, un_medida, qtd_estoque) {
         this.id_produto = id_produto;
@@ -59,19 +55,17 @@ export class Fornecedor {
 }
 
 export class Cliente {
-    constructor (id_cliente, cpf_cnpj, nome, telefone, endereco, email){
-        this.id_cliente = id_cliente;
+    constructor (cpf_cnpj, nome, telefone, endereco, email){
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
         
-        // Definindo uma propriedade chamada 'clientes' com getter e setter
-        Object.defineProperty(this, 'clientes', {
+        // Definindo uma propriedade chamada 'cliente' com getter e setter
+        Object.defineProperty(this, 'cliente', {
             get: () => {
                 return {
-                    id_cliente: this.id_cliente,
                     cpf_cnpj: this.cpf_cnpj,
                     nome: this.nome,
                     telefone: this.telefone,
@@ -80,7 +74,6 @@ export class Cliente {
                 };
             },
             set: (newCliente) => {
-                this.id_cliente = newCliente.id_cliente;
                 this.cpf_cnpj = newCliente.cpf_cnpj;
                 this.nome = newCliente.nome;
                 this.telefone = newCliente.telefone;
@@ -207,9 +200,6 @@ export class Funcionario {
             }
         });
     }
-   
-    // Método estático para criar um funcionário de forma assíncrona
-    
 }
 
 export class Veiculo {
