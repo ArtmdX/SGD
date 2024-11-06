@@ -61,9 +61,6 @@ export async function deleteCliente(id){
     await client.query('DELETE FROM tb_funcionario WHERE id_cliente=?', values)
 }
 
-
-
-
 //Veiculos
 //Selecionar todos os veiculos
 export async function selectVeiculos() {
