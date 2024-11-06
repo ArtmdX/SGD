@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise"
 import dotenv from 'dotenv'
+import { Veiculo } from "./Models/models.mjs";
 dotenv.config()
 
 export const client = mysql.createPool(process.env.CONNECTION_STRING)
@@ -28,3 +29,36 @@ export async function deleteFuncionario(id){
     const values = [id]
     await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", values)
 }
+
+
+//Veiculos
+//Selecionar todos os veiculos
+export async function selectVeiculos() {
+    const results = await client.query("SELECT * FROM tb_veiculo;");
+    return results
+}
+
+//Selecionar veiculo por placa
+export async function selecionarVeiculo (Placa) {
+    const results = await client.query("SELECT * FROM tb_veiculo WHERE Placa=?", [Placa])
+    return results[0]
+}
+
+//Inserir um veiculo 
+export async function insertVeiculo(Veiculo) {
+    const values =[Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano]
+    await client.query("INSERT INTO tb_veiculo(placa, marca, modelo, ano) VALEUS (?,?,?,?)", values)
+}
+
+//Uptade do Veiculo
+export async function uptadeVeiculo (Placa, Veiculo) {
+    const values = [Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano, Placa, Veiculo]
+    await client.query("UPDATE tb_veiculo SET placa=?, marca=?, modelo=?, ano=?", values)
+}
+
+//deletar um Veiculo
+export async function deleteVeiculo(Placa) {
+    const values = [Placa]
+    await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
+}
+
