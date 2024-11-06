@@ -96,7 +96,42 @@ app.delete('/sqlcliente/:id', async (request, response) => {
     await db.deleteCliente(id);
     response.sendStatus(204);
 })
+//--------------------CRUD VEICULOS---------------------
+// Rota POST para inserir um Veiculo
+app.post("/sqlVeiculo", async (request, response) =>{
+    const {placa, marca, modelo, ano,} = request.body;
+    const novoVeiculo = await models.Veiculo.criar(placa,marca,modelo,ano)
+    await db.insertVeiculo(novoVeiculo.Veiculo)
+    response.redirect("/Veiculo");
+})
 
+//Rota PATCH para atualizar um Veiculo
+app.patch("/sqlVeiculo/:placa", async (request, response) =>{
+    const placa = parseInt(request.params.placa)
+    const veiculo = request.body
+    await db.uptadeVeiculo(placa, veiculo)
+    response.sendStatus(200)
+})
+
+// Rota GET para selecionar um Veiculo
+app.get("/sqlVeiculo/:placa", async (request, response) =>{
+    const placa = parseInt(request.params.placa);
+    const results = await db.selectVeiculo(placa);
+    response.json(results);
+})
+
+// Rota GET para selecionar todos os veiculo
+app.get("/sqlVeiculo", async (request, response) =>{
+    const results = await db.selectVeiculo();
+    response.json(results)
+})
+
+// Rota DELETE para excluir um Veiculo
+app.delete("/sqlVeiculo/:placa", async (request, response) =>{
+    const placa = parseInt(request.params.placa);
+    await db.deleteVeiculo(placa);
+    response.sendStatus(204);
+})
 //serviços**************************************************************************************************************************
 // Rota para obter todos os serviços
 app.get('/services', async (req, res) => {
