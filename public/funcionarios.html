@@ -262,7 +262,13 @@
   <!-- SCRIPT -->
   <script src="assets/js/scriptdata.js"></script>
   <script src="assets/js/scriptdb.js"></script>
-  
+
+  <!-- Inicializa o DataTables quando o documento estiver pronto-->
+  <script>
+    $(document).ready(function() {
+        $('#tableFuncioanarios').DataTable();
+        carregarFuncionarios();
+    });</script>
   
 
 </body>

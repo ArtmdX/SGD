@@ -4,17 +4,6 @@ import dotenv from 'dotenv';
 import * as db from './db.mjs';
 import * as models from './Models/models.mjs'
 
-//services********************************************************************************************************************
-import express from 'express';
-import {
-    selectServicos,
-    insertServico,
-    selectServico,
-    updateServico,
-    deleteServico
-} from './path/to/your/serviceFunctions'; // Ajuste o caminho conforme necessário
-//services********************************************************************************************************************
-
 dotenv.config();
 
 const app = express()
@@ -27,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rota POST para inserir um funcionário
 app.post("/sqlfuncionarios", async (request, response) =>{
     const {nome, endereco, cpf, telefone, email} = request.body;
-    const novoFuncionario = await models.Funcionario.criar(cpf, nome, telefone, endereco, email)
+    const novoFuncionario = await new models.Funcionario(cpf, nome, telefone, endereco, email)
     await db.insertFuncionario(novoFuncionario.funcionario)
     response.redirect("/funcionarios");
 })
@@ -77,7 +66,7 @@ app.get('/sqlcliente/:id', async (request, response) => {
 //Rota para inserir um cliente
 app.post('/sqlcliente', async(request, response) => {
     const {nome, cpf_cnpj, telefone, endereco, email} = request.body;
-    const novocliente = await models.Cliente.criar(nome, cpf_cnpj, telefone, endereco, email)
+    const novocliente = await new models.Cliente(nome, cpf_cnpj, telefone, endereco, email)
     await db.insertCliente(novocliente.Cliente)
     response.redirect('/clientes')
 })
@@ -96,13 +85,13 @@ app.delete('/sqlcliente/:id', async (request, response) => {
     await db.deleteCliente(id);
     response.sendStatus(204);
 })
-//--------------------CRUD VEICULOS---------------------
+//--------------------ROTAS VEICULOS---------------------
 // Rota POST para inserir um Veiculo
 app.post("/sqlVeiculo", async (request, response) =>{
     const {placa, marca, modelo, ano,} = request.body;
-    const novoVeiculo = await models.Veiculo.criar(placa,marca,modelo,ano)
-    await db.insertVeiculo(novoVeiculo.Veiculo)
-    response.redirect("/Veiculo");
+    const novoVeiculo = await new models.Veiculo(placa,marca,modelo,ano)
+    await db.insertVeiculo(novoVeiculo.veiculo)
+    response.redirect("/veiculos");
 })
 
 //Rota PATCH para atualizar um Veiculo
@@ -116,13 +105,13 @@ app.patch("/sqlVeiculo/:placa", async (request, response) =>{
 // Rota GET para selecionar um Veiculo
 app.get("/sqlVeiculo/:placa", async (request, response) =>{
     const placa = parseInt(request.params.placa);
-    const results = await db.selectVeiculo(placa);
+    const results = await db.selecionarVeiculo(placa);
     response.json(results);
 })
 
 // Rota GET para selecionar todos os veiculo
 app.get("/sqlVeiculo", async (request, response) =>{
-    const results = await db.selectVeiculo();
+    const results = await db.selectVeiculos();
     response.json(results)
 })
 

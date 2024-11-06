@@ -21,11 +21,24 @@ async function carregarFuncionarios() {
     table.draw(); // Atualiza a tabela com os novos dados
 }
 
-// Inicializa o DataTables quando o documento estiver pronto
-$(document).ready(function() {
-    $('#tableFuncioanarios').DataTable();
-    carregarFuncionarios(); // Chama a função para carregar os dados
-});
+async function carregarVeiculos() {
+    const response = await fetch('/sqlVeiculo');
+    const veiculos = await response.json()
 
+    const table = $('#tableVeiculos').DataTable();
+    table.clear();
+
+    veiculos.forEach(veiculo => {
+        table.row.add([
+            veiculo.marca,
+            veiculo.modelo,
+            veiculo.ano,
+            `<span data-veiculo-id="${veiculo.id_veiculo}">${veiculo.placa}</span>`,
+            `<a href="#"><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> 
+             <a href="#"><i class="fa-solid fa-trash iconeTrash"></i></a>`
+        ])
+    })
+    table.draw()
+}
 
 

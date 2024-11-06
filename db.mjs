@@ -46,13 +46,13 @@ export async function selectCliente(id){
 //insere um novo cliente
 export async function insertCliente(Cliente){
     const values = [Cliente.id_cliente, Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email]
-    const results = await client.query('INSERT INTO tb_cliente(id_cliente, cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?, ?)', values)
+    await client.query('INSERT INTO tb_cliente(id_cliente, cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?, ?)', values)
 }
 
 //atualiza um cliente
 export async function updateCliente(id, Cliente){
     const values = [Cliente.id_cliente, Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email, id]
-    const results = await cliente.query('UPDATE tb_cliente SET id_cliente=?, cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=?', values)
+    await cliente.query('UPDATE tb_cliente SET id_cliente=?, cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
 }
 
 //deletar um cliente
@@ -65,24 +65,24 @@ export async function deleteCliente(id){
 //Selecionar todos os veiculos
 export async function selectVeiculos() {
     const results = await client.query("SELECT * FROM tb_veiculo;");
-    return results
+    return results[0]
 }
 
 //Selecionar veiculo por placa
-export async function selecionarVeiculo (Placa) {
-    const results = await client.query("SELECT * FROM tb_veiculo WHERE Placa=?", [Placa])
+export async function selecionarVeiculo (id) {
+    const results = await client.query("SELECT * FROM tb_veiculo WHERE id_veiculo=?", [id])
     return results[0]
 }
 
 //Inserir um veiculo 
 export async function insertVeiculo(Veiculo) {
     const values =[Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano]
-    await client.query("INSERT INTO tb_veiculo(placa, marca, modelo, ano) VALEUS (?,?,?,?)", values)
+    await client.query("INSERT INTO tb_veiculo(placa, marca, modelo, ano) VALUES (?,?,?,?)", values)
 }
 
 //Uptade do Veiculo
-export async function uptadeVeiculo (Placa, Veiculo) {
-    const values = [Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano, Placa, Veiculo]
+export async function uptadeVeiculo (id, Veiculo) {
+    const values = [Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano, id, Veiculo]
     await client.query("UPDATE tb_veiculo SET placa=?, marca=?, modelo=?, ano=?", values)
 }
 
@@ -93,7 +93,7 @@ export async function deleteVeiculo(Placa) {
 }
 
 
-// Função para selecionar todos os serviços*************************************************************************************
+// Função para selecionar todos os serviços
 export async function selectServicos() {
     const results = await client.query("SELECT * FROM tb_servico;");
     return results[0];
@@ -122,4 +122,3 @@ export async function deleteServico(id) {
     const values = [id];
     await client.query("DELETE FROM tb_servico WHERE id_servico = ?", values);
 }
-//**********************************************************************************************************************************************************************

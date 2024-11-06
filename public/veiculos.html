@@ -1,300 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous" />
 
-  <!--Bootstrap-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/b3770106cb.js" crossorigin="anonymous"></script>
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/b3770106cb.js" crossorigin="anonymous"></script>
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/LOGO.png" />
 
-  <!-- Estilo customizado -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/LOGO.png">
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 
-  <!--DataTable-->
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+    <title>SGD - Operacional</title>
+  </head>
 
-  <title>SGD - Operacional</title>
-</head>
+  <body class="bg-light">
+    <header>
+      <!-- Início do Cabeçalho -->
+      <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container">
+          <a href="home" class="navbar-brand">
+            <img src="assets/img/LOGO.png" width="95" />
+          </a>
 
-<body class="bg-light">
-  <header><!-- Início do Cabeçalho -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
-      <div class="container">
-        <a href="home" class="navbar-brand">
-          <img src="assets/img/LOGO.png" width="95">
-        </a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="nav-principal">
-          <ul class="navbar-nav">
-            <!-- Icone de mensagem no cabeçalho -->
-            <li class="nav-item" style="margin-right: 10px;">
-              <a href="" class="nav-link">
-                <i class="fa-regular fa-message fa-lg text-light"></i>
-              </a>
-            </li>
-            <!-- Icone do sino no cabeçalho -->
-            <li class="nav-item" style="margin-right: 10px;">
-              <a href="" class="nav-link">
-                <i class="fa-regular fa-bell fa-lg text-light"></i>
-              </a>
-            </li>
-            <!-- Olá Usuário -->
-            <div class="btn-group">
-              <button type="button" class="btn btn-light btn-lift dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Olá, Usuário
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="usuarios"> <i class="fa-solid fa-user" style="margin-right: 10px;"></i>
-                    Perfil</a></li>
-                <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-pen-to-square"
-                      style="margin-right: 10px;"></i> Minha assinatura</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="login"> <i class="fa-solid fa-right-to-bracket"
-                      style="margin-right: 10px;"></i> Sair</a></li>
-              </ul>
-            </div>
-          </ul>
+          <div class="collapse navbar-collapse d-flex justify-content-end" id="nav-principal">
+            <ul class="navbar-nav">
+              <!-- Icone de mensagem no cabeçalho -->
+              <li class="nav-item" style="margin-right: 10px">
+                <a href="" class="nav-link">
+                  <i class="fa-regular fa-message fa-lg text-light"></i>
+                </a>
+              </li>
+              <!-- Icone do sino no cabeçalho -->
+              <li class="nav-item" style="margin-right: 10px">
+                <a href="" class="nav-link">
+                  <i class="fa-regular fa-bell fa-lg text-light"></i>
+                </a>
+              </li>
+              <!-- Olá Usuário -->
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-light btn-lift dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Olá, Usuário
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="usuarios">
+                      <i class="fa-solid fa-user" style="margin-right: 10px"></i>
+                      Perfil</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="fa-solid fa-pen-to-square" style="margin-right: 10px"></i>
+                      Minha assinatura</a
+                    >
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="login">
+                      <i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i>
+                      Sair</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-
-    <!--Inicio Menu Cabeçalho-->
-    <div class="container-fluid d-flex justify-content-start bg-white">
-      <nav class="nav">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="home"> <i class="fa-solid fa-house"
-                style="margin-right: 5px;"></i> <strong>Home</strong> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="chamados"> <i class="fas fa-cog"
-                style="margin-right: 5px;"></i> <strong>Chamados</strong> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="clientes"> <i class="fa-solid fa-users"
-                style="margin-right: 5px;"></i> <strong>Clientes</strong> </a>
-          </li>
-          <li class="nav-item ">
-            <div class="dropdown">
-              <button class="btn btn-white dropdown-toggle btn-active" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="fa-solid fa-screwdriver-wrench text-primary" style="margin-right: 5px;"></i> <span
-                  class="text-primary"><strong>Operacional</strong></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="funcionarios">Funcionarios</a></li>
-                <li><a class="dropdown-item" href="veiculos">Veículos</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="estoque"> <i class="fa-solid fa-warehouse"
-                style="margin-right: 5px;"></i> <strong>Estoque</strong></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="financeiro"> <i class="fa-solid fa-dollar-sign"
-                style="margin-right: 5px;"></i> <strong>Financeiro</strong></a>
-          </li>
-        </ul>
       </nav>
+
+      <!--Inicio Menu Cabeçalho-->
+      <div class="container-fluid d-flex justify-content-start bg-white">
+        <nav class="nav">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="home">
+                <i class="fa-solid fa-house" style="margin-right: 5px"></i>
+                <strong>Home</strong>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="chamados">
+                <i class="fas fa-cog" style="margin-right: 5px"></i>
+                <strong>Chamados</strong>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="clientes">
+                <i class="fa-solid fa-users" style="margin-right: 5px"></i>
+                <strong>Clientes</strong>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button
+                  class="btn btn-white dropdown-toggle btn-active"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-screwdriver-wrench text-primary" style="margin-right: 5px"></i>
+                  <span class="text-primary"><strong>Operacional</strong></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="funcionarios">Funcionarios</a>
+                  </li>
+                  <li><a class="dropdown-item" href="veiculos">Veículos</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="estoque">
+                <i class="fa-solid fa-warehouse" style="margin-right: 5px"></i>
+                <strong>Estoque</strong></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="financeiro">
+                <i class="fa-solid fa-dollar-sign" style="margin-right: 5px"></i>
+                <strong>Financeiro</strong></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!--Fim Menu Cabeçalho-->
+    </header>
+    <!-- Fim do Cabeçalho -->
+
+    <!--Inicio body -->
+    <div class="containerp mt-4 p-4 rounded mb-4">
+      <h2><i class="fa-solid fa-car"></i> Veículos</h2>
+      <p>Chegou a hora de listar os veículos da empresa!</p>
     </div>
-    <!--Fim Menu Cabeçalho-->
-
-  </header><!-- Fim do Cabeçalho -->
-
-  <!--Inicio body -->
-  <div class="containerp mt-4 p-4 rounded mb-4">
-    <h2> <i class="fa-solid fa-car"></i> Veículos</h2>
-    <p>Chegou a hora de listar os veículos da empresa!</p>
-  </div>
-  <div class="bg container d-flex justify-content-center" style="flex-direction: column;">
-    <div class="main">
-      <div class="card">
-
-        <div class="container mt-3 mb-3">
-          <div class="alinhamentoFooter" style="float: inline-start;">
-            <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
+    <div class="bg container d-flex justify-content-center" style="flex-direction: column">
+      <div class="main">
+        <div class="card">
+          <div class="container mt-3 mb-3">
+            <div class="alinhamentoFooter" style="float: inline-start">
+              <button id="botaoAdd" class="btn btn-success">+ Cadastrar</button>
+            </div>
           </div>
-        </div>
 
-        <table class="table table-bordered table-hover mb-0 table-striped" id="tableVeiculos">
-          <thead style="text-align: center; background-color: #f0f0f0;">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Marca</th>
-              <th scope="col">Modelo</th>
-              <th scope="col">Ano</th>
-              <th scope="col">Placa</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody style="text-align: center;">
-            <tr>
-              <th scope="row">1</th>
-              <td>Ford</td>
-              <td>Fiesta</td>
-              <td>2018</td>
-              <td>JJJ-4D56</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Chevrolet</td>
-              <td>Onix</td>
-              <td>2019</td>
-              <td>JJJ-4D56</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Toyota</td>
-              <td>Corolla</td>
-              <td>2020</td>
-              <td>JJJ-4D56</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Volkswagen</td>
-              <td>Gol</td>
-              <td>2017</td>
-              <td>JJJ-4D56</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Renault</td>
-              <td>Sandero</td>
-              <td>2021</td>
-              <td>JJJ-4D56</td>
-              <td><a href=""><i class="fa-solid fa-pen-to-square iconeEdit"></i></a> <a href="#"><i
-                    class="fa-solid fa-trash iconeTrash"></i></a></td>
-            </tr>
-          </tbody>
-        </table>
+          <table class="table table-bordered table-hover mb-0 table-striped" id="tableVeiculos">
+            <thead style="text-align: center; background-color: #f0f0f0">
+              <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center" id="tableVeiculos"></tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal content -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class=" cabecalhoForm">
-        <img src="assets/img/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;">
-        <h1><i class="fa-solid fa-car"></i> Cadastrando Veículo</h1>
-      </div>
-      <br>
-      <form action="" method="" class="formModal">
-        <div class="row">
-          <div class="col-4">
-            <label for="">Marca</label>
-            <input type="text" id="" class="form-control" placeholder="Marca" required>
-          </div>
-          <div class="col-4">
-            <label for="">Modelo</label>
-            <input type="text" class="form-control" id="" placeholder="Modelo" required>
-          </div>
-
-          <div class="col-2">
-            <label for="">Ano</label>
-            <input type="number" class="form-control" id="" placeholder="Ano do veículo" required>
-          </div>
-          <div class="col-2">
-            <label for="">Placa</label>
-            <input type="number" class="form-control" id="" placeholder="Ano do veículo" required>
-          </div>
-
+    <!-- Modal content -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="cabecalhoForm">
+          <img src="assets/img/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px" />
+          <h1><i class="fa-solid fa-car"></i> Cadastrando Veículo</h1>
         </div>
+        <br />
+        <form action="/sqlVeiculo" method="post" class="formModal" id="formVeiculo">
+          <div class="row">
+            <div class="col-2">
+              <label for="">Placa</label>
+              <input name="placa" type="text" class="form-control" id="" placeholder="Ano do veículo" required />
+            </div>
+            <div class="col-4">
+              <label for="">Marca</label>
+              <input name="marca" type="text" id="" class="form-control" placeholder="Marca" required />
+            </div>
+            <div class="col-4">
+              <label for="">Modelo</label>
+              <input name="modelo" type="text" class="form-control" id="" placeholder="Modelo" required />
+            </div>
 
+            <div class="col-2">
+              <label for="">Ano</label>
+              <input name="ano" type="text" class="form-control" id="" placeholder="Ano do veículo" required />
+            </div>
+          </div>
+        
         <!--Botões -->
-        <div class="row" style="margin: 0.5px;">
-          <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Enviar</button>
-          <button type="button" class="btn btn-secondary col-2 closebtn" style="margin: 5px;">Voltar</button>
+        <div class="row mt-3" style="margin: 0.5px">
+          <button type="submit" class="btn btn-success col-2" style="margin: 5px">Cadastrar</button>
+          <button type="button" class="btn btn-secondary col-2 closebtn" style="margin: 5px">Voltar</button>
         </div>
-    </div>
-  </div>
-  <!--Fim modal-->
-  <!--Fim body -->
-
-  <!--inicio footer-->
-  <div class="container">
-    <footer>
-      <br>
-      <br>
-      <div>
-        <p class="text-muted alinhamentoFooter"><i class="fa-solid fa-code"></i> Desenvolvido por <a href="#"
-            style="text-decoration: none; color:gray;">Darth Dev</a></p>
-        <p class="text-muted alinhamentoFooter">copyright &copy; 2024 | Todos os direitos reservados</p>
+      </form>
       </div>
-    </footer>
-  </div>
-  <!--Fim footer-->
+    </div>
+    <!--Fim modal-->
+    <!--Fim body -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-    crossorigin="anonymous"></script>
-  <script>
-    // Capturando o modal
-    var modal = document.getElementById("myModal");
+    <!--inicio footer-->
+    <div class="container">
+      <footer>
+        <br />
+        <br />
+        <div>
+          <p class="text-muted alinhamentoFooter">
+            <i class="fa-solid fa-code"></i> Desenvolvido por
+            <a href="#" style="text-decoration: none; color: gray">Darth Dev</a>
+          </p>
+          <p class="text-muted alinhamentoFooter">copyright &copy; 2024 | Todos os direitos reservados</p>
+        </div>
+      </footer>
+    </div>
+    <!--Fim footer-->
 
-    // Capturando o botão de abrir o modal
-    var btn = document.getElementById("botaoAdd");
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"></script>
+    <script>
+      // Capturando o modal
+      var modal = document.getElementById("myModal");
 
-    // Capturando o X que fecha o modal
-    var span = document.getElementsByClassName("close-modal")[0];
+      // Capturando o botão de abrir o modal
+      var btn = document.getElementById("botaoAdd");
 
-    //capturando botão de voltar
-    var closebtn = document.getElementsByClassName("closebtn")[0];
+      // Capturando o X que fecha o modal
+      var span = document.getElementsByClassName("close-modal")[0];
 
-    // Configurando o botão cadastrar para abrir o modal
-    btn.onclick = function () {
-      modal.style.display = "block";
-    }
+      //capturando botão de voltar
+      var closebtn = document.getElementsByClassName("closebtn")[0];
 
-    // Configurando o <span> X para fechar o modal
-    span.onclick = function () {
-      modal.style.display = "none";
-    }
+      // Configurando o botão cadastrar para abrir o modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
 
-    closebtn.onclick = function () {
-      modal.style.display = "none";
-    }
-
-    // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
-    window.onclick = function (event) {
-      if (event.target == modal) {
+      // Configurando o <span> X para fechar o modal
+      span.onclick = function () {
         modal.style.display = "none";
-      }
-    }
+      };
 
-  </script>
+      closebtn.onclick = function () {
+        modal.style.display = "none";
+      };
 
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- dataTable -->
-  <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
-  <!-- SCRIPT -->
-  <script src="assets/js/scriptdata.js"></script>
-</body>
+      // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
 
+    <!-- jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <!-- dataTable -->
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+    <!-- SCRIPT -->
+    <script src="assets/js/scriptdata.js"></script>
+    <script src="assets/js/scriptdb.js"></script>
+    <!-- Inicializa o DataTables quando o documento estiver pronto-->
+    <script>
+      $(document).ready(function () {
+        $("#tableFuncioanarios").DataTable();
+        carregarVeiculos();
+      });
+    </script>
+  </body>
 </html>

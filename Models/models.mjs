@@ -146,10 +146,9 @@ export class NotaFiscal {
 }
 
 export class Servico {
-    constructor (id_servico, nr_nota_fiscal, id_categoria, dt_servico,
+    constructor (nr_nota_fiscal, id_categoria, dt_servico,
     descricao, valor) 
     {
-        this.id_servico = id_servico;
         this.nr_nota_fiscal = nr_nota_fiscal;
         this.id_categoria = id_categoria;
         this.dt_servico = dt_servico;
@@ -160,7 +159,6 @@ export class Servico {
         Object.defineProperty(this, 'servico', {
             get: () => {
                 return {
-                    id_servico: this.id_servico,
                     nr_nota_fiscal: this.nr_nota_fiscal,
                     id_categoria: this.id_categoria,
                     dt_servico: this.dt_servico,
@@ -169,7 +167,6 @@ export class Servico {
                 };
             },
             set: (newServico) => {
-                this.id_servico = newServico.id_servico;
                 this.nr_nota_fiscal = newServico.nr_nota_fiscal;
                 this.id_categoria = newServico.id_categoria;
                 this.dt_servico = newServico.dt_servico;
@@ -180,25 +177,10 @@ export class Servico {
    }
 }
 
-async function idJaExiste(id) {
-    const result = await client.query("SELECT COUNT(*) FROM tb_funcionario WHERE id_funcionario = ?", [id]);
-    const count = (result[0][0]['COUNT(*)'])
-    return count > 0;
-}
 
-async function gerarIdUnico() {
-    let id;
-    let existe;
-    do {
-        id = Math.floor(Math.random() * 100) + 1; // Gera um número aleatório entre 1 e 100
-        existe = await idJaExiste(id); // Verifica no banco de dados se já existe
-    } while (existe); // Se o ID já existe, gera outro
-    return id;
-}
 
 export class Funcionario {
-    constructor (id_funcionario,cpf, nome, telefone, endereco, email) {
-        this.id_funcionario = id_funcionario
+    constructor (cpf, nome, telefone, endereco, email) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -209,7 +191,6 @@ export class Funcionario {
         Object.defineProperty(this, 'funcionario', {
             get: () => {
                 return {
-                    id_funcionario: this.id_funcionario,
                     cpf: this.cpf,
                     nome: this.nome,
                     telefone: this.telefone,
@@ -218,7 +199,6 @@ export class Funcionario {
                 };
             },
             set: (newFuncionario) => {
-                this.id_funcionario = newFuncionario.id_funcionario;
                 this.cpf = newFuncionario.cpf;
                 this.nome = newFuncionario.nome;
                 this.telefone = newFuncionario.telefone;
@@ -229,10 +209,7 @@ export class Funcionario {
     }
    
     // Método estático para criar um funcionário de forma assíncrona
-    static async criar(cpf, nome, telefone, endereco, email) {
-        const id_funcionario = await gerarIdUnico(); // Gera o ID único
-        return new Funcionario(id_funcionario, cpf, nome, telefone, endereco, email); // Retorna o objeto criado
-    }
+    
 }
 
 export class Veiculo {
@@ -242,8 +219,8 @@ export class Veiculo {
         this.modelo = modelo;
         this.ano = ano;
 
-        // Definindo uma propriedade chamada 'veiculos' com getter e setter
-        Object.defineProperty(this, 'veiculos', {
+        // Definindo uma propriedade chamada 'veiculo' com getter e setter
+        Object.defineProperty(this, 'veiculo', {
             get: () => {
                 return {
                     placa: this.placa,
