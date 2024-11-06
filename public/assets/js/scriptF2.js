@@ -345,234 +345,39 @@ window.addEventListener("load", loadItems);
 // Call updateCounts to initialize the counts when the page loads
 updateCounts(); 
 
-// Função para listar serviços
-async function listServices() {
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = ''; // Limpa a tabela
 
-  try {
-    const response = await fetch('/services'); // Substitua '/services' pela rota do seu backend
-    const services = await response.json();
 
-    services.forEach((service, index) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${service.name}</td>
-        <td>${service.type}</td>
-        <td>${service.desc}</td>
-        <td>${service.metragem}</td>
-        <td>${service.valor.toFixed(2)}</td>
-        <td>
-          <button onclick="editService(${index})">Editar</button>
-          <button onclick="deleteService(${index})">Excluir</button>
-        </td>
-      `;
-      tbody.appendChild(row);
-    });
-  } catch (error) {
-    console.error('Erro ao listar serviços:', error);
-    // Exibir mensagem de erro na página
-  }
+
+import mysql from 'mysql2/promise';
+
+export const client = mysql.createPool(process.env.CONNECTION_STRING);
+
+// Função para selecionar todos os serviços
+export async function selectServicos() {
+    const results = await client.query("SELECT * FROM tb_servico;");
+    return results[0];
 }
 
-// Função para cadastrar ou atualizar um serviço
-async function saveService() {
-  const name = document.getElementById('name').value;
-  const type = document.getElementById('type').value;
-  const desc = document.getElementById('desc').value;
-  const metragem = document.getElementById('metragem').value;
-  const valor = document.getElementById('valor').value;
-
-  const service = {
-    name,
-    type,
-    desc,
-    metragem,
-    valor
-  };
-
-  let url = '/services'; // Substitua '/services' pela rota do seu backend
-  let method = 'POST'; // Método para criar
-
-  // Verificar se está editando um serviço existente
-  const id = document.getElementById('serviceId').value;
-  if (id) {
-    url += `/${id}`; // Adiciona ID na URL
-    method = 'PUT'; // Método para atualizar
-  }
-
-  try {
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(service)
-    });
-
-    if (response.ok) {
- const result = await response.json();
-      alert('Serviço salvo com sucesso!');
-      listServices(); // Atualiza a lista de serviços
-    } else {
-      const error = await response.json();
-      alert(`Erro ao salvar serviço: ${error.message}`);
-    }
-  } catch (error) {
-    console.error('Erro ao salvar serviço:', error);
-    alert('Erro ao salvar serviço. Tente novamente.');
-  }
+// Função para inserir um novo serviço
+export async function insertServico(servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor];
+    await client.query("INSERT INTO tb_servico(nr_nota_fiscal, id_categoria, dt_servico, descricao, valor) VALUES (?, ?, ?, ?, ?)", values);
 }
 
-// Função para editar um serviço
-async function editService(index) {
-  const tbody = document.getElementById('tbody');
-  const service = await fetch(`/services/${index}`); // Substitua pela rota correta
-  const data = await service.json();
+// Função para selecionar um serviço pelo ID
+export async function selectServico(id) {
+    const results = await client.query("SELECT * FROM tb_servico WHERE id_servico = ?;", [id]);
+    return results[0];
+}
 
-  document.getElementById('name').value = data.name;
-  document.getElementById('type').value = data.type;
-  document.getElementById('desc').value = data.desc;
-  document.getElementById('metragem').value = data.metragem;
-  document.getElementById('valor').value = data.valor;
-  document.getElementById('serviceId').value = data.id; // Armazena o ID para edição
+// Função para atualizar um serviço
+export async function updateServico(id, servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor, id];
+    await client.query("UPDATE tb_servico SET nr_nota_fiscal = ?, id_categoria = ?, dt_servico = ?, descricao = ?, valor = ? WHERE id_servico = ?", values);
 }
 
 // Função para excluir um serviço
-async function deleteService(index) {
-  if (confirm('Tem certeza que deseja excluir este serviço?')) {
-    try {
-      const response = await fetch(`/services/${index}`, {
-        method: 'DELETE' // Método para excluir
-      });
-
-      if (response.ok) {
-        alert('Serviço excluído com sucesso!');
-        listServices(); // Atualiza a lista de serviços
-      } else {
-        const error = await response.json();
-        alert(`Erro ao excluir serviço: ${error.message}`);
-      }
-    } catch (error) {
-      console.error('Erro ao excluir serviço:', error);
-      alert('Erro ao excluir serviço. Tente novamente.');
-    }
-  }
-}
-
-// Chama a função para listar serviços ao carregar a página
-document.addEventListener('DOMContentLoaded', listServices); `javascript`
-// Função para listar serviços
-async function listServices() {
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = ''; // Limpa a tabela
-
-  try {
-    const response = await fetch('/services'); // Substitua '/services' pela rota do seu backend
-    const services = await response.json();
-
-    services.forEach((service, index) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${service.name}</td>
-        <td>${service.type}</td>
-        <td>${service.desc}</td>
-        <td>${service.metragem}</td>
-        <td>${service.valor.toFixed(2)}</td>
-        <td>
-          <button onclick="editService(${index})">Editar</button>
-          <button onclick="deleteService(${index})">Excluir</button>
-        </td>
-      `;
-      tbody.appendChild(row);
-    });
-  } catch (error) {
-    console.error('Erro ao listar serviços:', error);
-    // Exibir mensagem de erro na página
-  }
-}
-
-// Função para cadastrar ou atualizar um serviço
-async function saveService() {
-  const name = document.getElementById('name').value;
-  const type = document.getElementById('type').value;
-  const desc = document.getElementById('desc').value;
-  const metragem = document.getElementById('metragem').value;
-  const valor = document.getElementById('valor').value;
-
-  const service = {
-    name,
-    type,
-    desc,
-    metragem,
-    valor
-  };
-
-  let url = '/services'; // Substitua '/services' pela rota do seu backend
-  let method = 'POST'; // Método para criar
-
-  // Verificar se está editando um serviço existente
-  const id = document.getElementById('serviceId').value;
-  if (id) {
-    url += `/${id}`; // Adiciona ID na URL
-    method = 'PUT'; // Método para atualizar
-  }
-
-  try {
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(service)
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      alert('Serviço salvo com sucesso!');
-      listServices(); // Atualiza a lista de serviços
-    } else {
-      const error = await response.json();
-      alert(`Erro ao salvar serviço: ${error.message}`);
-    }
-  } catch (error) {
-    console.error('Erro ao salvar serviço:', error);
-    alert('Erro ao salvar serviço. Tente novamente.');
-  }
-}
-
-// Função para editar um serviço
-async function editService(index) {
-  const tbody = document.getElementById('tbody');
-  const service = await fetch(`/services/${index}`); // Substitua pela rota correta
-  const data = await service.json();
-
-  document.getElementById('name').value = data.name;
-  document.getElementById('type').value = data.type;
-  document.getElementById('desc').value = data.desc;
-  document.getElementById('metragem').value = data.metragem;
-  document.getElementById('valor').value = data.valor;
-  document.getElementById('serviceId').value = data.id; // Armazena o ID para edição
-}
-
-// Função para excluir um serviço
-async function deleteService(index) {
-  if (confirm('Tem certeza que deseja excluir este serviço?')) {
-    try {
-      const response = await fetch(`/services/${index}`, {
-        method: 'DELETE' // Método para excluir
-      });
-
-      if (response.ok) {
-        alert('Serviço excluído com sucesso!');
-        listServices(); // Atualiza a lista de serviços
-      } else {
-        const error = await response.json();
-        alert(`Erro ao excluir serviço: ${error.message}`);
-      }
-    } catch (error) {
-      console.error('Erro ao excluir serviço:', error);
-      alert('Erro ao excluir serviço. Tente novamente.');
-    }
-  }
+export async function deleteServico(id) {
+    const values = [id];
+    await client.query("DELETE FROM tb_servico WHERE id_servico = ?", values);
 }

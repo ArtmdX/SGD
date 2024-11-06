@@ -1,5 +1,7 @@
 import { client } from "../db.mjs";
 
+
+
 export class Produto {
     constructor(id_produto, nome_Produto, un_medida, qtd_estoque) {
         this.id_produto = id_produto;
