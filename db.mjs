@@ -92,3 +92,34 @@ export async function deleteVeiculo(Placa) {
     await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
 }
 
+
+// Função para selecionar todos os serviços*************************************************************************************
+export async function selectServicos() {
+    const results = await client.query("SELECT * FROM tb_servico;");
+    return results[0];
+}
+
+// Função para inserir um novo serviço
+export async function insertServico(servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor];
+    await client.query("INSERT INTO tb_servico(nr_nota_fiscal, id_categoria, dt_servico, descricao, valor) VALUES (?, ?, ?, ?, ?)", values);
+}
+
+// Função para selecionar um serviço pelo ID
+export async function selectServico(id) {
+    const results = await client.query("SELECT * FROM tb_servico WHERE id_servico = ?;", [id]);
+    return results[0];
+}
+
+// Função para atualizar um serviço
+export async function updateServico(id, servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor, id];
+    await client.query("UPDATE tb_servico SET nr_nota_fiscal = ?, id_categoria = ?, dt_servico = ?, descricao = ?, valor = ? WHERE id_servico = ?", values);
+}
+
+// Função para excluir um serviço
+export async function deleteServico(id) {
+    const values = [id];
+    await client.query("DELETE FROM tb_servico WHERE id_servico = ?", values);
+}
+//**********************************************************************************************************************************************************************
