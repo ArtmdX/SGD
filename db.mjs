@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise"
 import dotenv from 'dotenv'
+import { Veiculo } from "./Models/models.mjs";
 dotenv.config()
 
 export const client = mysql.createPool(process.env.CONNECTION_STRING)
@@ -27,4 +28,98 @@ export async function uptadeFuncionario(id, Funcionario){
 export async function deleteFuncionario(id){
     const values = [id]
     await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", values)
+}
+
+//CLIENTES
+//Seleciona todos os clientes
+export async function selectClientes(){
+    const results = await client.query('SELECT * FROM tb_cliente;')
+    return results[0]
+}
+
+//seleciona o cliente por id
+export async function selectCliente(id){
+    const results = await client.query('SELECT * FROM tb_cliente WHERE id_cliente=?;', [id])
+    return results[0]
+}
+
+//insere um novo cliente
+export async function insertCliente(Cliente){
+    console.log(Cliente)
+    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email]
+    await client.query('INSERT INTO tb_cliente(cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?)', values)
+}
+
+//atualiza um cliente
+export async function updateCliente(id, Cliente){
+    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email, id]
+    await client.query('UPDATE tb_cliente SET cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
+}
+
+//deletar um cliente
+export async function deleteCliente(id){
+    const values = [id]
+    await client.query('DELETE FROM tb_funcionario WHERE id_cliente=?', values)
+}
+
+//Veiculos
+//Selecionar todos os veiculos
+export async function selectVeiculos() {
+    const results = await client.query("SELECT * FROM tb_veiculo;");
+    return results[0]
+}
+
+//Selecionar veiculo por placa
+export async function selecionarVeiculo (id) {
+    const results = await client.query("SELECT * FROM tb_veiculo WHERE id_veiculo=?", [id])
+    return results[0]
+}
+
+//Inserir um veiculo 
+export async function insertVeiculo(Veiculo) {
+    const values =[Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano]
+    await client.query("INSERT INTO tb_veiculo(placa, marca, modelo, ano) VALUES (?,?,?,?)", values)
+}
+
+//Uptade do Veiculo
+export async function uptadeVeiculo (id, Veiculo) {
+    const values = [Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano, id, Veiculo]
+    await client.query("UPDATE tb_veiculo SET placa=?, marca=?, modelo=?, ano=?", values)
+}
+
+//deletar um Veiculo
+export async function deleteVeiculo(Placa) {
+    const values = [Placa]
+    await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
+}
+
+
+// Função para selecionar todos os serviços
+export async function selectServicos() {
+    const results = await client.query("SELECT * FROM tb_servico;");
+    return results[0];
+}
+
+// Função para inserir um novo serviço
+export async function insertServico(servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor];
+    await client.query("INSERT INTO tb_servico(nr_nota_fiscal, id_categoria, dt_servico, descricao, valor) VALUES (?, ?, ?, ?, ?)", values);
+}
+
+// Função para selecionar um serviço pelo ID
+export async function selectServico(id) {
+    const results = await client.query("SELECT * FROM tb_servico WHERE id_servico = ?;", [id]);
+    return results[0];
+}
+
+// Função para atualizar um serviço
+export async function updateServico(id, servico) {
+    const values = [servico.nr_nota_fiscal, servico.id_categoria, servico.dt_servico, servico.descricao, servico.valor, id];
+    await client.query("UPDATE tb_servico SET nr_nota_fiscal = ?, id_categoria = ?, dt_servico = ?, descricao = ?, valor = ? WHERE id_servico = ?", values);
+}
+
+// Função para excluir um serviço
+export async function deleteServico(id) {
+    const values = [id];
+    await client.query("DELETE FROM tb_servico WHERE id_servico = ?", values);
 }

@@ -134,7 +134,6 @@
         <table class="table table-bordered table-hover mb-0 table-striped display" id="tableFuncioanarios">
           <thead style="text-align: center; background-color: #f0f0f0;">
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">CPF</th>
               <th scope="col">Nome</th>
               <th scope="col">Endereço</th>
@@ -143,7 +142,7 @@
               <th scope="col">Ações</th>
             </tr>
           </thead>
-          <tbody id="tabela-funcionarios">
+          <tbody>
             
           </tbody>
         </table>
@@ -262,7 +261,13 @@
   <!-- SCRIPT -->
   <script src="assets/js/scriptdata.js"></script>
   <script src="assets/js/scriptdb.js"></script>
-  
+
+  <!-- Inicializa o DataTables quando o documento estiver pronto-->
+  <script>
+    $(document).ready(function() {
+        $('#tableFuncioanarios').DataTable();
+        carregarFuncionarios();
+    });</script>
   
 
 </body>

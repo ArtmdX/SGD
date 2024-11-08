@@ -1,5 +1,3 @@
-import { client } from "../db.mjs";
-
 export class Produto {
     constructor(id_produto, nome_Produto, un_medida, qtd_estoque) {
         this.id_produto = id_produto;
@@ -57,19 +55,17 @@ export class Fornecedor {
 }
 
 export class Cliente {
-    constructor (id_cliente, cpf_cnpj, nome, telefone, endereco, email){
-        this.id_cliente = id_cliente;
+    constructor (cpf_cnpj, nome, telefone, endereco, email){
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
         
-        // Definindo uma propriedade chamada 'clientes' com getter e setter
-        Object.defineProperty(this, 'clientes', {
+        // Definindo uma propriedade chamada 'cliente' com getter e setter
+        Object.defineProperty(this, 'cliente', {
             get: () => {
                 return {
-                    id_cliente: this.id_cliente,
                     cpf_cnpj: this.cpf_cnpj,
                     nome: this.nome,
                     telefone: this.telefone,
@@ -78,7 +74,6 @@ export class Cliente {
                 };
             },
             set: (newCliente) => {
-                this.id_cliente = newCliente.id_cliente;
                 this.cpf_cnpj = newCliente.cpf_cnpj;
                 this.nome = newCliente.nome;
                 this.telefone = newCliente.telefone;
@@ -144,10 +139,9 @@ export class NotaFiscal {
 }
 
 export class Servico {
-    constructor (id_servico, nr_nota_fiscal, id_categoria, dt_servico,
+    constructor (nr_nota_fiscal, id_categoria, dt_servico,
     descricao, valor) 
     {
-        this.id_servico = id_servico;
         this.nr_nota_fiscal = nr_nota_fiscal;
         this.id_categoria = id_categoria;
         this.dt_servico = dt_servico;
@@ -158,7 +152,6 @@ export class Servico {
         Object.defineProperty(this, 'servico', {
             get: () => {
                 return {
-                    id_servico: this.id_servico,
                     nr_nota_fiscal: this.nr_nota_fiscal,
                     id_categoria: this.id_categoria,
                     dt_servico: this.dt_servico,
@@ -167,7 +160,6 @@ export class Servico {
                 };
             },
             set: (newServico) => {
-                this.id_servico = newServico.id_servico;
                 this.nr_nota_fiscal = newServico.nr_nota_fiscal;
                 this.id_categoria = newServico.id_categoria;
                 this.dt_servico = newServico.dt_servico;
@@ -178,25 +170,10 @@ export class Servico {
    }
 }
 
-async function idJaExiste(id) {
-    const result = await client.query("SELECT COUNT(*) FROM tb_funcionario WHERE id_funcionario = ?", [id]);
-    const count = (result[0][0]['COUNT(*)'])
-    return count > 0;
-}
 
-async function gerarIdUnico() {
-    let id;
-    let existe;
-    do {
-        id = Math.floor(Math.random() * 100) + 1; // Gera um número aleatório entre 1 e 100
-        existe = await idJaExiste(id); // Verifica no banco de dados se já existe
-    } while (existe); // Se o ID já existe, gera outro
-    return id;
-}
 
 export class Funcionario {
-    constructor (id_funcionario,cpf, nome, telefone, endereco, email) {
-        this.id_funcionario = id_funcionario
+    constructor (cpf, nome, telefone, endereco, email) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -207,7 +184,6 @@ export class Funcionario {
         Object.defineProperty(this, 'funcionario', {
             get: () => {
                 return {
-                    id_funcionario: this.id_funcionario,
                     cpf: this.cpf,
                     nome: this.nome,
                     telefone: this.telefone,
@@ -216,7 +192,6 @@ export class Funcionario {
                 };
             },
             set: (newFuncionario) => {
-                this.id_funcionario = newFuncionario.id_funcionario;
                 this.cpf = newFuncionario.cpf;
                 this.nome = newFuncionario.nome;
                 this.telefone = newFuncionario.telefone;
@@ -224,12 +199,6 @@ export class Funcionario {
                 this.email = newFuncionario.email;
             }
         });
-    }
-   
-    // Método estático para criar um funcionário de forma assíncrona
-    static async criar(cpf, nome, telefone, endereco, email) {
-        const id_funcionario = await gerarIdUnico(); // Gera o ID único
-        return new Funcionario(id_funcionario, cpf, nome, telefone, endereco, email); // Retorna o objeto criado
     }
 }
 
@@ -240,8 +209,8 @@ export class Veiculo {
         this.modelo = modelo;
         this.ano = ano;
 
-        // Definindo uma propriedade chamada 'veiculos' com getter e setter
-        Object.defineProperty(this, 'veiculos', {
+        // Definindo uma propriedade chamada 'veiculo' com getter e setter
+        Object.defineProperty(this, 'veiculo', {
             get: () => {
                 return {
                     placa: this.placa,
