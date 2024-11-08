@@ -86,7 +86,7 @@ app.delete('/sqlcliente/:id', async (request, response) => {
     await db.deleteCliente(id);
     response.sendStatus(204);
 })
-//--------------------ROTAS VEICULOS---------------------
+//--------------------CRUD VEICULOS---------------------
 // Rota POST para inserir um Veiculo
 app.post("/sqlVeiculo", async (request, response) =>{
     const {placa, marca, modelo, ano,} = request.body;
@@ -120,6 +120,42 @@ app.get("/sqlVeiculo", async (request, response) =>{
 app.delete("/sqlVeiculo/:placa", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo);
     await db.deleteVeiculo(id);
+    response.sendStatus(204);
+})
+
+/*-----------ROTAS ESTOQUE------------------*/
+// Rota POST para inserir um Produto
+app.post("/sqlProduto", async (request, response) =>{
+    const {id_produto, un_medida, qtd_estoque} = request.body;
+    const novoProduto = await models.Produto.criar(id_produto, un_medida, qtd_estoque)
+    await db.insertVeiculo(novoProduto.Produto)
+    response.redirect("/Produto");
+})
+
+//Rota PATCH para atualizar um Produto
+app.patch("/sqlProduto/:id_produto", async (request, response) =>{
+    const id_produto = parseInt(request.params.id_produto)
+    const produto = request.body
+    await db.uptadeProduto(id_produto, produto)
+    response.sendStatus(200)
+})
+// Rota GET para selecionar um Produto
+app.get("/sqlProduto/:id_produto", async (request, response) =>{
+    const id_produto = parseInt(request.params.id_produto);
+    const results = await db.selectProduto(id_produto);
+    response.json(results);
+})
+
+// Rota GET para selecionar todos os veiculo
+app.get("/sqlProduto", async (request, response) =>{
+    const results = await db.selectProduto();
+    response.json(results)
+})
+
+// Rota DELETE para excluir um Veiculo
+app.delete("/sqlProduto/:id_produto", async (request, response) =>{
+    const id_produto = parseInt(request.params.id_produto);
+    await db.deleteProduto(id_produto);
     response.sendStatus(204);
 })
 //serviços**************************************************************************************************************************
