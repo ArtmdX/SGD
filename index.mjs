@@ -126,10 +126,10 @@ app.delete("/sqlVeiculo/:placa", async (request, response) =>{
 /*-----------ROTAS ESTOQUE------------------*/
 // Rota POST para inserir um Produto
 app.post("/sqlProduto", async (request, response) =>{
-    const {id_produto, un_medida, qtd_estoque} = request.body;
-    const novoProduto = await models.Produto.criar(id_produto, un_medida, qtd_estoque)
-    await db.insertVeiculo(novoProduto.Produto)
-    response.redirect("/Produto");
+    const {nome, un_medida, qtd_estoque} = request.body;
+    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque)
+    await db.insertProduto(novoProduto.produto)
+    response.redirect("/estoque");
 })
 
 //Rota PATCH para atualizar um Produto
@@ -137,26 +137,27 @@ app.patch("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto)
     const produto = request.body
     await db.uptadeProduto(id_produto, produto)
-    response.sendStatus(200)
+    response.redirect("/estoque");
 })
+
 // Rota GET para selecionar um Produto
 app.get("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
-    const results = await db.selectProduto(id_produto);
+    const results = await db.selecionarProduto(id_produto);
     response.json(results);
 })
 
-// Rota GET para selecionar todos os veiculo
+// Rota GET para selecionar todos os Produtos
 app.get("/sqlProduto", async (request, response) =>{
     const results = await db.selectProduto();
     response.json(results)
 })
 
-// Rota DELETE para excluir um Veiculo
+// Rota DELETE para excluir um Produto
 app.delete("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
     await db.deleteProduto(id_produto);
-    response.sendStatus(204);
+    response.redirect("/estoque");
 })
 //serviços**************************************************************************************************************************
 // Rota para obter todos os serviços

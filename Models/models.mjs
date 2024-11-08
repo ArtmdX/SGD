@@ -1,7 +1,6 @@
 export class Produto {
-    constructor(id_produto, nome_Produto, un_medida, qtd_estoque) {
-        this.id_produto = id_produto;
-        this.nome_Produto = nome_Produto;
+    constructor(nome, un_medida, qtd_estoque) {
+        this.nome = nome;
         this.un_medida = un_medida;
         this.qtd_estoque = qtd_estoque;
 
@@ -9,15 +8,13 @@ export class Produto {
         Object.defineProperty(this, 'produto', {
             get: () => {
                 return {
-                    id_produto: this.id_produto,
-                    nome_Produto: this.nome_Produto,
+                    nome: this.nome,
                     un_medida: this.un_medida,
                     qtd_estoque: this.qtd_estoque
                 };
             },
             set: (newProduto) => {
-                this.id_produto = newProduto.id_produto;
-                this.nome_Produto = newProduto.nome_Produto;
+                this.nome = newProduto.nome;
                 this.un_medida = newProduto.un_medida;
                 this.qtd_estoque = newProduto.qtd_estoque;
             }
@@ -26,8 +23,7 @@ export class Produto {
 }
 
 export class Fornecedor {
-    constructor(id_fornecedor, cnpj, fornecedor, telefone, email) {
-        this.id_fornecedor = id_fornecedor;
+    constructor(cnpj, fornecedor, telefone, email) {
         this.cnpj = cnpj;
         this.fornecedor = fornecedor;
         this.telefone = telefone;
@@ -36,7 +32,6 @@ export class Fornecedor {
         Object.defineProperty(this, 'fornecedores', {
             get: () => {
                 return {
-                    id_fornecedor: this.id_fornecedor,
                     cnpj: this.cnpj,
                     fornecedor: this.fornecedor,
                     telefone: this.telefone,
@@ -44,7 +39,6 @@ export class Fornecedor {
                 };
             },
             set: (newFornecedor) => {
-                this.id_fornecedor = newFornecedor.id_fornecedor;
                 this.cnpj = newFornecedor.cnpj;
                 this.fornecedor = newFornecedor.fornecedor;
                 this.telefone = newFornecedor.telefone;

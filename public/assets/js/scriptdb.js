@@ -59,4 +59,21 @@ async function carregarClientes() {
     table.draw()
 }
 
+async function carregarEstoque(){
+    const response = await fetch('/sqlProduto');
+    const produtos = await response.json();
 
+    const table = $('#tableEstoque').DataTable();
+    table.clear();
+
+    produtos.forEach(produto => {
+        table.row.add([
+            produto.img,
+            produto.nome,
+            produto.qtd_estoque,
+            produto.un_medida,
+            produto.dt_entrada,
+            produto.dt_validade
+        ])
+    })
+}

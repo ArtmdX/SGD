@@ -90,7 +90,7 @@ export async function insertVeiculo(Veiculo) {
 //Uptade do Veiculo
 export async function uptadeVeiculo (id, Veiculo) {
     const values = [Veiculo.placa, Veiculo.marca, Veiculo.modelo, Veiculo.ano, id, Veiculo]
-    await client.query("UPDATE tb_veiculo SET placa=?, marca=?, modelo=?, ano=?", values)
+    await client.query("UPDATE tb_veiculo SET placa=?, marca=?, modelo=?, ano=? WHERE id_veiculo=?", values)
 }
 
 //deletar um Veiculo
@@ -133,7 +133,7 @@ export async function deleteServico(id) {
 //Selecionar todos os produtos
 export async function selectProduto() {
     const results = await client.query("SELECT * FROM tb_produto;");
-    return results
+    return results[0]
 }
 
 //Selecionar produto por Id
@@ -144,14 +144,14 @@ export async function selecionarProduto (id_produto) {
 
 //Inserir um novo produto
 export async function insertProduto(produto) {
-    const values =[produto.id, produto.un_medida, produto.qtd_estoque]
-    await client.query("INSERT INTO tb_veiculo(id_produto, un_medida, qtd_estoque) VALEUS (?,?,?,?)", values)
+    const values =[produto.nome, produto.un_medida, produto.qtd_estoque]
+    await client.query("INSERT INTO tb_produto(nome, un_medida, qtd_estoque) VALUES (?,?,?)", values)
 }
 
 //Uptade do produto
 export async function uptadeProduto (id_produto, produto) {
-    const values = [produto.id, produto.un_medida, produto.qtd_estoque, id_produto, produto]
-    await client.query("UPDATE tb_produto SET id_produto=?, un_medida=?, qtd_estoque=?", values)
+    const values = [produto.nome, produto.un_medida, produto.qtd_estoque, id_produto, produto]
+    await client.query("UPDATE tb_produto SET nome=? un_medida=?, qtd_estoque=? WHERE id_produto=? ", values)
 }
 
 //deletar um produto
