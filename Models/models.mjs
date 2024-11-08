@@ -1,8 +1,10 @@
 export class Produto {
-    constructor(nome, un_medida, qtd_estoque) {
+    constructor(nome, un_medida, qtd_estoque, dt_entrada, dt_validade) {
         this.nome = nome;
         this.un_medida = un_medida;
         this.qtd_estoque = qtd_estoque;
+        this.dt_entrada = dt_entrada;
+        this.dt_validade = dt_validade;
 
         // Definindo uma propriedade chamada 'produto' com getter e setter
         Object.defineProperty(this, 'produto', {
@@ -10,13 +12,17 @@ export class Produto {
                 return {
                     nome: this.nome,
                     un_medida: this.un_medida,
-                    qtd_estoque: this.qtd_estoque
+                    qtd_estoque: this.qtd_estoque,
+                    dt_entrada: this.dt_entrada,
+                    dt_validade: this.dt_validade
                 };
             },
             set: (newProduto) => {
                 this.nome = newProduto.nome;
                 this.un_medida = newProduto.un_medida;
                 this.qtd_estoque = newProduto.qtd_estoque;
+                this.dt_entrada = newProduto.dt_entrada;
+                this.dt_validade = newProduto.dt_validade;
             }
         });
     }

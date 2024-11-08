@@ -126,8 +126,8 @@ app.delete("/sqlVeiculo/:placa", async (request, response) =>{
 /*-----------ROTAS ESTOQUE------------------*/
 // Rota POST para inserir um Produto
 app.post("/sqlProduto", async (request, response) =>{
-    const {nome, un_medida, qtd_estoque} = request.body;
-    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque)
+    const {nome, un_medida, qtd_estoque, dt_entrada, dt_validade} = request.body;
+    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque, dt_entrada, dt_validade)
     await db.insertProduto(novoProduto.produto)
     response.redirect("/estoque");
 })
