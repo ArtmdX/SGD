@@ -100,7 +100,7 @@ export async function deleteVeiculo(Placa) {
 }
 
 
-// Função para selecionar todos os serviços
+// Função para selecionar todos os serviços*******************************************************************************************************************
 export async function selectServicos() {
     const results = await client.query("SELECT * FROM tb_servico;");
     return results[0];
@@ -129,6 +129,7 @@ export async function deleteServico(id) {
     const values = [id];
     await client.query("DELETE FROM tb_servico WHERE id_servico = ?", values);
 }
+//servico**********************************************************************************************************************************************************
 /********************ESTOQUE********************/
 //Selecionar todos os produtos
 export async function selectProduto() {
