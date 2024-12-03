@@ -98,7 +98,7 @@ export async function deleteVeiculo(Placa) {
     await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
 }
 
-/********************Serviços********************/
+
 // Função para selecionar todos os serviços
 export async function selectServicos() {
     const results = await client.query("SELECT * FROM tb_servico;");
