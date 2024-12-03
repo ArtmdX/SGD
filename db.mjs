@@ -1,6 +1,5 @@
 import mysql from "mysql2/promise"
 import dotenv from 'dotenv'
-import { Produto, Veiculo } from "./Models/models.mjs";
 dotenv.config()
 
 export const client = mysql.createPool(process.env.CONNECTION_STRING)
