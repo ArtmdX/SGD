@@ -13,8 +13,8 @@ export async function selectFuncionarios(){
 
 //Inserir funcionario por ID
 export async function insertFuncionario(Funcionario){
-    const values = [Funcionario.id_funcionario, Funcionario.cpf, Funcionario.nome, Funcionario.telefone, Funcionario.endereco, Funcionario.email]
-    await client.query("INSERT INTO tb_funcionario(id_funcionario, cpf, nome, telefone, endereco, email) VALUES (?,?,?,?,?,?)", values)
+    const values = [Funcionario.cpf, Funcionario.nome, Funcionario.telefone, Funcionario.endereco, Funcionario.email]
+    await client.query("INSERT INTO tb_funcionario(cpf, nome, telefone, endereco, email) VALUES (?,?,?,?,?)", values)
 }
 
 //Selecionar funcionario por ID
@@ -31,8 +31,7 @@ export async function uptadeFuncionario(id, Funcionario){
 
 //Deletar um Funcionario
 export async function deleteFuncionario(id){
-    const values = [id]
-    await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", values)
+    await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", id)
 }
 
 /********************CLIENTES********************/
@@ -51,13 +50,13 @@ export async function selectCliente(id){
 //insere um novo cliente
 export async function insertCliente(Cliente){
     console.log(Cliente)
-    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email]
+    const values = [Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email]
     await client.query('INSERT INTO tb_cliente(cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?)', values)
 }
 
 //atualiza um cliente
 export async function updateCliente(id, Cliente){
-    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email, id]
+    const values = [Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email, id]
     await client.query('UPDATE tb_cliente SET cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
 }
 

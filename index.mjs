@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rota POST para inserir um funcionário
 app.post("/sqlfuncionarios", async (request, response) =>{
     const {nome, endereco, cpf, telefone, email} = request.body;
-    const novoFuncionario = await new models.Funcionario(cpf, nome, telefone, endereco, email)
+    const novoFuncionario = new models.Funcionario(cpf, nome, telefone, endereco, email)
     await db.insertFuncionario(novoFuncionario.funcionario)
     response.redirect("/funcionarios");
 })
@@ -33,7 +33,7 @@ app.patch("/sqlfuncionarios/:id", async (request, response) =>{
 app.get("/sqlfuncionarios/:id", async (request, response) =>{
     const id = parseInt(request.params.id);
     const results = await db.selectFuncionario(id);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os funcionários
@@ -60,14 +60,13 @@ app.get('/sqlcliente', async (request, response) => {
 app.get('/sqlcliente/:id', async (request, response) => {
     const id = parseInt(request.params.id);
     const results = await db.selectCliente(id);
-    response.json(results)
+    response.json(results[0])
 })
 
 //Rota para inserir um cliente
 app.post('/sqlcliente', async(request, response) => {
-    const {nome, cpf_cnpj, telefone, email, endereco} = request.body;
-    const novocliente = new models.Cliente(nome, cpf_cnpj, telefone, endereco, email)
-    console.log(novocliente.cliente)
+    const {cpf_cnpj, nome, telefone, email, endereco} = request.body;
+    const novocliente = new models.Cliente(cpf_cnpj, nome, telefone, endereco, email)
     await db.insertCliente(novocliente.cliente)
     response.redirect('/clientes')
 })
@@ -76,7 +75,7 @@ app.post('/sqlcliente', async(request, response) => {
 app.patch('/sqlcliente/:id', async (request, response) => {
     const id = parseInt(request.params.id);
     const cliente = request.body;
-    await db.updateCliente(id, Cliente)
+    await db.updateCliente(id, cliente)
     response.sendStatus(200)
 })
 
@@ -271,5 +270,5 @@ app.get("/login", (request, response, next) => {
 });
 
 app.listen(process.env.PORT, () =>(
-    console.log('Rodando!')
+    console.log('Rodando: http://localhost:3000')
 ));
