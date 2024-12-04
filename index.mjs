@@ -95,7 +95,7 @@ app.post("/sqlVeiculo", async (request, response) =>{
 })
 
 //Rota PATCH para atualizar um Veiculo
-app.patch("/sqlVeiculo/:id", async (request, response) =>{
+app.patch("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo)
     const veiculo = request.body
     await db.uptadeVeiculo(id, veiculo)
@@ -103,10 +103,10 @@ app.patch("/sqlVeiculo/:id", async (request, response) =>{
 })
 
 // Rota GET para selecionar um Veiculo
-app.get("/sqlVeiculo/:id", async (request, response) =>{
+app.get("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo);
     const results = await db.selecionarVeiculo(id);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os veiculo
@@ -116,7 +116,7 @@ app.get("/sqlVeiculo", async (request, response) =>{
 })
 
 // Rota DELETE para excluir um Veiculo
-app.delete("/sqlVeiculo/:placa", async (request, response) =>{
+app.delete("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo);
     await db.deleteVeiculo(id);
     response.sendStatus(204);
@@ -128,7 +128,7 @@ app.post("/sqlProduto", async (request, response) =>{
     const {nome, un_medida, qtd_estoque} = request.body;
     const novoProduto = new models.Produto(nome, un_medida, qtd_estoque)
     await db.insertProduto(novoProduto.produto)
-    response.redirect("/estoque");
+    response.redirect('/estoque');
 })
 
 //Rota PATCH para atualizar um Produto
@@ -136,7 +136,7 @@ app.patch("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto)
     const produto = request.body
     await db.uptadeProduto(id_produto, produto)
-    response.redirect("/estoque");
+    response.sendStatus(200);
 })
 
 // Rota GET para selecionar um Produto
@@ -156,7 +156,7 @@ app.get("/sqlProduto", async (request, response) =>{
 app.delete("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
     await db.deleteProduto(id_produto);
-    response.redirect("/estoque");
+    response.sendStatus(200);
 })
 //serviços**************************************************************************************************************************
 // Rota para obter todos os serviços

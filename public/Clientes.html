@@ -272,7 +272,48 @@
         </div>
       </div>
       <!--Fim modal-->
-
+<!--Modal editar-->
+<div id="editModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="cabecalhoForm">
+      <img src="assets/img/logo.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;" />
+      <h1><i class="fa-solid fa-user-group"></i> Editando Cliente</h1>
+    </div>
+    <br />
+    <form id="formEditCliente" class="formModal">
+      <div class="row my-3">
+        <div class="col-6">
+          <label for="editNome">Nome</label>
+          <input id="editNome" name="nome" type="text" class="form-control" placeholder="Nome" required />
+        </div>
+        <div class="col-6">
+          <label for="editCpfCnpj">CPF/CNPJ</label>
+          <input id="editCpfCnpj" name="cpf_cnpj" type="text" class="form-control" placeholder="CPF/CNPJ" required />
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label for="editCpfCnpj">Telefone</label>
+          <input id="editTelefone" name="telefone" type="tel" class="form-control" placeholder="Telefone" required />
+        </div>
+        <div class="col-3">
+          <label for="editEmail">E-mail</label>
+          <input id="editEmail" name="email" type="email" class="form-control" placeholder="E-mail" required />
+        </div>
+        <div class="col-6">
+          <label for="editEndereco">Endereço</label>
+          <input id="editEndereco" name="endereco" type="text" class="form-control" placeholder="Endereço" required />
+        </div>
+      </div>
+      <div class="row" style="margin: 0.5px;">
+        <button type="button" id="salvarEdicaoBtn" class="btn btn-success fs-5 col-2" style="margin: 5px;">Salvar</button>
+        <button type="button" class="btn btn-secondary fs-5 col-2 closebtn" style="margin: 5px;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Fim modal editar-->
     <!--Fim body -->
 
   <!--inicio footer-->

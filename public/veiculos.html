@@ -191,7 +191,7 @@
           <div class="row">
             <div class="col-2">
               <label for="">Placa</label>
-              <input name="placa" type="text" class="form-control" id="" placeholder="Ano do veículo" required />
+              <input name="placa" type="text" class="form-control" id="" placeholder="Placa do veículo" required />
             </div>
             <div class="col-4">
               <label for="">Marca</label>
@@ -217,6 +217,42 @@
       </div>
     </div>
     <!--Fim modal-->
+<!--Modal editar-->
+<div id="editModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="cabecalhoForm">
+      <img src="assets/img/logo.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;" />
+      <h1><i class="fa-solid fa-car"></i> Editando Veículo</h1>
+    </div>
+    <br />
+    <form id="formEditVeiculo" class="formModal">
+      <div class="row my-3">
+        <div class="col-2">
+          <label for="editPlaca">Placa</label>
+          <input id="editPlaca" name="placa" type="text" class="form-control" placeholder="Placa" required />
+        </div>
+        <div class="col-4">
+          <label for="editMarca">Marca</label>
+          <input id="editMarca" name="marca" type="text" class="form-control" placeholder="Marca" required />
+        </div>
+        <div class="col-4">
+          <label for="editModelo">Modelo</label>
+          <input id="editModelo" name="modelo" type="text" class="form-control" placeholder="Modelo" required />
+        </div>
+        <div class="col-2">
+          <label for="editAno">Ano</label>
+          <input id="editAno" name="ano" type="text" class="form-control" placeholder="Ano" required />
+        </div>
+      </div>
+      <div class="row" style="margin: 0.5px;">
+        <button type="button" id="salvarEdicaoBtn" class="btn btn-success fs-5 col-2" style="margin: 5px;">Salvar</button>
+        <button type="button" class="btn btn-secondary fs-5 col-2 closebtn" style="margin: 5px;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Fim modal editar-->
     <!--Fim body -->
 
     <!--inicio footer-->

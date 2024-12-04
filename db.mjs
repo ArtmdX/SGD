@@ -73,7 +73,7 @@ export async function selectVeiculos() {
     return results[0]
 }
 
-//Selecionar veiculo por placa
+//Selecionar veiculo por id
 export async function selecionarVeiculo (id) {
     const results = await client.query("SELECT * FROM tb_veiculo WHERE id_veiculo=?", [id])
     return results[0]
@@ -92,9 +92,8 @@ export async function uptadeVeiculo (id, Veiculo) {
 }
 
 //deletar um Veiculo
-export async function deleteVeiculo(Placa) {
-    const values = [Placa]
-    await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
+export async function deleteVeiculo(id) {
+    await client.query("DELETE FROM tb_veiculo WHERE id_veiculo=?", id)
 }
 
 
