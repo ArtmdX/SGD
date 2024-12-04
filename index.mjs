@@ -125,8 +125,8 @@ app.delete("/sqlVeiculo/:placa", async (request, response) =>{
 /*-----------ROTAS ESTOQUE------------------*/
 // Rota POST para inserir um Produto
 app.post("/sqlProduto", async (request, response) =>{
-    const {nome, un_medida, qtd_estoque, dt_entrada, dt_validade} = request.body;
-    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque, dt_entrada, dt_validade)
+    const {nome, un_medida, qtd_estoque} = request.body;
+    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque)
     await db.insertProduto(novoProduto.produto)
     response.redirect("/estoque");
 })
@@ -143,7 +143,7 @@ app.patch("/sqlProduto/:id_produto", async (request, response) =>{
 app.get("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
     const results = await db.selecionarProduto(id_produto);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os Produtos

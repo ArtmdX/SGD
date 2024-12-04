@@ -295,49 +295,14 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-      // Capturando o modal
-      var modal = document.getElementById("myModal");
-  
-      // Capturando o botão de abrir o modal
-      var btn = document.getElementById("botaoAdd");
-  
-      // Capturando o X que fecha o modal
-      var span = document.getElementsByClassName("close-modal")[0];
-  
-      //capturando botão de voltar
-      var closebtn = document.getElementsByClassName("closebtn")[0];
-  
-      // Configurando o botão cadastrar para abrir o modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      }
-  
-      closebtn.onclick = function(){
-        modal.style.display = "none";
-      }
-  
-      // Configurando o <span> X para fechar o modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      }
-  
-      // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    </script>
-
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- dataTable -->
   <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
   <!-- SCRIPT -->
   <script src="./assets/js/scriptdata.js"></script>
-  <script src="./assets/js/scriptdb.js"></script>
+  <script src="./assets/js/db/ClientesDB.js"></script>
+  <script src="./assets/js/modal.js"></script>
 
   <!-- Inicializa o DataTables quando o documento estiver pronto-->
   <script>
