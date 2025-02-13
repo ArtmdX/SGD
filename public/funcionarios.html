@@ -187,14 +187,63 @@
           </div>
         </div>
           <div class="row justify-content-end mt-4" style="margin: 0.5px;">
-            <button type="submit" class="btn btn-primary col-2" style="margin: 5px;">Cadastrar</button>
-            <button type="button" class="btn btn-secondary col-2 closebtn"  style="margin: 5px;">Voltar</button> 
+            <button type="submit" class="btn btn-primary fs-5 col-2" style="margin: 5px;">Cadastrar</button>
+            <button type="button" class="btn btn-secondary fs-5 col-2 closebtn"  style="margin: 5px;">Voltar</button> 
           </div>
         </div>
       </form>
     </div>
   </div>
-  <!--Fim modal-->
+  <!--Fim modal cadastro-->
+
+
+
+<!-- Modal de Edição -->
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="cabecalhoForm">
+      <img src="./assets/img/LOGO.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;">
+      <h1><i class="fa-solid fa-users-gear"></i> Editando Funcionário</h1>
+    </div>
+    <form id="formEditarFuncionario">
+      <div class="row">
+        <div class="col-12">
+          <label for="editNome">Nome</label>
+          <input name="nome" type="text" id="editNome" class="form-control" placeholder="Nome" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 my-3">
+          <label for="editEndereco">Endereço</label>
+          <input name="endereco" type="text" id="editEndereco" class="form-control" placeholder="Endereço" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label for="editCpf">CPF</label>
+          <input name="cpf" type="text" id="editCpf" class="form-control" placeholder="CPF" required>
+        </div>
+        <div class="col-3">
+          <label for="editTelefone">Telefone</label>
+          <input name="telefone" type="text" id="editTelefone" class="form-control" placeholder="Telefone" required>
+        </div>
+        <div class="col-6">
+          <label for="editEmail">E-mail</label>
+          <input name="email" type="text" id="editEmail" class="form-control" placeholder="E-mail" required>
+        </div>
+      </div>
+      <div class="row justify-content-end mt-4" style="margin: 0.5px;">
+        <button type="button" id="salvarEdicaoBtn" class="btn btn-primary fs-5 col-2" style="margin: 5px;"">Salvar</button>
+        <button type="button" class="btn btn-secondary fs-5 col-2 close-modal" style="margin: 5px;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!--Fim modal edição-->
 
   <!--Fim body-->
 
@@ -260,7 +309,8 @@
   <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
   <!-- SCRIPT -->
   <script src="assets/js/scriptdata.js"></script>
-  <script src="assets/js/scriptdb.js"></script>
+  <script src="assets/js/db/FuncionariosDB.js"></script>
+  
 
   <!-- Inicializa o DataTables quando o documento estiver pronto-->
   <script>

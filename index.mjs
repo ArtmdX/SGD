@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rota POST para inserir um funcionário
 app.post("/sqlfuncionarios", async (request, response) =>{
     const {nome, endereco, cpf, telefone, email} = request.body;
-    const novoFuncionario = await new models.Funcionario(cpf, nome, telefone, endereco, email)
+    const novoFuncionario = new models.Funcionario(cpf, nome, telefone, endereco, email)
     await db.insertFuncionario(novoFuncionario.funcionario)
     response.redirect("/funcionarios");
 })
@@ -33,7 +33,7 @@ app.patch("/sqlfuncionarios/:id", async (request, response) =>{
 app.get("/sqlfuncionarios/:id", async (request, response) =>{
     const id = parseInt(request.params.id);
     const results = await db.selectFuncionario(id);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os funcionários
@@ -60,14 +60,13 @@ app.get('/sqlcliente', async (request, response) => {
 app.get('/sqlcliente/:id', async (request, response) => {
     const id = parseInt(request.params.id);
     const results = await db.selectCliente(id);
-    response.json(results)
+    response.json(results[0])
 })
 
 //Rota para inserir um cliente
 app.post('/sqlcliente', async(request, response) => {
-    const {nome, cpf_cnpj, telefone, email, endereco} = request.body;
-    const novocliente = new models.Cliente(nome, cpf_cnpj, telefone, endereco, email)
-    console.log(novocliente.cliente)
+    const {cpf_cnpj, nome, telefone, email, endereco} = request.body;
+    const novocliente = new models.Cliente(cpf_cnpj, nome, telefone, endereco, email)
     await db.insertCliente(novocliente.cliente)
     response.redirect('/clientes')
 })
@@ -76,7 +75,7 @@ app.post('/sqlcliente', async(request, response) => {
 app.patch('/sqlcliente/:id', async (request, response) => {
     const id = parseInt(request.params.id);
     const cliente = request.body;
-    await db.updateCliente(id, Cliente)
+    await db.updateCliente(id, cliente)
     response.sendStatus(200)
 })
 
@@ -96,7 +95,7 @@ app.post("/sqlVeiculo", async (request, response) =>{
 })
 
 //Rota PATCH para atualizar um Veiculo
-app.patch("/sqlVeiculo/:id", async (request, response) =>{
+app.patch("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo)
     const veiculo = request.body
     await db.uptadeVeiculo(id, veiculo)
@@ -104,10 +103,10 @@ app.patch("/sqlVeiculo/:id", async (request, response) =>{
 })
 
 // Rota GET para selecionar um Veiculo
-app.get("/sqlVeiculo/:id", async (request, response) =>{
+app.get("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo);
     const results = await db.selecionarVeiculo(id);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os veiculo
@@ -117,7 +116,7 @@ app.get("/sqlVeiculo", async (request, response) =>{
 })
 
 // Rota DELETE para excluir um Veiculo
-app.delete("/sqlVeiculo/:placa", async (request, response) =>{
+app.delete("/sqlVeiculo/:id_veiculo", async (request, response) =>{
     const id = parseInt(request.params.id_veiculo);
     await db.deleteVeiculo(id);
     response.sendStatus(204);
@@ -126,10 +125,10 @@ app.delete("/sqlVeiculo/:placa", async (request, response) =>{
 /*-----------ROTAS ESTOQUE------------------*/
 // Rota POST para inserir um Produto
 app.post("/sqlProduto", async (request, response) =>{
-    const {nome, un_medida, qtd_estoque, dt_entrada, dt_validade} = request.body;
-    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque, dt_entrada, dt_validade)
+    const {nome, un_medida, qtd_estoque} = request.body;
+    const novoProduto = new models.Produto(nome, un_medida, qtd_estoque)
     await db.insertProduto(novoProduto.produto)
-    response.redirect("/estoque");
+    response.redirect('/estoque');
 })
 
 //Rota PATCH para atualizar um Produto
@@ -137,14 +136,14 @@ app.patch("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto)
     const produto = request.body
     await db.uptadeProduto(id_produto, produto)
-    response.redirect("/estoque");
+    response.sendStatus(200);
 })
 
 // Rota GET para selecionar um Produto
 app.get("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
     const results = await db.selecionarProduto(id_produto);
-    response.json(results);
+    response.json(results[0]);
 })
 
 // Rota GET para selecionar todos os Produtos
@@ -157,7 +156,7 @@ app.get("/sqlProduto", async (request, response) =>{
 app.delete("/sqlProduto/:id_produto", async (request, response) =>{
     const id_produto = parseInt(request.params.id_produto);
     await db.deleteProduto(id_produto);
-    response.redirect("/estoque");
+    response.sendStatus(200);
 })
 //serviços**************************************************************************************************************************
 // Rota para obter todos os serviços
@@ -271,5 +270,5 @@ app.get("/login", (request, response, next) => {
 });
 
 app.listen(process.env.PORT, () =>(
-    console.log('Rodando!')
+    console.log('Rodando: http://localhost:3000')
 ));

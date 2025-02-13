@@ -158,8 +158,6 @@
                 <th scope="col" class="col-2 alinhar">Nome</th>
                 <th scope="col" class="col-2 alinhar">Quantidade disponível</th>
                 <th scope="col" class="col-2 alinhar">UN Medida</th>
-                <th scope="col" class="col-2 alinhar">Data de entrada</th>
-                <th scope="col" class="col-2 alinhar">Data de validade</th>
                 <th scope="col" class="col-1 alinhar">Ações</th>
               </tr>
             </thead>
@@ -181,30 +179,22 @@
           <div class="row my-3">
             <div class="col-4">
               <label for="">Nome</label>
-              <input name="nome" type="text" id="" class="form-control" placeholder="Nome" required />
+              <input name="nome" type="text" class="form-control" placeholder="Nome" required />
             </div>
 
             <div class="col-2">
               <label for="">Quantidade</label>
-              <input name="qtd_estoque" type="number" class="form-control" id="" placeholder="Quantidade" required />
+              <input name="qtd_estoque" type="number" class="form-control" placeholder="Quantidade" required />
             </div>
             <div class="col-2">
               <label for="">Un Medida</label>
-              <select name="un_medida" id="" class="form-control">
+              <select name="un_medida" class="form-control">
                 <option value="G">g</option>
                 <option value="KG">Kg</option>
                 <option value="L">L</option>
                 <option value="ML">Ml</option>
                 <option value="CX">CX</option>
               </select>
-            </div>
-            <div class="col-2">
-              <label for="">Data de Entrada</label>
-              <input name="dt_entrada" type="date" class="form-control" id="" placeholder="" required />
-            </div>
-            <div class="col-2">
-              <label for="">Data de Validade</label>
-              <input name="dt_validade" type="date" class="form-control" id="" placeholder="" required />
             </div>
           </div>
 
@@ -216,7 +206,45 @@
       </div>
     </div>
     <!--Fim modal-->
+<!--Modal editar-->
+<div id="editModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="cabecalhoForm">
+      <img src="assets/img/logo.png" alt="" class="imagemFormCadastro" style="padding-bottom: 15px;" />
+      <h1><i class="fa-solid fa-boxes-packing"></i> Editando Produto</h1>
+    </div>
+    <br />
+    <form id="formEditProduto" class="formModal">
+      <div class="row my-3">
+        <div class="col-4">
+          <label for="editNomeProduto">Nome</label>
+          <input id="editNome" name="nome" type="text" class="form-control" placeholder="Nome" required />
+        </div>
+        <div class="col-2">
+          <label for="editQtdEstoque">Quantidade</label>
+          <input id="editQtdEstoque" name="qtd_estoque" type="number" class="form-control" placeholder="Quantidade" required />
+        </div>
+        <div class="col-2">
+          <label for="editUnMedida">Unidade de Medida</label>
+          <select id="editUnMedida" name="un_medida" class="form-control">
+            <option value="G">g</option>
+            <option value="KG">Kg</option>
+            <option value="L">L</option>
+            <option value="ML">Ml</option>
+            <option value="CX">CX</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" style="margin: 0.5px;">
+        <button type="button" id="salvarEdicaoBtn" class="btn btn-success fs-5 col-2" style="margin: 5px;">Salvar</button>
+        <button type="button" class="btn btn-secondary fs-5 col-2 close-modal" style="margin: 5px;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
 
+<!--Fim modal editar-->
     <!--Fim body -->
 
     <!--inicio footer-->
@@ -235,40 +263,6 @@
     </div>
     <!--Fim footer-->
 
-    <script>
-      // Capturando o modal
-      var modal = document.getElementById("myModal");
-
-      // Capturando o botão de abrir o modal
-      var btn = document.getElementById("botaoAdd");
-
-      // Capturando o X que fecha o modal
-      var span = document.getElementsByClassName("close-modal")[0];
-
-      //capturando botão de voltar
-      var closebtn = document.getElementsByClassName("closebtn")[0];
-
-      // Configurando o botão cadastrar para abrir o modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
-
-      closebtn.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // Configurando o <span> X para fechar o modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // Configurando para que o modal feche caso o usuario clique em algum lugar da tela
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    </script>
 
     <!-- jQuery -->
     <script
@@ -284,7 +278,9 @@
       crossorigin="anonymous"></script>
     <!-- SCRIPT -->
     <script src="assets/js/scriptdata.js"></script>
-    <script src="assets/js/scriptdb.js"></script>
+    <script src="assets/js/db/EstoqueDB.js"></script>
+    <script src="./assets/js/modal.js"></script>
+
     <script>
       $(document).ready(function () {
         $("#tableEstoque").DataTable();

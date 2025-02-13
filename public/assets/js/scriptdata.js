@@ -122,7 +122,7 @@ var table = new DataTable('#tableEstoque', {
         { targets: '_all', render: function(data, type, row) {
             return '<div style="text-align: center;">' + data + '</div>';
         } },
-        { targets: 5, orderable: false }, //retira paginação
+        { targets: 3, orderable: false }, //retira paginação
     ],
     headerCallback: function( thead, data, start, end, display ) {
         $('th', thead).each(function() {

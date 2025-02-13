@@ -1,6 +1,5 @@
 import mysql from "mysql2/promise"
 import dotenv from 'dotenv'
-import { Produto, Veiculo } from "./Models/models.mjs";
 dotenv.config()
 
 export const client = mysql.createPool(process.env.CONNECTION_STRING)
@@ -14,8 +13,8 @@ export async function selectFuncionarios(){
 
 //Inserir funcionario por ID
 export async function insertFuncionario(Funcionario){
-    const values = [Funcionario.id_funcionario, Funcionario.cpf, Funcionario.nome, Funcionario.telefone, Funcionario.endereco, Funcionario.email]
-    await client.query("INSERT INTO tb_funcionario(id_funcionario, cpf, nome, telefone, endereco, email) VALUES (?,?,?,?,?,?)", values)
+    const values = [Funcionario.cpf, Funcionario.nome, Funcionario.telefone, Funcionario.endereco, Funcionario.email]
+    await client.query("INSERT INTO tb_funcionario(cpf, nome, telefone, endereco, email) VALUES (?,?,?,?,?)", values)
 }
 
 //Selecionar funcionario por ID
@@ -32,8 +31,7 @@ export async function uptadeFuncionario(id, Funcionario){
 
 //Deletar um Funcionario
 export async function deleteFuncionario(id){
-    const values = [id]
-    await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", values)
+    await client.query("DELETE FROM tb_funcionario WHERE id_funcionario=?", id)
 }
 
 /********************CLIENTES********************/
@@ -52,20 +50,20 @@ export async function selectCliente(id){
 //insere um novo cliente
 export async function insertCliente(Cliente){
     console.log(Cliente)
-    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email]
+    const values = [Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email]
     await client.query('INSERT INTO tb_cliente(cpf_cnpj, nome, telefone, endereco, email) VALUES (?, ?, ?, ?, ?)', values)
 }
 
 //atualiza um cliente
 export async function updateCliente(id, Cliente){
-    const values = [Cliente.nome, Cliente.cpf_cnpj, Cliente.telefone, Cliente.endereco, Cliente.email, id]
+    const values = [Cliente.cpf_cnpj, Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.email, id]
     await client.query('UPDATE tb_cliente SET cpf_cnpj=?, nome=?, telefone=?, endereco=?, email=? WHERE id_cliente = ?', values)
 }
 
 //deletar um cliente
 export async function deleteCliente(id){
     const values = [id]
-    await client.query('DELETE FROM tb_funcionario WHERE id_cliente=?', values)
+    await client.query('DELETE FROM tb_cliente WHERE id_cliente=?', values)
 }
 
 /********************VEICULOS********************/
@@ -75,7 +73,7 @@ export async function selectVeiculos() {
     return results[0]
 }
 
-//Selecionar veiculo por placa
+//Selecionar veiculo por id
 export async function selecionarVeiculo (id) {
     const results = await client.query("SELECT * FROM tb_veiculo WHERE id_veiculo=?", [id])
     return results[0]
@@ -94,12 +92,11 @@ export async function uptadeVeiculo (id, Veiculo) {
 }
 
 //deletar um Veiculo
-export async function deleteVeiculo(Placa) {
-    const values = [Placa]
-    await client.query("DELETE FROM tb_veiculo WHERE Placa=?", values)
+export async function deleteVeiculo(id) {
+    await client.query("DELETE FROM tb_veiculo WHERE id_veiculo=?", id)
 }
 
-/********************Serviços********************/
+
 // Função para selecionar todos os serviços
 export async function selectServicos() {
     const results = await client.query("SELECT * FROM tb_servico;");
@@ -145,14 +142,14 @@ export async function selecionarProduto (id_produto) {
 
 //Inserir um novo produto
 export async function insertProduto(produto) {
-    const values =[produto.nome, produto.un_medida, produto.qtd_estoque, produto.dt_entrada, produto.dt_validade]
-    await client.query("INSERT INTO tb_produto(nome, un_medida, qtd_estoque, dt_entrada, dt_validade) VALUES (?,?,?,?,?)", values)
+    const values =[produto.nome, produto.un_medida, produto.qtd_estoque]
+    await client.query("INSERT INTO tb_produto(nome, un_medida, qtd_estoque) VALUES (?,?,?)", values)
 }
 
 //Uptade do produto
 export async function uptadeProduto (id_produto, produto) {
-    const values = [produto.nome, produto.un_medida, produto.qtd_estoque, produto.dt_entrada, produto.dt_validade, id_produto, produto]
-    await client.query("UPDATE tb_produto SET nome=? un_medida=?, qtd_estoque=?, dt_entrada=?, dt_validade=? WHERE id_produto=? ", values)
+    const values = [produto.nome, produto.un_medida, produto.qtd_estoque, id_produto, produto]
+    await client.query("UPDATE tb_produto SET nome=?, un_medida=?, qtd_estoque=? WHERE id_produto=? ", values)
 }
 
 //deletar um produto
